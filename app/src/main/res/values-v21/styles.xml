@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:colorPrimary">@color/bmx_magenta</item>
+        <item name="android:colorPrimaryDark">@color/bmx_purple</item>
+        <item name="android:colorAccent">@color/bmx_magenta</item>
+        <item name="background">@color/g_bg</item>
+    </style>
+
+</resources>

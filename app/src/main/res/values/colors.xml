@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores generales -->
+    <color name="g_bg">#fafafa</color>
+
+    <color name="g_white">#ffffff</color>
+    <color name="g_black">#000000</color>
+    <color name="g_gray_statusbar">#c8c8c8</color>
+
+    <color name="g_gray">#eeeeee</color>
+    <color name="g_gray_aplha">#aa000000</color>
+
+    <color name="c_text_dark">#282828</color>
+    <color name="c_text_oxford">#595959</color>
+    <color name="c_text_gray">#aeaeae</color>
+    <color name="c_text_white">#eff7f5</color>
+
+    <color name="c_text_link_1">#5b026b</color>
+    <color name="c_text_link_2">#d32393</color>
+
+    <!-- Color Scheme | Brilla México -->
+    <color name="bmx_aqua">#2be3be</color>
+    <color name="bmx_green">#38c298</color>
+    <color name="bmx_lemmon">#b8de00</color>
+    <color name="bmx_pink">#d32393</color>
+    <color name="bmx_magenta">#7d00a8</color>
+
+    <color name="bmx_purple">#5b026b</color>
+    <color name="bmx_purpleDark">#490256</color>
+
+    <!-- Aux Colors -->
+    <color name="bmx_greean_1">#11c18d</color>
+    <color name="bmx_greean_2">#129e75</color>
+    <color name="bmx_greean_3">#108965</color>
+</resources>
