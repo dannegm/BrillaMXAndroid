@@ -1,5 +1,6 @@
 package mx.ambmultimedia.brillamexico;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
@@ -16,6 +17,10 @@ public class MainActivity extends ActionBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        NavigationDrawer navDrawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
+        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navDrawer.setUp(drawer_layout, toolbar);
     }
 
 

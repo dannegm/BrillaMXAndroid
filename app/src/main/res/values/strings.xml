@@ -1,7 +1,31 @@
 <resources>
-    <string name="app_name">BrillaMexico</string>
-    <string name="title_activity_main">MainActivity</string>
+    <!-- App Configs Text -->
+    <string name="app_name">Brilla México</string>
 
+    <string name="title_activity_main">Inicio</string>
+
+    <!-- Genéricos -->
     <string name="hello_world">Hello world!</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_void">...</string>
+
+    <!-- Menu labels -->
     <string name="action_settings">Settings</string>
+
+    <!-- Config strings -->
+    <string name="hostname">http://sample.com/</string>
+
+    <!-- -->
+
+    <!-- Drawer -->
+    <string name="drawer_txt_activity">Actividad</string>
+    <string name="drawer_txt_new">Noticias</string>
+    <string name="drawer_txt_tuto">Tutorial</string>
+
+    <string name="drawer_txt_privacy">Aviso de Privacidad</string>
+    <string name="drawer_txt_credits">Sobre los Desarrolladores</string>
+
+    <!-- Login -->
+    <string name="fb_txt_login">Iniciar con facebook</string>
+
 </resources>

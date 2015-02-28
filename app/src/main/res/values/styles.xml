@@ -12,4 +12,10 @@
         <item name="background">@color/g_bg</item>
     </style>
 
+    <style name="BMX_ActionBar" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textColorPrimary">@color/g_white</item>
+        <item name="android:textColorSecondary">@color/g_white</item>
+        <item name="android:background">@color/bmx_purple</item>
+    </style>
+
 </resources>
