@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.ambmultimedia.brillamexico.LoginStep4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/l_green"
+            android:gravity="center">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="320dp"
+                android:gravity="center"
+                android:id="@+id/linearLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/l_text_8"
+                    android:id="@+id/textViewHola"
+                    android:textSize="22sp"
+                    android:textColor="@color/g_white" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextHola"
+                    android:textSize="22sp"
+                    android:singleLine="false"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/l_text_preview"
+                    android:maxWidth="260dp"
+                    android:minWidth="200dp"
+                    android:ellipsize="end"
+                    android:textColorHint="@color/l_text_holder"
+                    android:hint="@string/l_text_10"
+                    android:backgroundTint="@color/g_white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/l_text_9"
+                    android:id="@+id/textViewHolaAd"
+                    android:textColor="@color/g_white"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="Continuar"
+                android:id="@+id/toLogin"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:background="@color/bmx_pink"
+                android:textColor="@color/g_white" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -15,6 +15,12 @@
     <!-- -->
 
     <!-- Drawer -->
+    <string name="title_activity_logint_step1">LogintStep1</string>
+    <string name="title_activity_login_step1">LoginStep1</string>
+    <string name="title_activity_login_step2">LoginStep2</string>
+    <string name="title_activity_login_step3">LoginStep3</string>
+
+    <string name="drawer_txt_myprofile">Mi Perfil</string>
     <string name="drawer_txt_activity">Actividad</string>
     <string name="drawer_txt_new">Noticias</string>
     <string name="drawer_txt_tuto">Tutorial</string>
@@ -37,13 +43,15 @@
     <string name="l_text_6">Emprendedor</string>
     <string name="l_text_7">Empresa</string>
 
+    <string name="l_text_12">¿HOMBRE O MUJER?</string>
+
     <string name="l_text_8">¡Hola </string>
     <string name="l_text_9"> !</string>
     <string name="l_text_10">Escribe tu nombre</string>
 
     <string name="l_text_11">
     <![CDATA[
-    Hola {{username}}, nos gustaría saber un poco más de ti, conecta tu cuenta de facebook para participar.
+    Hola <font color="#7d00a8">__username__</font>, nos gustaría saber un poco más de ti, conecta tu cuenta de <font color="#2f77d8">facebook</font> para participar.
     ]]>
     </string>
 
@@ -55,5 +63,7 @@
     <string name="p_label_fotos">Fotos</string>
     <string name="p_label_puntos">Puntos</string>
     <string name="p_label_logros">Logros</string>
+    <string name="title_activity_login_step4">LoginStep4</string>
+    <string name="title_activity_login_step5">LoginStep5</string>
 
 </resources>

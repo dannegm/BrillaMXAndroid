@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.ambmultimedia.brillamexico.LoginStep1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/g_bg"
+            android:gravity="center"
+            android:clickable="true"
+            android:id="@+id/goToStep2">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/logo_login"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/l_text_1"
+                android:id="@+id/textView"
+                android:layout_marginTop="42dp"
+                android:layout_marginLeft="56dp"
+                android:layout_marginRight="56dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_below="@+id/imageView"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:id="@+id/imageView2"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/login_city"
+                android:layout_below="@+id/textView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/l_text_3"
+                android:id="@+id/textView3"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="56dp"
+                android:layout_marginRight="56dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_below="@+id/imageView2"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/toStep2"
+                android:src="@drawable/btn_to_down"
+                android:clickable="true"
+                android:layout_below="@+id/textView3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

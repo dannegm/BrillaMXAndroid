@@ -13,11 +13,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".login"
@@ -26,6 +21,31 @@
         <activity
             android:name=".UserProfile"
             android:label="@string/title_activity_user_profile" >
+        </activity>
+        <activity
+            android:name=".LoginStep1"
+            android:label="@string/title_activity_login_step1" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginStep2"
+            android:label="@string/title_activity_login_step2" >
+        </activity>
+        <activity
+            android:name=".LoginStep3"
+            android:label="@string/title_activity_login_step3" >
+        </activity>
+        <activity
+            android:name=".LoginStep4"
+            android:label="@string/title_activity_login_step4" >
+        </activity>
+        <activity
+            android:name=".LoginStep5"
+            android:label="@string/title_activity_login_step5" >
         </activity>
     </application>
 

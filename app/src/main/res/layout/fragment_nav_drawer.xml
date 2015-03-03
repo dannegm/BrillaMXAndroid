@@ -13,7 +13,8 @@
     <!-- User Profile -->
     <RelativeLayout
         android:id="@+id/userprofile"
-        style="@style/dw_userprofile_container">
+        style="@style/dw_userprofile_container"
+        >
 
         <ImageView
             android:src="@drawable/paisaje_ciudad"
@@ -49,8 +50,26 @@
         >
 
         <LinearLayout
+            android:id="@+id/dw_myprofile"
+            style="@style/dw_pmenu_itemcontainer"
+            android:clickable="true"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_tuto"
+                style="@style/dw_pmenu_icon"
+                />
+
+            <TextView
+                android:text="@string/drawer_txt_myprofile"
+                style="@style/dw_pmenu_label"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/dw_activity"
             style="@style/dw_pmenu_itemcontainer"
+            android:clickable="true"
             >
 
             <ImageView
@@ -67,6 +86,7 @@
         <LinearLayout
             android:id="@+id/dw_news"
             style="@style/dw_pmenu_itemcontainer"
+            android:clickable="true"
             >
 
             <ImageView
@@ -83,6 +103,7 @@
         <LinearLayout
             android:id="@+id/dw_tuto"
             style="@style/dw_pmenu_itemcontainer"
+            android:clickable="true"
             >
 
             <ImageView
