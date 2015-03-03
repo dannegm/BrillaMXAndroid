@@ -1,0 +1,141 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.ambmultimedia.brillamexico.NavDrawerFrag"
+    android:orientation="vertical"
+    android:background="@color/g_white"
+    >
+
+
+    <!-- User Profile -->
+    <RelativeLayout
+        android:id="@+id/userprofile"
+        style="@style/dw_userprofile_container">
+
+        <ImageView
+            android:src="@drawable/paisaje_ciudad"
+            style="@style/dw_userprofile_bg" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/UserAvatar"
+            android:src="@drawable/com_facebook_profile_picture_blank_square"
+            style="@style/dw_userprofile_avatar" />
+
+        <LinearLayout
+            style="@style/dw_userprofile_infocontain"
+            >
+
+            <TextView
+                android:id="@+id/UserName"
+                android:text="Sammy Pérez"
+                style="@style/dw_userprofile_username"
+                />
+
+            <TextView
+                android:id="@+id/UserPoints"
+                android:text="250 puntos"
+                style="@style/dw_userprofile_points"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Primary Menu -->
+    <LinearLayout
+        style="@style/dw_pmenu_container"
+        >
+
+        <LinearLayout
+            android:id="@+id/dw_activity"
+            style="@style/dw_pmenu_itemcontainer"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_activity"
+                style="@style/dw_pmenu_icon"
+                />
+
+            <TextView
+                android:text="@string/drawer_txt_activity"
+                style="@style/dw_pmenu_label"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dw_news"
+            style="@style/dw_pmenu_itemcontainer"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_news"
+                style="@style/dw_pmenu_icon"
+                />
+
+            <TextView
+                android:text="@string/drawer_txt_new"
+                style="@style/dw_pmenu_label"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dw_tuto"
+            style="@style/dw_pmenu_itemcontainer"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_tuto"
+                style="@style/dw_pmenu_icon"
+                />
+
+            <TextView
+                android:text="@string/drawer_txt_tuto"
+                style="@style/dw_pmenu_label"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <View style="@style/Divider"/>
+
+    <!-- Secondary Menu -->
+    <LinearLayout
+        style="@style/dw_smenu_container">
+
+        <LinearLayout
+            android:id="@+id/dw_privacy"
+            style="@style/dw_smenu_itemcontainer"
+            >
+
+            <TextView
+                android:text="@string/drawer_txt_privacy"
+                style="@style/dw_smenu_label"
+                />
+
+            <ImageView
+                android:src="@drawable/ic_info"
+                style="@style/dw_smenu_icon"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dw_credits"
+            style="@style/dw_smenu_itemcontainer"
+            >
+
+            <TextView
+                android:text="@string/drawer_txt_credits"
+                style="@style/dw_smenu_label"
+                />
+
+            <ImageView
+                android:src="@drawable/ic_info"
+                style="@style/dw_smenu_icon"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

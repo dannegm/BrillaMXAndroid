@@ -1,0 +1,240 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.ambmultimedia.brillamexico.login">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:orientation="vertical">
+
+            <!-- Pantalla bienvenida -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="570dp"
+                android:background="@color/g_bg"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:layout_marginTop="46dp"
+                    android:src="@drawable/logo_login"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/l_text_1"
+                    android:id="@+id/textView"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginLeft="72dp"
+                    android:layout_marginRight="72dp"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_below="@+id/imageView"
+                    android:layout_centerHorizontal="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="140dp"
+                    android:id="@+id/imageView2"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/login_city"
+                    android:layout_below="@+id/textView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/l_text_3"
+                    android:id="@+id/textView3"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="72dp"
+                    android:layout_marginRight="72dp"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:layout_below="@+id/imageView2"
+                    android:layout_centerHorizontal="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView3"
+                    android:src="@drawable/btn_to_down"
+                    android:layout_below="@+id/textView3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="29dp" />
+
+            </RelativeLayout>
+
+
+            <!-- Pantalla Compromisos -->
+            <!--
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="570dp"
+                android:background="@color/g_bg">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/l_text_4"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/bmx_purple"
+                        android:textSize="22sp"
+                        android:padding="24dp"
+                        android:layout_marginTop="16dp" />
+
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/icono_jovenesadultos"
+                        android:layout_marginTop="24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/l_text_5"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/c_text_gray"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:textColorHighlight="@color/c_text_oxford" />
+
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/icono_emprendedores"
+                        android:layout_marginTop="24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/l_text_6"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/c_text_gray"
+                        android:padding="8dp"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/icono_empresas"
+                        android:layout_marginTop="24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/l_text_7"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/c_text_gray"
+                        android:padding="8dp"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </RelativeLayout>
+            -->
+
+            <!-- Pantalla Hola -->
+            <!--
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="570dp"
+                android:background="@color/l_green">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/l_text_8"
+                        android:id="@+id/textViewHola"
+                        android:textSize="22sp"
+                        android:textColor="@color/g_white" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editTextHola"
+                        android:textSize="22sp"
+                        android:singleLine="false"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:textColor="@color/l_text_preview"
+                        android:maxWidth="260dp"
+                        android:minWidth="200dp"
+                        android:ellipsize="end"
+                        android:textColorHint="@color/l_text_holder"
+                        android:hint="@string/l_text_10"
+                        android:backgroundTint="@color/g_white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/l_text_9"
+                        android:id="@+id/textViewHolaAd"
+                        android:textColor="@color/g_white"
+                        android:textSize="22sp" />
+                </LinearLayout>
+            </RelativeLayout>
+            -->
+
+            <!-- Pantalla Login Facebook -->
+            <!--
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="570dp"
+                android:background="@color/l_green">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/l_text_11"
+                        android:id="@+id/textViewHola"
+                        android:textSize="22sp"
+                        android:textColor="@color/g_white"
+                        android:layout_margin="42dp"
+                        android:gravity="center" />
+
+                    <com.facebook.widget.LoginButton
+                        android:id="@+id/authButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/fb_txt_login" />
+
+                </LinearLayout>
+            </RelativeLayout>
+            -->
+        </LinearLayout>
+
+</LinearLayout>

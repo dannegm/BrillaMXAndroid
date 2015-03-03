@@ -1,0 +1,147 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.ambmultimedia.brillamexico.UserProfile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:id="@+id/imageView4"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/paisaje_ciudad"
+            android:scaleType="centerCrop" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView5"
+            android:src="@drawable/com_facebook_profile_picture_blank_square"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/p_samplename"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/imageView5"
+            android:layout_centerHorizontal="true"
+            android:textSize="18dp"
+            android:textColor="@color/c_text_oxford"
+            android:padding="4dp"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/p_samplebio"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:padding="4dp"
+            android:textSize="14dp"
+            android:textIsSelectable="true" />
+
+        <LinearLayout
+            android:id="@+id/user_resume"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textView4"
+            android:layout_marginTop="16dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/p_label_fotos"
+                    android:id="@+id/textView5"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="4dp"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08"
+                    android:id="@+id/textView6"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="14dp"
+                    android:textColor="@color/bmx_purple" />
+            </LinearLayout>
+            <View style="@style/DividerVR"
+                android:background="@color/bmx_purple" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/p_label_puntos"
+                    android:id="@+id/textView7"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="4dp"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9999"
+                    android:id="@+id/textView8"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="14dp"
+                    android:textColor="@color/bmx_purple" />
+            </LinearLayout>
+            <View style="@style/DividerVR"
+                android:background="@color/bmx_purple" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/p_label_logros"
+                    android:id="@+id/textView9"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="4dp"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9999"
+                    android:id="@+id/textView10"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="14dp"
+                    android:textColor="@color/bmx_purple" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="@style/Divider"
+            android:layout_below="@+id/user_resume"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+</LinearLayout>

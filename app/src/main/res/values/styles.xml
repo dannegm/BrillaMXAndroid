@@ -6,8 +6,8 @@
     </style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/bmx_purpleDark</item>
-        <item name="colorPrimaryDark">@color/bmx_purple</item>
+        <item name="colorPrimary">@color/bmx_purple</item>
+        <item name="colorPrimaryDark">@color/bmx_purpleDark</item>
         <item name="colorAccent">@color/bmx_magenta</item>
         <item name="background">@color/g_bg</item>
     </style>
@@ -16,6 +16,133 @@
         <item name="android:textColorPrimary">@color/g_white</item>
         <item name="android:textColorSecondary">@color/g_white</item>
         <item name="android:background">@color/bmx_purple</item>
+    </style>
+
+
+
+    <!-- Aux Styles -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+    <style name="DividerVR">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <!-- Navigation Drawer -->
+    
+    <!-- User Profile -->
+    <style name="dw_userprofile_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">140dp</item>
+    </style>
+    <style name="dw_userprofile_bg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:background">@color/bmx_magenta</item>
+    </style>
+    <style name="dw_userprofile_avatar">
+        <item name="android:background">@color/g_trans</item>
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+    <style name="dw_userprofile_infocontain">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+    <style name="dw_userprofile_username">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/c_text_white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+    <style name="dw_userprofile_points">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/bmx_yellow_1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <!-- Primary Menu -->
+
+    <style name="dw_pmenu_container">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:showDividers">end</item>
+    </style>
+    <style name="dw_pmenu_itemcontainer">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+    <style name="dw_pmenu_icon">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+    <style name="dw_pmenu_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center_vertical|start</item>
+    </style>
+
+    <!-- Secondary Menu -->
+
+    <style name="dw_smenu_container">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+    <style name="dw_smenu_itemcontainer">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+    <style name="dw_smenu_label">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="dw_smenu_icon">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
 </resources>

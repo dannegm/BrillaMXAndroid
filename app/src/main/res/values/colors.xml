@@ -3,6 +3,7 @@
     <!-- Colores generales -->
     <color name="g_bg">#fafafa</color>
 
+    <color name="g_trans">#00000000</color>
     <color name="g_white">#ffffff</color>
     <color name="g_black">#000000</color>
     <color name="g_gray_statusbar">#c8c8c8</color>
@@ -21,7 +22,7 @@
     <!-- Color Scheme | Brilla México -->
     <color name="bmx_aqua">#2be3be</color>
     <color name="bmx_green">#38c298</color>
-    <color name="bmx_lemmon">#b8de00</color>
+    <color name="bmx_lemon">#b8de00</color>
     <color name="bmx_pink">#d32393</color>
     <color name="bmx_magenta">#7d00a8</color>
 
@@ -29,7 +30,14 @@
     <color name="bmx_purpleDark">#490256</color>
 
     <!-- Aux Colors -->
-    <color name="bmx_greean_1">#11c18d</color>
-    <color name="bmx_greean_2">#129e75</color>
-    <color name="bmx_greean_3">#108965</color>
+    <color name="bmx_green_1">#11c18d</color>
+    <color name="bmx_green_2">#129e75</color>
+    <color name="bmx_green_3">#108965</color>
+
+    <color name="bmx_yellow_1">#caee06</color>
+
+    <!-- Login -->
+    <color name="l_green">#9dca30</color>
+    <color name="l_text_holder">#7ca713</color>
+    <color name="l_text_preview">#42580c</color>
 </resources>
