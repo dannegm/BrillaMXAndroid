@@ -56,4 +56,8 @@
     <string name="p_label_puntos">Puntos</string>
     <string name="p_label_logros">Logros</string>
 
+    <!-- Compartir foto -->
+    <string name="title_activity_share">Publica tu #selfie</string>
+    <string name="title_activity_foto">Toma tu #Selfie</string>
+
 </resources>
