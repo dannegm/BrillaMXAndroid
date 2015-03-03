@@ -11,7 +11,7 @@
             android:orientation="vertical">
 
             <!-- Pantalla bienvenida -->
-
+            <!--
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="570dp"
@@ -75,6 +75,7 @@
                     android:layout_marginTop="29dp" />
 
             </RelativeLayout>
+            -->
 
 
             <!-- Pantalla Compromisos -->
@@ -202,7 +203,7 @@
             -->
 
             <!-- Pantalla Login Facebook -->
-            <!--
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="570dp"
@@ -226,7 +227,7 @@
 
                     <com.facebook.widget.LoginButton
                         android:id="@+id/authButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="253dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="30dp"
@@ -234,7 +235,7 @@
 
                 </LinearLayout>
             </RelativeLayout>
-            -->
+
         </LinearLayout>
 
 </LinearLayout>
