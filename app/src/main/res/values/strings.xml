@@ -73,5 +73,6 @@
     <string name="vp_share">COMPARTIR</string>
 
     <string name="title_activity_foto">Toma tu #Selfie</string>
+    <string name="title_activity_compromisos">Nueva #selfie</string>
 
 </resources>

@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main" >
         </activity>
         <activity
             android:name=".login"
@@ -27,6 +27,7 @@
             android:label="@string/title_activity_login_step1" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -50,9 +51,13 @@
             android:name=".Share"
             android:label="@string/title_activity_share" >
         </activity>
-       <activity
+        <activity
             android:name=".Foto"
             android:label="@string/title_activity_foto" >
+        </activity>
+        <activity
+            android:name=".Compromisos"
+            android:label="@string/title_activity_compromisos" >
         </activity>
     </application>
 
