@@ -56,7 +56,7 @@
             >
 
             <ImageView
-                android:src="@drawable/ic_tuto"
+                android:src="@drawable/ic_profile"
                 style="@style/dw_pmenu_icon"
                 />
 

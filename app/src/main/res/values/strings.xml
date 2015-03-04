@@ -66,8 +66,12 @@
     <string name="title_activity_login_step4">LoginStep4</string>
     <string name="title_activity_login_step5">LoginStep5</string>
 
-    <!-- Compartir foto -->
+    <!-- View Publicar -->
     <string name="title_activity_share">Publica tu #selfie</string>
+    <string name="vp_piedefoto">Pie de Foto</string>
+    <string name="vp_hint">Hice un compromiso #MiSelfieBrilla</string>
+    <string name="vp_share">COMPARTIR</string>
+
     <string name="title_activity_foto">Toma tu #Selfie</string>
 
 </resources>
