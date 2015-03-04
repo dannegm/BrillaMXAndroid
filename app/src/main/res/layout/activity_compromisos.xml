@@ -9,23 +9,32 @@
 
     <include android:id="@+id/app_bar" layout="@layout/app_bar" />
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/horizontalScrollView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/app_bar" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
 
-        fab:fab_icon="@drawable/ic_add"
-        fab:fab_colorNormal="@color/c_text_link_2"
-        fab:fab_colorPressed="@color/bmx_magenta"
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
 
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="24dp" />
+                fab:fab_icon="@drawable/ic_add"
+                fab:fab_colorNormal="@color/c_text_link_2"
+                fab:fab_colorPressed="@color/bmx_magenta" />
+
+        </RelativeLayout>
+    </HorizontalScrollView>
 
 
 </RelativeLayout>

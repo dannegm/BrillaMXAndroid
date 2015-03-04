@@ -41,4 +41,11 @@
     <color name="l_green">#9dca30</color>
     <color name="l_text_holder">#7ca713</color>
     <color name="l_text_preview">#42580c</color>
+
+    <!-- Compromisos -->
+    <color name="c_back_disable">#929292</color>
+    <color name="c_back_enable">#41bba1</color>
+
+    <color name="c_btn_disable">#38c298</color>
+    <color name="c_btn_enable">#e00096</color>
 </resources>
