@@ -15,6 +15,7 @@
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -57,6 +58,10 @@
         <activity
             android:name=".Compromisos"
             android:label="@string/title_activity_compromisos" >
+        </activity>
+        <activity
+            android:name=".Selfie"
+            android:label="@string/title_activity_selfie" >
         </activity>
     </application>
 

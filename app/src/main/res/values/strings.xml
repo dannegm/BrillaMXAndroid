@@ -74,5 +74,6 @@
 
     <string name="title_activity_foto">Toma tu #Selfie</string>
     <string name="title_activity_compromisos">Nueva #selfie</string>
+    <string name="title_activity_selfie">Selfie</string>
 
 </resources>
