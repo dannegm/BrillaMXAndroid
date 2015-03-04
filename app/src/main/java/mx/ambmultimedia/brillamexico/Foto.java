@@ -17,12 +17,7 @@ public class Foto extends ActionBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        NavDrawerFrag navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
-        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
