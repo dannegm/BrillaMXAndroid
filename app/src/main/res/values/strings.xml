@@ -75,4 +75,37 @@
     <string name="title_activity_foto">Toma tu #Selfie</string>
     <string name="title_activity_compromisos">Nueva #selfie</string>
 
+    <!-- Textos compromisos -->
+    <string name="c_mecomprometo">ME COMPROMETO A</string>
+
+    <string name="c_1_1">Preservar el medio ambiente a través del uso eficiente de la energía y así haré brillar a México.</string>
+    <string name="c_1_2">Consumir energía sin desperdiciarla y así haré brillar a México.</string>
+    <string name="c_1_3">Usar más transporte público para reducir mi huella ecológica y así haré brillar a México.</string>
+    <string name="c_1_4">Desconectar los aparatos eléctricos y apagar las luces cuando no los esté utilizando y así haré brillar a México.</string>
+    <string name="c_1_5">Usar focos ahorradores y así haré brillar a México.</string>
+    <string name="c_1_6">Usar la bicicleta para viajes cortos y así haré brillar a México.</string>
+    <string name="c_1_7">Lavar en la lavadora con carga completa y así haré brillar a México.</string>
+    <string name="c_1_8">Fomentar en mi familia el uso eficiente de energía y así haré brillar a México.</string>
+    <string name="c_1_9">Usar la escalera cuando sea posible, evitando el uso innecesario del ascensor; y así haré brillar a México.</string>
+    <string name="c_1_10">Apagar las luces y computadoras de mi trabajo cuando no las esté utilizando y así haré brillar a México.</string>
+    <string name="c_1_11">Comprar alimentos locales y de temporada y así haré brillar a México.</string>
+    <string name="c_1_12">Aprovechar la luz natural del día y así haré brillar a México.</string>
+    <string name="c_1_13">Usar aparatos electrónicos que tengan la etiqueta de eficiencia energética y así haré brillar a México.</string>
+    <string name="c_1_14">Cerrar las puertas y ventanas para optimizar el uso del aire acondicionado y así haré brillar a México.</string>
+
+    <string name="c_2_15">Usar de manera eficiente la energía dentro de mi empresa y en mi casa y así haré brillar a México.</string>
+    <string name="c_2_16">Abrir una empresa que genere fuentes de energía verde y así haré brillar a México.</string>
+    <string name="c_2_17">Abrir una empresa que haga uso de energías renovables y así haré brillar a México.</string>
+    <string name="c_2_18">Impulsar proyectos que promuevan la generación de nuevas fuentes de energía y así haré brillar a México.</string>
+
+    <string name="c_3_19">Que mi empresa utilice energía verde en sus procesos y así haré brillar a México.</string>
+    <string name="c_3_20">Que mi empresa sea más eficiente en sus procesos productivos mediante el uso de energías limpias y así haré brillar a México.</string>
+    <string name="c_3_21">Capacitarme, así como a mi personal, en el uso y la importancia de las nuevas energías y así haré brillar a México.</string>
+    <string name="c_3_22">Trabajar con proveedores que hagan uso de procesos eficientes de energía y así haré brillar a México.</string>
+    <string name="c_3_23">Implementar energías renovables dentro de mi empresa y así haré brillar a México.</string>
+    <string name="c_3_24">Usar materiales reciclables dentro de la empresa y así haré brillar a México.</string>
+    <string name="c_3_25">Brindar capacitación para el uso eficiente de energía y la importancia de la energía verde, y así haré brillar a México.</string>
+    <string name="c_3_26">Apagar los focos y desconectar los aparatos electrónicos en áreas de trabajo que no se estén utilizando y así haré brillar a México.</string>
+    <string name="c_3_27">Impulsar proyectos que promuevan el uso eficiente de energía y así haré brillar a México.</string>
+
 </resources>
