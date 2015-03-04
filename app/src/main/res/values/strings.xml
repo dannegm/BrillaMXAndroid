@@ -15,11 +15,6 @@
     <!-- -->
 
     <!-- Drawer -->
-    <string name="title_activity_logint_step1">LogintStep1</string>
-    <string name="title_activity_login_step1">LoginStep1</string>
-    <string name="title_activity_login_step2">LoginStep2</string>
-    <string name="title_activity_login_step3">LoginStep3</string>
-
     <string name="drawer_txt_myprofile">Mi Perfil</string>
     <string name="drawer_txt_activity">Actividad</string>
     <string name="drawer_txt_new">Noticias</string>
@@ -32,6 +27,12 @@
     <string name="dwClose">Cerrado</string>
 
     <!-- Login -->
+    <string name="title_activity_login_step1">LoginStep1</string>
+    <string name="title_activity_login_step2">LoginStep2</string>
+    <string name="title_activity_login_step3">LoginStep3</string>
+    <string name="title_activity_login_step4">LoginStep4</string>
+    <string name="title_activity_login_step5">LoginStep5</string>
+
     <string name="title_activity_login">Iniciar sesión</string>
     <string name="fb_txt_login">Registro con facebook</string>
 
@@ -63,19 +64,18 @@
     <string name="p_label_fotos">Fotos</string>
     <string name="p_label_puntos">Puntos</string>
     <string name="p_label_logros">Logros</string>
-    <string name="title_activity_login_step4">LoginStep4</string>
-    <string name="title_activity_login_step5">LoginStep5</string>
 
-    <!-- View Publicar -->
+    <!-- Selfies -->
     <string name="title_activity_share">Publica tu #selfie</string>
     <string name="vp_piedefoto">Pie de Foto</string>
     <string name="vp_hint">Hice un compromiso #MiSelfieBrilla</string>
     <string name="vp_share">COMPARTIR</string>
 
     <string name="title_activity_foto">Toma tu #Selfie</string>
-    <string name="title_activity_compromisos">Nueva #selfie</string>
 
     <!-- Compromisos -->
+    <string name="title_activity_compromisos">Nueva #selfie</string>
+
     <string name="c_cualestuyo">¿Cuál es tu compromiso?</string>
     <string name="c_mecomprometo">ME COMPROMETO A</string>
 
@@ -112,5 +112,19 @@
     <string name="c_3_25">Brindar capacitación para el uso eficiente de energía y la importancia de la energía verde, y así haré brillar a México.</string>
     <string name="c_3_26">Apagar los focos y desconectar los aparatos electrónicos en áreas de trabajo que no se estén utilizando y así haré brillar a México.</string>
     <string name="c_3_27">Impulsar proyectos que promuevan el uso eficiente de energía y así haré brillar a México.</string>
+
+    <!-- Actividad -->
+    <string name="title_activity_leader_board">Actividad</string>
+
+    <string name="a_ht_brillamx">#BrillaMexico</string>
+    <string name="a_ht_miselfie">#MiSelfieBrilla</string>
+    <string name="a_leaderboard">LeaderBoard</string>
+
+    <string name="a_sampleuser">
+    <![CDATA[
+        \@SammyPerez
+    ]]>
+    </string>
+    <string name="a_loremipsum">This is Photoshop's version  of Lorem Ipsum. #BrillaMexico nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis</string>
 
 </resources>
