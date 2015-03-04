@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 
 public class LoginStep5 extends ActionBarActivity {
 
@@ -18,9 +16,12 @@ public class LoginStep5 extends ActionBarActivity {
         setContentView(R.layout.activity_login_step5);
 
         Bundle bundle = getIntent().getExtras();
-        final int CampoDeAccion = bundle.getInt("CampoDeAccion");
-        final int Genero = bundle.getInt("Genero");
+        int CampoDeAccion = bundle.getInt("CampoDeAccion");
+        int Genero = bundle.getInt("Genero");
         String Nombre = bundle.getString("Nombre");
+
+        User usuario = new User();
+        usuario.setUser(0, Nombre, "", CampoDeAccion);
 
         String pHiText = getString(R.string.l_text_11);
         pHiText = pHiText.replaceAll("__username__", Nombre);
