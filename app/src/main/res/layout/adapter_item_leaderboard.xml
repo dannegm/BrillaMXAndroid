@@ -7,14 +7,14 @@
         android:id="@+id/listContenedor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/g_gray"
+        android:background="@color/g_white"
         android:padding="16dp"
         android:baselineAligned="false">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:id="@+id/userAvatar"
+            android:id="@+id/luserAvatar"
             android:src="@drawable/com_facebook_profile_picture_blank_square" />
 
         <LinearLayout

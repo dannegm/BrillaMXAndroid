@@ -40,19 +40,21 @@ public class Selfie extends ActionBarActivity {
         final String hostname = "http://api.brillamexico.org";
         client.get(hostname + "/user/selfie/" + selfieID, null, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    JSONObject selfieObj = response.getJSONObject(0);
+                    JSONObject selfieObj = response;
 
-                    String urlUser = hostname + "/user/" + selfieObj.getString("user_id");
                     String urlPicture = hostname + "/pictures/" + selfieObj.getString("picture");
-
                     String avatarUrl = getString(R.string.fb_avatarmini_link);
                     avatarUrl = avatarUrl.replaceAll("__fbid__", selfieObj.getString("user_id"));
                     String[] allowedContentTypes = new String[] { "image/png", "image/jpeg", "image/gif" };
 
                     TextView LabelPoints = (TextView) findViewById(R.id.authorPoints);
                     LabelPoints.setText(selfieObj.getString("description").toString());
+
+                    JSONObject userObj = selfieObj.getJSONObject("user");
+                    TextView LabelUserName = (TextView) findViewById(R.id.authorName);
+                    LabelUserName.setText(userObj.getString("name").toString());
 
                     client.get(avatarUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
                         @Override
@@ -74,17 +76,6 @@ public class Selfie extends ActionBarActivity {
                         }
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) { }
-                    });
-
-                    client.get(urlUser, null, new JsonHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            try {
-                                TextView LabelUserName = (TextView) findViewById(R.id.authorName);
-
-                                LabelUserName.setText(response.getString("name").toString());
-                            } catch (JSONException e) {}
-                        }
                     });
 
                 } catch (JSONException e) {}

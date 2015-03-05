@@ -21,18 +21,18 @@ import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ListLeaderBoard extends BaseAdapter {
+public class ListNoticias extends BaseAdapter {
     private Context mContext;
-    private final JSONArray users;
+    private final JSONArray noticias;
 
-    public ListLeaderBoard (Context c, JSONArray selfies) {
+    public ListNoticias (Context c, JSONArray noticias) {
         mContext = c;
-        this.users = selfies;
+        this.noticias = noticias;
     }
 
     @Override
     public int getCount() {
-        return users.length();
+        return noticias.length();
     }
 
     @Override
@@ -52,50 +52,29 @@ public class ListLeaderBoard extends BaseAdapter {
         if (convertView == null) {
             try {
                 list = new View(mContext);
-                list = inflater.inflate(R.layout.adapter_item_leaderboard, null);
+                list = inflater.inflate(R.layout.adapter_noticia_card, null);
                 final View listTmp = list;
 
-                JSONObject userObj = users.getJSONObject(position);
-                String username = userObj.getString("name");
-                String points = userObj.getString("points");
+                JSONObject noticiaObj = noticias.getJSONObject(position);
 
-                TextView tUsername = (TextView) list.findViewById(R.id.userName);
-                TextView tPoints = (TextView) list.findViewById(R.id.userPoints);
-                TextView tPosition = (TextView) list.findViewById(R.id.userPosition);
+                TextView title = (TextView) list.findViewById(R.id.nTitle);
+                TextView date = (TextView) list.findViewById(R.id.nDate);
+                TextView content = (TextView) list.findViewById(R.id.nContent);
 
-                tUsername.setText(username);
-                tPoints.setText(points + " puntos");
-                tPosition.setText("#" + String.valueOf(position + 1));
-
-                LinearLayout container = (LinearLayout) list.findViewById(R.id.listContenedor);
-                if (position == 0) {
-                    container.setBackgroundColor(
-                            list.getResources().getColor(R.color.bmx_green_1)
-                    );
-                } else if (position == 1) {
-                    container.setBackgroundColor(
-                            list.getResources().getColor(R.color.bmx_green_2)
-                    );
-                } else if (position == 2) {
-                    container.setBackgroundColor(
-                            list.getResources().getColor(R.color.bmx_green_3)
-                    );
-                }
+                title.setText( noticiaObj.getString("title") );
+                date.setText( noticiaObj.getString("date") );
+                content.setText( noticiaObj.getString("content") );
 
                 AsyncHttpClient client = new AsyncHttpClient();
-                String avatarUrl = "https://graph.facebook.com/__fbid__/picture";
-                avatarUrl = avatarUrl.replaceAll("__fbid__", userObj.getString("fbid"));
+                String coverUrl = noticiaObj.getString("imagen");
                 String[] allowedContentTypes = new String[]{"image/png", "image/jpeg", "image/gif"};
-
-                client.get(avatarUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
+                client.get(coverUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
                         Bitmap selfieThumb = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
-
-                        CircleImageView imageView = (CircleImageView) listTmp.findViewById(R.id.luserAvatar);
+                        ImageView imageView = (ImageView) listTmp.findViewById(R.id.nCover);
                         imageView.setImageBitmap(selfieThumb);
                     }
-
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) {
                     }

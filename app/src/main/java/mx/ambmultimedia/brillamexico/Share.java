@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -68,6 +69,7 @@ public class Share extends ActionBarActivity {
                 try {
                     params.put("picture", photo);
                 } catch(FileNotFoundException e) {}
+                final ProgressBar progresBar = (ProgressBar) findViewById(R.id.progressBar);
 
                 Toast.makeText(ctx, "Subiendo selfie...", Toast.LENGTH_LONG).show();
                 String hostname = "http://api.brillamexico.org";
@@ -93,6 +95,9 @@ public class Share extends ActionBarActivity {
                     @Override
                     public void onProgress(int bytesWritten, int totalSize) {
                         Log.i("[Client]", "Uploading...[" + bytesWritten + "/" + totalSize + "]");
+
+                        int progress = (bytesWritten / totalSize) * 100;
+                        progresBar.setProgress(progress);
                     }
 
                 });

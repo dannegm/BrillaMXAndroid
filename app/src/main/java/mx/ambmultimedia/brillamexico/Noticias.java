@@ -8,14 +8,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -28,14 +28,14 @@ import org.json.JSONObject;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class LeaderBoard extends ActionBarActivity {
+public class Noticias extends ActionBarActivity {
     Context ctx;
     Config config;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leader_board);
+        setContentView(R.layout.activity_noticias);
         ctx = this;
         config = new Config(ctx);
 
@@ -47,10 +47,9 @@ public class LeaderBoard extends ActionBarActivity {
         DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
         navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
-        DrawableEvents();
-        GeneralEvents();
         BuildProfile();
-        GetLeaderBoard();
+        DrawableEvents();
+        GetNoticias();
     }
 
     public void BuildProfile () {
@@ -93,43 +92,35 @@ public class LeaderBoard extends ActionBarActivity {
         });
     }
 
-    public void GetLeaderBoard () {
-        String campoDeAccion = config.get("CampoDeAccion", "2");
+    public void GetNoticias () {
         AsyncHttpClient client = new AsyncHttpClient();
-
-        String hostname = "http://api.brillamexico.org";
-        client.get(hostname + "/users/leaderboard/" + campoDeAccion, null, new JsonHttpResponseHandler() {
+        client.get("http://brillamexico.org/api.php?page=1", null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
-                    JSONArray users = response;
+                    final JSONArray noticias = response;
 
-                    ListLeaderBoard adapter = new ListLeaderBoard(ctx, users);
-                    ExtendableListView listUsers = (ExtendableListView) findViewById(R.id.lisLeaderBoard);
+                    ListNoticias adapter = new ListNoticias(ctx, noticias);
+                    ExtendableListView listNoticias = (ExtendableListView) findViewById(R.id.listNoticias);
 
-                    listUsers.setAdapter(adapter);
-                    listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    listNoticias.setAdapter(adapter);
+                    listNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            try {
+                                JSONObject noticia = noticias.getJSONObject(position);
+                                String noticiaID = noticia.getString("id");
+
+                                Intent intent = new Intent(Noticias.this, NoticiaSelf.class);
+                                intent.putExtra("noticiaID", noticiaID);
+                                startActivity(intent);
+                            } catch (JSONException e) {}
                         }
                     });
-
-                } catch (Exception e) {
-                }
+                } catch (Exception e) { }
             }
             @Override
-            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {}
-        });
-    }
-
-    public void GeneralEvents () {
-        FloatingActionButton toSelfie = (FloatingActionButton) findViewById(R.id.toSelfie);
-        toSelfie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Foto.class);
-                startActivity(intent);
-            }
+            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
         });
     }
 
@@ -139,7 +130,7 @@ public class LeaderBoard extends ActionBarActivity {
         toMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, UserProfile.class);
+                Intent intent = new Intent(Noticias.this, UserProfile.class);
                 startActivity(intent);
             }
         });
@@ -149,17 +140,17 @@ public class LeaderBoard extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Noticias.this, LeaderBoard.class);
+                startActivity(intent);
             }
         });
 
-        // Noticias
+        // Actividad
         LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
         toNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Noticias.class);
-                startActivity(intent);
+                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
             }
         });
     }

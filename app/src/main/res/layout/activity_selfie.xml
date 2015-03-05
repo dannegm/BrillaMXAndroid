@@ -22,11 +22,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/selfiePicture"
-            android:src="@drawable/test"
             android:layout_margin="16dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:background="@color/bmx_aqua" />
+            android:background="@color/g_black" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -52,7 +51,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/p_samplename"
                     android:id="@+id/authorName"
                     android:textColor="@color/c_text_dark"
                     android:textSize="20dp"
@@ -61,7 +59,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="199 Puntos"
                     android:id="@+id/authorPoints"
                     android:textSize="16dp"
                     android:textColor="@color/bmx_purple" />

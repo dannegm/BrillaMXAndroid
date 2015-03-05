@@ -22,7 +22,7 @@ public class LoginStep2 extends ActionBarActivity {
         imYoungAdult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginStep2.this, LoginStep3.class);
+                Intent intent = new Intent(LoginStep2.this, LoginStep4.class);
                 intent.putExtra("CampoDeAccion", 1);
 
                 startActivity(intent);
@@ -32,7 +32,7 @@ public class LoginStep2 extends ActionBarActivity {
         imEntrepreneur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginStep2.this, LoginStep3.class);
+                Intent intent = new Intent(LoginStep2.this, LoginStep4.class);
                 intent.putExtra("CampoDeAccion", 2);
 
                 startActivity(intent);
@@ -42,7 +42,7 @@ public class LoginStep2 extends ActionBarActivity {
         imEnterprise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginStep2.this, LoginStep3.class);
+                Intent intent = new Intent(LoginStep2.this, LoginStep4.class);
                 intent.putExtra("CampoDeAccion", 3);
 
                 startActivity(intent);

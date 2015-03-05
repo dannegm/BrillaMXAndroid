@@ -54,7 +54,8 @@
             android:id="@+id/dw_myprofile"
             style="@style/dw_pmenu_itemcontainer"
             android:clickable="true"
-            >
+            android:focusableInTouchMode="true"
+            android:focusable="true">
 
             <ImageView
                 android:src="@drawable/ic_profile"

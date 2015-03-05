@@ -19,7 +19,6 @@ public class LoginStep4 extends ActionBarActivity {
 
         Bundle bundle = getIntent().getExtras();
         final int CampoDeAccion = bundle.getInt("CampoDeAccion");
-        final int Genero = bundle.getInt("Genero");
 
         editTextHola = (EditText) findViewById(R.id.editTextHola);
         Nombre = editTextHola.getText().toString();
@@ -31,7 +30,6 @@ public class LoginStep4 extends ActionBarActivity {
                 Intent intent = new Intent(LoginStep4.this, LoginStep5.class);
 
                 intent.putExtra("CampoDeAccion", CampoDeAccion);
-                intent.putExtra("Genero", Genero);
                 intent.putExtra("Nombre", editTextHola.getText().toString());
 
                 startActivity(intent);

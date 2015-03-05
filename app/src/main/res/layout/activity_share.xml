@@ -25,7 +25,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" >
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -44,7 +44,6 @@
                     android:src="@drawable/test"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true" />
-
             </RelativeLayout>
 
             <TextView
@@ -69,17 +68,26 @@
                 android:backgroundTint="@color/c_text_gray"
                 android:gravity="top" />
 
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:progress="0" />
+
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/bmx_pistache"
                 android:textColor="@color/g_white"
                 android:gravity="center"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:textSize="20sp"
                 android:text="@string/vp_share"
-                android:id="@+id/sendPhoto" />
+                android:id="@+id/sendPhoto"
+                android:layout_marginTop="-8dp" />
 
         </LinearLayout>
 

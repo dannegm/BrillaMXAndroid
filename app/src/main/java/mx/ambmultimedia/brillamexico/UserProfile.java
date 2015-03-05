@@ -63,24 +63,6 @@ public class UserProfile extends ActionBarActivity {
         String fbID = config.get("fbID", "0");
         AsyncHttpClient client = new AsyncHttpClient();
 
-        String avatarUrl = getString(R.string.fb_avatar_link);
-        avatarUrl = avatarUrl.replaceAll("__fbid__", fbID);
-        String[] allowedContentTypes = new String[] { "image/png", "image/jpeg", "image/gif" };
-        client.get(avatarUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
-                    Bitmap UserAvatar = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
-
-                    CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
-                    ImgUserAvatar.setImageBitmap(UserAvatar);
-
-                    CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
-                    ImgDrawerAvatar.setImageBitmap(UserAvatar);
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) { }
-        });
-
         String hostname = "http://api.brillamexico.org";
         client.get(hostname + "/user/" + fbID, null, new JsonHttpResponseHandler() {
             @Override
@@ -105,6 +87,24 @@ public class UserProfile extends ActionBarActivity {
 
                 } catch (JSONException e) {}
             }
+        });
+
+        String avatarUrl = getString(R.string.fb_avatar_link);
+        avatarUrl = avatarUrl.replaceAll("__fbid__", fbID);
+        String[] allowedContentTypes = new String[] { "image/png", "image/jpeg", "image/gif" };
+        client.get(avatarUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
+                Bitmap UserAvatar = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
+
+                CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
+                ImgUserAvatar.setImageBitmap(UserAvatar);
+
+                CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
+                ImgDrawerAvatar.setImageBitmap(UserAvatar);
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) { }
         });
     }
 
@@ -172,6 +172,16 @@ public class UserProfile extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserProfile.this, LeaderBoard.class);
+                startActivity(intent);
+            }
+        });
+
+        // Noticias
+        LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
+        toNoticias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this, Noticias.class);
                 startActivity(intent);
             }
         });

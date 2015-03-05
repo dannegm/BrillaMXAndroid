@@ -133,5 +133,7 @@
 
     <!-- Selfie -->
     <string name="title_activity_selfie">#Selfie</string>
+    <string name="title_activity_noticias">Noticias</string>
+    <string name="title_activity_noticia_self">Noticias</string>
 
 </resources>

@@ -21,8 +21,6 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -33,7 +31,6 @@ public class LoginStep5 extends FragmentActivity {
 
     private String Nombre;
     private int CampoDeAccion;
-    private int Genero;
 
     private UiLifecycleHelper uiHelper;
     private Session.StatusCallback callback = new Session.StatusCallback() {
@@ -57,7 +54,6 @@ public class LoginStep5 extends FragmentActivity {
         Bundle bundle = getIntent().getExtras();
         CampoDeAccion = bundle.getInt("CampoDeAccion");
         Nombre = bundle.getString("Nombre");
-        Genero = bundle.getInt("Genero");
 
         String pHiText = getString(R.string.l_text_11);
         pHiText = pHiText.replaceAll("__username__", Nombre);
@@ -132,20 +128,26 @@ public class LoginStep5 extends FragmentActivity {
                         nuevoUsuario.put("name", Nombre);
                         nuevoUsuario.put("email", email);
                         nuevoUsuario.put("fieldaction_id", CampoDeAccion);
-                        nuevoUsuario.put("gender", Genero);
+                        nuevoUsuario.put("gender", user.getProperty("gender").toString());
                         nuevoUsuario.put("age", "");
 
                         String hostname = "http://api.brillamexico.org";
                         AsyncHttpClient client = new AsyncHttpClient();
                         client.post(hostname + "/user/register", nuevoUsuario, new JsonHttpResponseHandler() {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                                Intent intent = new Intent(LoginStep5.this, UserProfile.class);
-                                startActivity(intent);
-
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 config.set("isLogin", "true");
                                 config.set("fbID", fbID);
                                 config.set("CampoDeAccion", String.valueOf(CampoDeAccion));
+
+                                Intent intent = new Intent(LoginStep5.this, UserProfile.class);
+                                startActivity(intent);
+                            }
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                                String msg = "[" + statusCode + "]" + e.getMessage();
+                                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+                                Log.i("[Client]", msg);
                             }
                         });
                     }

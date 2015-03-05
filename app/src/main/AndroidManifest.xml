@@ -90,6 +90,23 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".Noticias"
+            android:label="@string/title_activity_noticias"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.MainActivity" />
+        </activity>
+        <activity
+            android:name=".NoticiaSelf"
+            android:label="@string/title_activity_noticia_self"
+            android:parentActivityName=".Noticias" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.Noticias" />
+        </activity>
     </application>
 
 </manifest>
