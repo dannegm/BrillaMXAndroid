@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Configs Text -->
     <string name="app_name">Brilla México</string>
@@ -10,7 +11,7 @@
     <string name="txt_void">...</string>
 
     <!-- Config strings -->
-    <string name="hostname">http://sample.com/</string>
+    <string name="hostname">http://api.brillamexico.org/</string>
     <string name="facebook_app_id">605895716209070</string>
     <string name="fb_avatar_link">https://graph.facebook.com/__fbid__/picture?type=large</string>
     <string name="fb_avatarmini_link">https://graph.facebook.com/__fbid__/picture</string>
@@ -78,7 +79,6 @@
 
     <!-- Compromisos -->
     <string name="title_activity_compromisos">Nueva #selfie</string>
-    <string name="title_activity_selfie">Selfie</string>
 
     <string name="c_cualestuyo">¿Cuál es tu compromiso?</string>
     <string name="c_mecomprometo">ME COMPROMETO A</string>
@@ -130,7 +130,8 @@
     ]]>
     </string>
     <string name="a_loremipsum">This is Photoshop\'s version  of Lorem Ipsum. #BrillaMexico nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis</string>
-    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+
+    <!-- Selfie -->
     <string name="title_activity_selfie">#Selfie</string>
 
 </resources>

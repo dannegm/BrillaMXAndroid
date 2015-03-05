@@ -8,11 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class NavDrawerFrag extends Fragment {
     public static final String PREF_FILE_NAME = "textprefbs";
@@ -61,6 +58,10 @@ public class NavDrawerFrag extends Fragment {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+                if (!mUserLearnedDrawer) {
+                    mUserLearnedDrawer = false;
+                    saveToPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, mUserLearnedDrawer + "");
+                }
                 getActivity().invalidateOptionsMenu();
 
             }

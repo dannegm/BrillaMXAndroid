@@ -17,6 +17,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".UserProfile"
@@ -58,11 +63,14 @@
         <activity
             android:name=".Foto"
             android:label="@string/title_activity_foto" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Selfie"
+            android:label="@string/title_activity_selfie"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.MainActivity" />
         </activity>
         <activity
             android:name=".Compromisos"
@@ -82,23 +90,6 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
-        <activity
-            android:name=".MainActivity2Activity"
-            android:label="@string/title_activity_main_activity2"
-            android:parentActivityName=".Foto" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.Foto" />
-        </activity>
-        <activity
-            android:name=".Selfie"
-            android:label="@string/title_activity_selfie"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.MainActivity" />
-        </activity>
     </application>
 
 </manifest>

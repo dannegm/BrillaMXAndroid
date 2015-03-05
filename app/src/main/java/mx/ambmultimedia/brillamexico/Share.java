@@ -7,6 +7,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -58,8 +59,8 @@ public class Share extends ActionBarActivity {
                 RequestParams params = new RequestParams();
                 params.put("x", "0");
                 params.put("x", "0");
-                params.put("width", "0");
-                params.put("height", "0");
+                params.put("width", "512");
+                params.put("height", "512");
 
 
                 params.put("engagement_id", "1");
@@ -81,6 +82,19 @@ public class Share extends ActionBarActivity {
                             startActivity(intent);
                         } catch (JSONException e) {}
                     }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                        String msg = "[" + statusCode + "]" + e.getMessage();
+                        Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+                        Log.i("[Client]", msg);
+                    }
+
+                    @Override
+                    public void onProgress(int bytesWritten, int totalSize) {
+                        Log.i("[Client]", "Uploading...[" + bytesWritten + "/" + totalSize + "]");
+                    }
+
                 });
             }
         });

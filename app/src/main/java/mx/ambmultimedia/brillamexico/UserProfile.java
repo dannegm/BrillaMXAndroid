@@ -9,15 +9,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,7 +53,9 @@ public class UserProfile extends ActionBarActivity {
             navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
             DrawableEvents();
+            GeneralEvents();
             BuildProfile();
+            GetSelfies();
         }
     }
 
@@ -84,7 +89,6 @@ public class UserProfile extends ActionBarActivity {
                     JSONObject user = response;
 
                     TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
-                    TextView LabelCountFotos = (TextView) findViewById(R.id.LabelCountFotos);
                     TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
                     TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
 
@@ -97,10 +101,57 @@ public class UserProfile extends ActionBarActivity {
                     LabelCountPuntos.setText( user.getString("points") );
                     DrawerCountPuntos.setText( user.getString("points") + " puntos" );
 
-                    LabelCountFotos.setText("0");
                     LabelCountLogros.setText("0");
 
                 } catch (JSONException e) {}
+            }
+        });
+    }
+
+    public void GetSelfies () {
+        String fbID = config.get("fbID", "0");
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        String hostname = "http://api.brillamexico.org";
+        client.get(hostname + "/user/selfies/" + fbID, null, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                try {
+                    final JSONArray selfies = response;
+
+                    GridSelfies adapter = new GridSelfies(ctx, selfies);
+                    ExtendableGridView gridSelfies = (ExtendableGridView) findViewById(R.id.selfiesGrid);
+                    gridSelfies.setAdapter(adapter);
+                    gridSelfies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            try {
+                                JSONObject selfie = selfies.getJSONObject(position);
+                                String selfieID = selfie.getString("id");
+
+                                Intent intent = new Intent(UserProfile.this, Selfie.class);
+                                intent.putExtra("selfieID", selfieID);
+                                startActivity(intent);
+                            } catch (JSONException e) {}
+                        }
+                    });
+
+                    TextView LabelCountFotos = (TextView) findViewById(R.id.LabelCountFotos);
+                    String nFotos = String.valueOf(selfies.length());
+                    LabelCountFotos.setText(nFotos);
+
+                } catch (Exception e) {}
+            }
+        });
+    }
+
+    public void GeneralEvents () {
+        FloatingActionButton toSelfie = (FloatingActionButton) findViewById(R.id.toSelfie);
+        toSelfie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this, Foto.class);
+                startActivity(intent);
             }
         });
     }
@@ -120,43 +171,8 @@ public class UserProfile extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ctx, "Click en Actividad", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Noticias
-        LinearLayout toNews = (LinearLayout) findViewById(R.id.dw_news);
-        toNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Click en Noticias", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Tutorial
-        LinearLayout toTuto = (LinearLayout) findViewById(R.id.dw_tuto);
-        toTuto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Click en Tutorial", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Privacidad
-        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
-        toPrivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Click en Privacidad", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Créditos
-        LinearLayout toCredits = (LinearLayout) findViewById(R.id.dw_credits);
-        toCredits.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Click en Créditos", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserProfile.this, LeaderBoard.class);
+                startActivity(intent);
             }
         });
     }

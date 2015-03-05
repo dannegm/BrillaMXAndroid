@@ -15,6 +15,7 @@ import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,9 +40,9 @@ public class Selfie extends ActionBarActivity {
         final String hostname = "http://api.brillamexico.org";
         client.get(hostname + "/user/selfie/" + selfieID, null, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
-                    JSONObject selfieObj = response;
+                    JSONObject selfieObj = response.getJSONObject(0);
 
                     String urlUser = hostname + "/user/" + selfieObj.getString("user_id");
                     String urlPicture = hostname + "/pictures/" + selfieObj.getString("picture");
@@ -49,6 +50,9 @@ public class Selfie extends ActionBarActivity {
                     String avatarUrl = getString(R.string.fb_avatarmini_link);
                     avatarUrl = avatarUrl.replaceAll("__fbid__", selfieObj.getString("user_id"));
                     String[] allowedContentTypes = new String[] { "image/png", "image/jpeg", "image/gif" };
+
+                    TextView LabelPoints = (TextView) findViewById(R.id.authorPoints);
+                    LabelPoints.setText(selfieObj.getString("description").toString());
 
                     client.get(avatarUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
                         @Override
@@ -77,10 +81,8 @@ public class Selfie extends ActionBarActivity {
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
                                 TextView LabelUserName = (TextView) findViewById(R.id.authorName);
-                                TextView LabelPoints = (TextView) findViewById(R.id.authorPoints);
 
                                 LabelUserName.setText(response.getString("name").toString());
-                                LabelPoints.setText(response.getString("points").toString());
                             } catch (JSONException e) {}
                         }
                     });

@@ -16,8 +16,13 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -118,11 +123,8 @@ public class LoginStep5 extends FragmentActivity {
                     if (user != null) {
                         Toast.makeText(ctx, "Bienvenido " + user.getFirstName(), Toast.LENGTH_SHORT).show();
 
-                        String fbID = user.getId();
+                        final String fbID = user.getId();
                         String email = user.getProperty("email").toString();
-
-                        config.set("isLogin", "true");
-                        config.set("fbID", fbID);
 
                         RequestParams nuevoUsuario = new RequestParams();
                         nuevoUsuario.put("fbid", fbID);
@@ -133,10 +135,19 @@ public class LoginStep5 extends FragmentActivity {
                         nuevoUsuario.put("gender", Genero);
                         nuevoUsuario.put("age", "");
 
-                        JSONObject nUser = BrillaMXApi.user.register(nuevoUsuario);
+                        String hostname = "http://api.brillamexico.org";
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        client.post(hostname + "/user/register", nuevoUsuario, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                                Intent intent = new Intent(LoginStep5.this, UserProfile.class);
+                                startActivity(intent);
 
-                        Intent intent = new Intent(LoginStep5.this, UserProfile.class);
-                        startActivity(intent);
+                                config.set("isLogin", "true");
+                                config.set("fbID", fbID);
+                                config.set("CampoDeAccion", String.valueOf(CampoDeAccion));
+                            }
+                        });
                     }
                 }
             }).executeAsync();
