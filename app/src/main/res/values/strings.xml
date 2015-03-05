@@ -78,6 +78,7 @@
 
     <!-- Compromisos -->
     <string name="title_activity_compromisos">Nueva #selfie</string>
+    <string name="title_activity_selfie">Selfie</string>
 
     <string name="c_cualestuyo">¿Cuál es tu compromiso?</string>
     <string name="c_mecomprometo">ME COMPROMETO A</string>
