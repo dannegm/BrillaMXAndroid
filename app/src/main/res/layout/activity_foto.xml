@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,27 +7,26 @@
     android:layout_height="match_parent"
     tools:context="mx.ambmultimedia.brillamexico.Foto">
 
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageCamera"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/g_black" />
+
     <include android:id="@+id/app_bar" layout="@layout/app_bar" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/c_text_dark"
         android:layout_below="@+id/app_bar"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/camera"
-                android:id="@+id/imageCamera" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,13 +57,23 @@
                         android:gravity="center"
                         android:layout_weight="1">
 
+                        <View
+                            android:padding="16dp"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_gravity="center"
+                            />
+
+                        <!--
                         <ImageView
+                            android:id="@+id/browseImages"
                             android:padding="16dp"
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_gravity="center"
                             android:clickable="true"
                             android:src="@drawable/ic_images" />
+                            -->
 
                     </LinearLayout>
 
@@ -75,7 +85,7 @@
                         android:layout_weight="1">
 
                         <com.getbase.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/fab"
+                            android:id="@+id/takePicture"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -94,6 +104,7 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/toggleFalsh"
                             android:padding="16dp"
                             android:layout_width="72dp"
                             android:layout_height="72dp"

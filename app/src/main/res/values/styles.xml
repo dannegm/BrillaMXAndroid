@@ -20,6 +20,23 @@
 
 
 
+
+
+    <style name="StatusBarGrey" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/bmx_purple</item>
+        <item name="colorPrimaryDark">#c8c8c8</item>
+        <item name="colorAccent">@color/bmx_magenta</item>
+        <item name="background">@color/g_bg</item>
+    </style>
+    <style name="StatusBarGreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/bmx_purple</item>
+        <item name="colorPrimaryDark">#7ea226</item>
+        <item name="colorAccent">@color/bmx_magenta</item>
+        <item name="background">@color/g_bg</item>
+    </style>
+
+
+
     <!-- Aux Styles -->
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>

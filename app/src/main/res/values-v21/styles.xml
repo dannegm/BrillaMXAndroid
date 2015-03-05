@@ -7,4 +7,17 @@
         <item name="background">@color/g_bg</item>
     </style>
 
+    <style name="AppThemeStatusBarGrey" parent="StatusBarGrey">
+        <item name="android:colorPrimary">@color/bmx_purple</item>
+        <item name="android:colorPrimaryDark">#c8c8c8</item>
+        <item name="android:colorAccent">@color/bmx_magenta</item>
+        <item name="background">@color/g_bg</item>
+    </style>
+    <style name="AppThemeStatusBarGreen" parent="StatusBarGreen">
+        <item name="android:colorPrimary">@color/bmx_purple</item>
+        <item name="android:colorPrimaryDark">#7ea226</item>
+        <item name="android:colorAccent">@color/bmx_magenta</item>
+        <item name="background">@color/g_bg</item>
+    </style>
+
 </resources>

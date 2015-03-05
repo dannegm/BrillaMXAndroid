@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +18,7 @@
         >
 
         <ImageView
-            android:src="@drawable/paisaje_ciudad"
+            android:src="@drawable/drawer_bg_ciudad"
             style="@style/dw_userprofile_bg" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -31,13 +32,13 @@
 
             <TextView
                 android:id="@+id/UserName"
-                android:text="Sammy Pérez"
+                android:text="@string/p_samplename"
                 style="@style/dw_userprofile_username"
                 />
 
             <TextView
                 android:id="@+id/UserPoints"
-                android:text="250 puntos"
+                android:text="0 puntos"
                 style="@style/dw_userprofile_points"
                 />
         </LinearLayout>

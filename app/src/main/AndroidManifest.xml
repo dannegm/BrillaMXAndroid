@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera2" />
 
     <application
         android:allowBackup="true"
@@ -15,36 +19,41 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name=".login"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
             android:name=".UserProfile"
             android:label="@string/title_activity_user_profile" >
         </activity>
         <activity
             android:name=".LoginStep1"
-            android:label="@string/title_activity_login_step1" >
+            android:label="@string/title_activity_login_step1"
+            android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
             android:name=".LoginStep2"
-            android:label="@string/title_activity_login_step2" >
+            android:label="@string/title_activity_login_step2"
+            android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
             android:name=".LoginStep3"
-            android:label="@string/title_activity_login_step3" >
+            android:label="@string/title_activity_login_step3"
+            android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
             android:name=".LoginStep4"
-            android:label="@string/title_activity_login_step4" >
+            android:label="@string/title_activity_login_step4"
+            android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
             android:name=".LoginStep5"
-            android:label="@string/title_activity_login_step5" >
+            android:label="@string/title_activity_login_step5"
+            android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
             android:name=".Share"
-            android:label="@string/title_activity_share" >
+            android:label="@string/title_activity_share"
+            android:parentActivityName=".Foto" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.Foto" />
         </activity>
         <activity
             android:name=".Foto"
@@ -62,6 +71,33 @@
         <activity
             android:name=".LeaderBoard"
             android:label="@string/title_activity_leader_board" >
+        </activity>
+
+        <!-- Facebook Login -->
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".MainActivity2Activity"
+            android:label="@string/title_activity_main_activity2"
+            android:parentActivityName=".Foto" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.Foto" />
+        </activity>
+        <activity
+            android:name=".Selfie"
+            android:label="@string/title_activity_selfie"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.MainActivity" />
         </activity>
     </application>
 

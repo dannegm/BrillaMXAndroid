@@ -2,11 +2,8 @@ package mx.ambmultimedia.brillamexico;
 
 import java.util.ArrayList;
 
-/**
- * Created by ambmultimedia on 03/03/15.
- */
 public class User {
-    private Integer _fbID;
+    private String _fbID;
     private String _name;
     private String _bio;
 
@@ -21,7 +18,7 @@ public class User {
     }
 
     // Setea usuario
-    public void setUser(Integer nFbID, String nName, String nBio, Integer nCampoDeAccion) {
+    public void setUser(String nFbID, String nName, String nBio, Integer nCampoDeAccion) {
         this._fbID = nFbID; this._name = nName; this._bio = nBio; this._campoDeAccion = nCampoDeAccion;
     }
 

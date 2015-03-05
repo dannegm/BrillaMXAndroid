@@ -3,8 +3,6 @@ package mx.ambmultimedia.brillamexico;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -23,16 +21,16 @@ public class LoginStep3 extends ActionBarActivity {
         ImageView imMan = (ImageView) findViewById(R.id.imMan);
 
         if (CampoDeAccion == 1) {
-            imWoman.setImageDrawable( getDrawable(R.drawable.personaje_adulta) );
-            imMan.setImageDrawable( getDrawable(R.drawable.personaje_adulto) );
+            imWoman.setImageResource( R.drawable.personaje_adulta );
+            imMan.setImageResource( R.drawable.personaje_adulto );
         }
         else if (CampoDeAccion == 2) {
-            imWoman.setImageDrawable( getDrawable(R.drawable.personaje_emprendedora) );
-            imMan.setImageDrawable( getDrawable(R.drawable.personaje_emprendedor) );
+            imWoman.setImageResource( R.drawable.personaje_emprendedora );
+            imMan.setImageResource( R.drawable.personaje_emprendedor );
         }
         else if (CampoDeAccion == 3) {
-            imWoman.setImageDrawable( getDrawable(R.drawable.personaje_empresaria) );
-            imMan.setImageDrawable( getDrawable(R.drawable.personaje_empresario) );
+            imWoman.setImageResource( R.drawable.personaje_empresaria );
+            imMan.setImageResource( R.drawable.personaje_empresario );
         }
 
         // Jóven - Adulto
@@ -59,28 +57,5 @@ public class LoginStep3 extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login_step3, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

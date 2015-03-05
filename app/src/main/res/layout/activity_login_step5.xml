@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,15 +32,13 @@
                     android:layout_margin="42dp"
                     android:gravity="center" />
 
-                <!--
                 <com.facebook.widget.LoginButton
                     android:id="@+id/authButton"
-                    android:layout_width="253dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
-                    android:text="@string/fb_txt_login" />
-                    -->
+                    />
 
             </LinearLayout>
         </RelativeLayout>

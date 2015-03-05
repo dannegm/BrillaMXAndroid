@@ -8,8 +8,8 @@ android {
         applicationId "mx.ambmultimedia.brillamexico"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.3"
     }
     buildTypes {
         release {
@@ -35,4 +35,7 @@ dependencies {
 
     // SDK Facebook
     compile 'com.facebook.android:facebook-android-sdk:3.23.0'
+
+    // loopj -> HTTP Client
+    compile 'com.loopj.android:android-async-http:1.4.+'
 }

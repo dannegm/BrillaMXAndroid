@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -33,13 +34,14 @@
                     android:background="@color/g_black"
                     android:id="@+id/imageSelfie"
                     android:scaleType="fitCenter"
+                    android:src="@drawable/avatar_placeholder"
                     android:adjustViewBounds="true" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageMarco"
-                    android:src="@drawable/marcos"
+                    android:src="@drawable/test"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true" />
 
@@ -60,7 +62,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="90dp"
-                android:id="@+id/editText"
+                android:id="@+id/pieDeFoto"
                 android:textColor="@color/c_text_oxford"
                 android:textColorHint="@color/c_text_gray"
                 android:hint="@string/vp_hint"
@@ -77,7 +79,7 @@
                 android:layout_marginBottom="16dp"
                 android:textSize="20sp"
                 android:text="@string/vp_share"
-                android:id="@+id/button" />
+                android:id="@+id/sendPhoto" />
 
         </LinearLayout>
 

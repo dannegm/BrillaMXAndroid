@@ -45,7 +45,7 @@ public class NavDrawerFrag extends Fragment {
         return inflater.inflate(R.layout.fragment_nav_drawer, container, false);
     }
 
-    public void setUp(int fragmentID, DrawerLayout drawer_layout, Toolbar toolbar) {
+    public void setUp (int fragmentID, DrawerLayout drawer_layout, Toolbar toolbar) {
         containView = getActivity().findViewById(fragmentID);
         mDrawerLayout = drawer_layout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawer_layout, toolbar, R.string.dwOpen, R.string.dwClose) {
