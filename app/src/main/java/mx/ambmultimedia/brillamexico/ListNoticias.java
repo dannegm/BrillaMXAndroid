@@ -1,25 +1,19 @@
 package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.BinaryHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListNoticias extends BaseAdapter {
     private Context mContext;
@@ -65,20 +59,13 @@ public class ListNoticias extends BaseAdapter {
                 date.setText( noticiaObj.getString("date") );
                 content.setText( noticiaObj.getString("content") );
 
-                AsyncHttpClient client = new AsyncHttpClient();
                 String coverUrl = noticiaObj.getString("imagen");
-                String[] allowedContentTypes = new String[]{"image/png", "image/jpeg", "image/gif"};
-                client.get(coverUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
-                        Bitmap selfieThumb = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
-                        ImageView imageView = (ImageView) listTmp.findViewById(R.id.nCover);
-                        imageView.setImageBitmap(selfieThumb);
-                    }
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) {
-                    }
-                });
+                ImageView imageView = (ImageView) listTmp.findViewById(R.id.nCover);
+                Picasso.with(mContext)
+                        .load(coverUrl)
+                        .placeholder(R.drawable.img_placeholder)
+                        .error(R.drawable.paisaje_error)
+                        .into(imageView);
             } catch (JSONException e) {}
 
         } else {

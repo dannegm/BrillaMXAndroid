@@ -31,6 +31,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/toProfile"
             android:layout_margin="16dp"
             android:background="@color/g_gray"
             android:elevation="1dp"

@@ -13,4 +13,12 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, UserProfile.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent = new Intent(this, UserProfile.class);
+        startActivity(intent);
+    }
 }

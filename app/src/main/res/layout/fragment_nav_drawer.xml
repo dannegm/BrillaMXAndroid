@@ -109,12 +109,12 @@
             >
 
             <ImageView
-                android:src="@drawable/ic_tuto"
+                android:src="@drawable/ic_star"
                 style="@style/dw_pmenu_icon"
                 />
 
             <TextView
-                android:text="@string/drawer_txt_tuto"
+                android:text="Emprendedores"
                 style="@style/dw_pmenu_label"
                 />
         </LinearLayout>
@@ -157,6 +157,29 @@
                 android:src="@drawable/ic_info"
                 style="@style/dw_smenu_icon"
                 />
+        </LinearLayout>
+
+    </LinearLayout>
+    <View style="@style/Divider"/>
+
+    <!-- Salir -->
+    <LinearLayout
+        style="@style/dw_smenu_container">
+
+        <LinearLayout
+            android:id="@+id/dw_salir"
+            style="@style/dw_smenu_itemcontainer">
+
+            <TextView
+                android:text="Salir"
+                style="@style/dw_smenu_label"
+                />
+
+            <ImageView
+                android:src="@drawable/ic_logout"
+                style="@style/dw_smenu_icon"
+                />
+
         </LinearLayout>
 
     </LinearLayout>

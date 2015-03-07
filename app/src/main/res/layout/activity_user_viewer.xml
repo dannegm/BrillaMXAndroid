@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    tools:context="mx.ambmultimedia.brillamexico.UserProfile"
+    tools:context="mx.ambmultimedia.brillamexico.UserViewer"
 
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                         android:layout_height="120dp"
                         android:id="@+id/imageView4"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/profile_bg_ciudad"
+                        android:src="@drawable/paisaje_otroperfil"
                         android:scaleType="centerCrop" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -54,6 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text=""
                         android:id="@+id/LabelUserName"
                         android:layout_below="@+id/ImgUserAvatar"
                         android:layout_centerHorizontal="true"
@@ -179,25 +180,6 @@
             </LinearLayout>
 
         </ScrollView>
-
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/toSelfie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-
-            fab:fab_icon="@drawable/ic_add"
-            fab:fab_colorNormal="@color/c_text_link_2"
-            fab:fab_colorPressed="@color/bmx_magenta"
-
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="24dp" />
-
-
     </RelativeLayout>
 
     <fragment

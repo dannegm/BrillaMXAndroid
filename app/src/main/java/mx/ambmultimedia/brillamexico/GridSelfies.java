@@ -1,18 +1,14 @@
 package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.BinaryHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,24 +50,15 @@ public class GridSelfies extends BaseAdapter {
                 JSONObject selfieObj = selfiesObj.getJSONObject(position);
                 String linkPicture = selfieObj.getString("picture");
 
-                AsyncHttpClient client = new AsyncHttpClient();
                 String hostname = "http://api.brillamexico.org";
                 String urlPicture = hostname + "/pictures/" + linkPicture;
-                String[] allowedContentTypes = new String[]{"image/png", "image/jpeg", "image/gif"};
 
-                client.get(urlPicture, new BinaryHttpResponseHandler(allowedContentTypes) {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
-                        Bitmap selfieThumb = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
-
-                        ImageView imageView = (ImageView) gridTmp.findViewById(R.id.thumbPicture);
-                        imageView.setImageBitmap(selfieThumb);
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) {
-                    }
-                });
+                ImageView imageView = (ImageView) gridTmp.findViewById(R.id.thumbPicture);
+                Picasso.with(mContext)
+                        .load(urlPicture)
+                        .placeholder(R.drawable.foto_placeholder)
+                        .error(R.drawable.foto_error)
+                        .into(imageView);
             } catch (JSONException e) {}
 
         } else {

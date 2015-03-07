@@ -117,10 +117,14 @@ public class LoginStep5 extends FragmentActivity {
                 @Override
                 public void onCompleted(GraphUser user, Response response) {
                     if (user != null) {
-                        Toast.makeText(ctx, "Bienvenido " + user.getFirstName(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ctx, "Bienvenido " + user.getName(), Toast.LENGTH_SHORT).show();
 
                         final String fbID = user.getId();
                         String email = user.getProperty("email").toString();
+
+                        if (Nombre.isEmpty()) {
+                            Nombre = user.getFirstName();
+                        }
 
                         RequestParams nuevoUsuario = new RequestParams();
                         nuevoUsuario.put("fbid", fbID);
@@ -138,17 +142,15 @@ public class LoginStep5 extends FragmentActivity {
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 config.set("isLogin", "true");
                                 config.set("fbID", fbID);
+                                config.set("Nombre", Nombre);
                                 config.set("CampoDeAccion", String.valueOf(CampoDeAccion));
+                                config.set("Puntos", "0");
 
                                 Intent intent = new Intent(LoginStep5.this, UserProfile.class);
                                 startActivity(intent);
                             }
                             @Override
-                            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                                String msg = "[" + statusCode + "]" + e.getMessage();
-                                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
-                                Log.i("[Client]", msg);
-                            }
+                            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
                         });
                     }
                 }

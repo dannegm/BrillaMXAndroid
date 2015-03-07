@@ -1,20 +1,15 @@
 package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.BinaryHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -82,24 +77,15 @@ public class ListLeaderBoard extends BaseAdapter {
                     );
                 }
 
-                AsyncHttpClient client = new AsyncHttpClient();
                 String avatarUrl = "https://graph.facebook.com/__fbid__/picture";
                 avatarUrl = avatarUrl.replaceAll("__fbid__", userObj.getString("fbid"));
-                String[] allowedContentTypes = new String[]{"image/png", "image/jpeg", "image/gif"};
+                CircleImageView imageView = (CircleImageView) listTmp.findViewById(R.id.luserAvatar);
+                Picasso.with(mContext)
+                        .load(avatarUrl)
+                        .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                        .error(R.drawable.com_facebook_profile_picture_blank_square)
+                        .into(imageView);
 
-                client.get(avatarUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
-                        Bitmap selfieThumb = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
-
-                        CircleImageView imageView = (CircleImageView) listTmp.findViewById(R.id.luserAvatar);
-                        imageView.setImageBitmap(selfieThumb);
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) {
-                    }
-                });
             } catch (JSONException e) {}
 
         } else {

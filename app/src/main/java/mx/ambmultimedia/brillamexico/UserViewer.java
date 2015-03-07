@@ -2,6 +2,8 @@ package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
@@ -25,97 +28,124 @@ import org.json.JSONObject;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class LeaderBoard extends ActionBarActivity {
+public class UserViewer extends ActionBarActivity {
     Context ctx;
     Config config;
+
+    String userID;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leader_board);
+        setContentView(R.layout.activity_user_viewer);
         ctx = this;
         config = new Config(ctx);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        Bundle bundle = getIntent().getExtras();
+        userID = bundle.getString("userID");
+
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         NavDrawerFrag navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
-        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
+        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
         DrawableEvents();
         GeneralEvents();
         BuildProfile();
-        GetLeaderBoard();
+        GetSelfies();
     }
 
     public void BuildProfile () {
-        String fbID = config.get("fbID", "0");
         String name = config.get("Nombre", "unknown");
         String points = config.get("Puntos", "0");
+        String fbID = config.get("fbID", "0");
 
         TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
         DrawerUserName.setText(name);
         TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
         DrawerCountPuntos.setText( points + " puntos" );
 
-        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
-        String avatarUrl = getString(R.string.fb_avatar_link);
-        avatarUrl = avatarUrl.replaceAll("__fbid__", fbID);
+        AsyncHttpClient client = new AsyncHttpClient();
+        String hostname = "http://api.brillamexico.org";
+        client.get(hostname + "/user/" + userID, null, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    JSONObject user = response;
+                    toolbar.setTitle("Perfil de " + user.getString("name"));
 
+                    TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
+                    LabelUserName.setText( user.getString("name") );
+
+                    TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
+                    LabelCountPuntos.setText( user.getString("points") + " puntos" );
+
+                    TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
+                    LabelCountLogros.setText("0");
+                } catch (JSONException e) {
+                }
+            }
+        });
+
+        CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
+        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
+
+        String _avatarUrl = getString(R.string.fb_avatar_link);
+
+        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
+        Picasso.with(ctx)
+                .load(miniAvatarUrl)
+                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                .into(ImgDrawerAvatar);
+
+        String avatarUrl = _avatarUrl.replaceAll("__fbid__", userID);
         Picasso.with(ctx)
                 .load(avatarUrl)
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
-                .into(ImgDrawerAvatar);
+                .into(ImgUserAvatar);
     }
 
-    public void GetLeaderBoard () {
-        String campoDeAccion = config.get("CampoDeAccion", "2");
+    public void GetSelfies () {
         AsyncHttpClient client = new AsyncHttpClient();
 
         String hostname = "http://api.brillamexico.org";
-        client.get(hostname + "/users/leaderboard/" + campoDeAccion, null, new JsonHttpResponseHandler() {
+        client.get(hostname + "/user/selfies/" + userID, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
-                    final JSONArray users = response;
+                    final JSONArray selfies = response;
 
-                    ListLeaderBoard adapter = new ListLeaderBoard(ctx, users);
-                    ExtendableListView listUsers = (ExtendableListView) findViewById(R.id.lisLeaderBoard);
-
-                    listUsers.setAdapter(adapter);
-                    listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    GridSelfies adapter = new GridSelfies(ctx, selfies);
+                    ExtendableGridView gridSelfies = (ExtendableGridView) findViewById(R.id.selfiesGrid);
+                    gridSelfies.setAdapter(adapter);
+                    gridSelfies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                JSONObject user = users.getJSONObject(position);
-                                String userID = user.getString("fbid");
+                                JSONObject selfie = selfies.getJSONObject(position);
+                                String selfieID = selfie.getString("id");
 
-                                Intent intent = new Intent(LeaderBoard.this, UserViewer.class);
-                                intent.putExtra("userID", userID);
+                                Intent intent = new Intent(UserViewer.this, Selfie.class);
+                                intent.putExtra("selfieID", selfieID);
                                 startActivity(intent);
                             } catch (JSONException e) {}
                         }
                     });
 
-                } catch (Exception e) {
-                }
+                    TextView LabelCountFotos = (TextView) findViewById(R.id.LabelCountFotos);
+                    String nFotos = String.valueOf(selfies.length());
+                    LabelCountFotos.setText(nFotos);
+
+                } catch (Exception e) {}
             }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {}
         });
     }
 
     public void GeneralEvents () {
-        FloatingActionButton toSelfie = (FloatingActionButton) findViewById(R.id.toSelfie);
-        toSelfie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Foto.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void DrawableEvents () {
@@ -124,7 +154,7 @@ public class LeaderBoard extends ActionBarActivity {
         toMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, UserProfile.class);
+                Intent intent = new Intent(UserViewer.this, UserProfile.class);
                 startActivity(intent);
             }
         });
@@ -134,7 +164,8 @@ public class LeaderBoard extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserViewer.this, LeaderBoard.class);
+                startActivity(intent);
             }
         });
 
@@ -143,7 +174,7 @@ public class LeaderBoard extends ActionBarActivity {
         toNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Noticias.class);
+                Intent intent = new Intent(UserViewer.this, Noticias.class);
                 startActivity(intent);
             }
         });
@@ -153,7 +184,7 @@ public class LeaderBoard extends ActionBarActivity {
         toSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Logout.class);
+                Intent intent = new Intent(UserViewer.this, Logout.class);
                 startActivity(intent);
             }
         });

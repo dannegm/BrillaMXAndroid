@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context="mx.ambmultimedia.brillamexico.Share"
 
     android:layout_width="match_parent"
@@ -68,26 +68,25 @@
                 android:backgroundTint="@color/c_text_gray"
                 android:gravity="top" />
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:progress="0" />
-
-            <Button
+            <com.dd.processbutton.iml.ActionProcessButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/bmx_pistache"
-                android:textColor="@color/g_white"
-                android:gravity="center"
-                android:layout_marginBottom="16dp"
-                android:textSize="20sp"
-                android:text="@string/vp_share"
                 android:id="@+id/sendPhoto"
-                android:layout_marginTop="-8dp" />
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/vp_share"
+                android:textColor="@color/g_white"
+                android:textSize="20sp"
+                android:gravity="center"
+
+                custom:pb_colorComplete="@color/bmx_green"
+                custom:pb_colorNormal="@color/bmx_purple"
+                custom:pb_colorPressed="@color/bmx_purpleDark"
+                custom:pb_colorProgress="@color/bmx_pink"
+                custom:pb_textComplete="Listo!"
+                custom:pb_textProgress="Subiendo..."
+                custom:pb_textError="Error"
+                custom:pb_colorError="@color/red_error" />
 
         </LinearLayout>
 

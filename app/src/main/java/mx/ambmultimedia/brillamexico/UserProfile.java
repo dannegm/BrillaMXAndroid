@@ -18,6 +18,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -61,51 +62,59 @@ public class UserProfile extends ActionBarActivity {
 
     public void BuildProfile () {
         String fbID = config.get("fbID", "0");
-        AsyncHttpClient client = new AsyncHttpClient();
+        String name = config.get("Nombre", "unknown");
+        String points = config.get("Puntos", "0");
 
-        String hostname = "http://api.brillamexico.org";
-        client.get(hostname + "/user/" + fbID, null, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    JSONObject user = response;
+        final TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
+        LabelUserName.setText(name);
 
-                    TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
-                    TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
-                    TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
+        final TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
+            LabelCountPuntos.setText( points + " puntos" );
+        final TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
+            LabelCountLogros.setText("0");
 
-                    TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
-                    TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
+        final TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
+            DrawerUserName.setText(name);
+        final TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
+            DrawerCountPuntos.setText( points + " puntos" );
 
-                    LabelUserName.setText( user.getString("name") );
-                    DrawerUserName.setText( user.getString("name") );
+        if (name == "unknown") {
+            AsyncHttpClient client = new AsyncHttpClient();
+            String hostname = "http://api.brillamexico.org";
+            client.get(hostname + "/user/" + fbID, null, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    try {
+                        JSONObject user = response;
 
-                    LabelCountPuntos.setText( user.getString("points") );
-                    DrawerCountPuntos.setText( user.getString("points") + " puntos" );
+                        LabelUserName.setText(user.getString("name"));
+                        DrawerUserName.setText(user.getString("name"));
 
-                    LabelCountLogros.setText("0");
+                        LabelCountPuntos.setText(user.getString("points"));
+                        DrawerCountPuntos.setText(user.getString("points") + " puntos");
 
-                } catch (JSONException e) {}
-            }
-        });
+                        config.set("Nombre", user.getString("name"));
+                        config.set("Puntos", user.getString("points"));
+                    } catch (JSONException e) {
+                    }
+                }
+            });
+        }
+
+        CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
+        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
 
         String avatarUrl = getString(R.string.fb_avatar_link);
         avatarUrl = avatarUrl.replaceAll("__fbid__", fbID);
-        String[] allowedContentTypes = new String[] { "image/png", "image/jpeg", "image/gif" };
-        client.get(avatarUrl, new BinaryHttpResponseHandler(allowedContentTypes) {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
-                Bitmap UserAvatar = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
 
-                CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
-                ImgUserAvatar.setImageBitmap(UserAvatar);
-
-                CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
-                ImgDrawerAvatar.setImageBitmap(UserAvatar);
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] binaryData, Throwable error) { }
-        });
+        Picasso.with(ctx)
+                .load(avatarUrl)
+                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                .into(ImgUserAvatar);
+        Picasso.with(ctx)
+                .load(avatarUrl)
+                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                .into(ImgDrawerAvatar);
     }
 
     public void GetSelfies () {
@@ -182,6 +191,16 @@ public class UserProfile extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserProfile.this, Noticias.class);
+                startActivity(intent);
+            }
+        });
+
+        // Salir
+        LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
+        toSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this, Logout.class);
                 startActivity(intent);
             }
         });

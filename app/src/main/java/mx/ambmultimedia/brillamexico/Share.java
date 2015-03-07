@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.dd.processbutton.iml.ActionProcessButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -47,7 +48,7 @@ public class Share extends ActionBarActivity {
         ImageView preview = (ImageView) findViewById(R.id.imageSelfie);
         preview.setImageURI(pictureUri);
 
-        Button sendFoto = (Button) findViewById(R.id.sendPhoto);
+        final ActionProcessButton sendFoto = (ActionProcessButton) findViewById(R.id.sendPhoto);
         sendFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,13 +64,11 @@ public class Share extends ActionBarActivity {
                 params.put("width", "512");
                 params.put("height", "512");
 
-
                 params.put("engagement_id", "1");
                 params.put("description", pieDeFoto.getText().toString());
                 try {
                     params.put("picture", photo);
                 } catch(FileNotFoundException e) {}
-                final ProgressBar progresBar = (ProgressBar) findViewById(R.id.progressBar);
 
                 Toast.makeText(ctx, "Subiendo selfie...", Toast.LENGTH_LONG).show();
                 String hostname = "http://api.brillamexico.org";
@@ -97,7 +96,7 @@ public class Share extends ActionBarActivity {
                         Log.i("[Client]", "Uploading...[" + bytesWritten + "/" + totalSize + "]");
 
                         int progress = (bytesWritten / totalSize) * 100;
-                        progresBar.setProgress(progress);
+                        sendFoto.setProgress(progress);
                     }
 
                 });

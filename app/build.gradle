@@ -38,4 +38,10 @@ dependencies {
 
     // loopj -> HTTP Client
     compile 'com.loopj.android:android-async-http:1.4.+'
+
+    // Picasso -> Cliente HTTP de imágenes y cache
+    compile 'com.squareup.picasso:picasso:2.5.+'
+
+    // Loading Button
+    compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.0'
 }
