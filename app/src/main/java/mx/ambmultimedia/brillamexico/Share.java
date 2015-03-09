@@ -71,7 +71,7 @@ public class Share extends ActionBarActivity {
                 } catch(FileNotFoundException e) {}
 
                 Toast.makeText(ctx, "Subiendo selfie...", Toast.LENGTH_LONG).show();
-                String hostname = "http://api.brillamexico.org";
+                String hostname = "http://danielgarcia.biz";
                 client.post(hostname + "/user/selfie/" + fbID, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

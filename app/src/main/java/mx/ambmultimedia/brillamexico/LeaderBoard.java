@@ -74,7 +74,7 @@ public class LeaderBoard extends ActionBarActivity {
         String campoDeAccion = config.get("CampoDeAccion", "2");
         AsyncHttpClient client = new AsyncHttpClient();
 
-        String hostname = "http://api.brillamexico.org";
+        String hostname = "http://danielgarcia.biz";
         client.get(hostname + "/users/leaderboard/" + campoDeAccion, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {

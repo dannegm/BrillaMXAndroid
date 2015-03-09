@@ -121,7 +121,7 @@ public class UserProfile extends ActionBarActivity {
         String fbID = config.get("fbID", "0");
         AsyncHttpClient client = new AsyncHttpClient();
 
-        String hostname = "http://api.brillamexico.org";
+        String hostname = "http://danielgarcia.biz";
         client.get(hostname + "/user/selfies/" + fbID, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {

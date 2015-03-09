@@ -70,7 +70,7 @@ public class UserViewer extends ActionBarActivity {
         DrawerCountPuntos.setText( points + " puntos" );
 
         AsyncHttpClient client = new AsyncHttpClient();
-        String hostname = "http://api.brillamexico.org";
+        String hostname = "http://danielgarcia.biz";
         client.get(hostname + "/user/" + userID, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

@@ -50,7 +50,7 @@ public class GridSelfies extends BaseAdapter {
                 JSONObject selfieObj = selfiesObj.getJSONObject(position);
                 String linkPicture = selfieObj.getString("picture");
 
-                String hostname = "http://api.brillamexico.org";
+                String hostname = "http://danielgarcia.biz";
                 String urlPicture = hostname + "/pictures/" + linkPicture;
 
                 ImageView imageView = (ImageView) gridTmp.findViewById(R.id.thumbPicture);

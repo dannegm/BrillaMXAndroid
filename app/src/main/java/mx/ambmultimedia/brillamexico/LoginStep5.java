@@ -69,7 +69,7 @@ public class LoginStep5 extends FragmentActivity {
         uiHelper.onCreate(savedInstanceState);
 
         LoginButton loginBtn = (LoginButton) findViewById(R.id.authButton);
-        loginBtn.setPublishPermissions(Arrays.asList("email", "public_profile"));
+        loginBtn.setPublishPermissions(Arrays.asList("email", "public_profile", "publish_actions"));
     }
 
     @Override
