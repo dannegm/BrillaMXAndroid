@@ -119,6 +119,34 @@
             android:name=".UserViewer"
             android:label="@string/title_activity_user_viewer" >
         </activity>
+        <activity
+            android:name=".Emprendedores"
+            android:label="@string/title_activity_emprendedores" >
+        </activity>
+        <activity
+            android:name=".Emp1"
+            android:label="@string/title_activity_emp1"
+            android:parentActivityName=".Emprendedores" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.Emprendedores" />
+        </activity>
+        <activity
+            android:name=".Emp2"
+            android:label="@string/title_activity_emp2"
+            android:parentActivityName=".Emprendedores" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.Emprendedores" />
+        </activity>
+        <activity
+            android:name=".Emp3"
+            android:label="@string/title_activity_emp3"
+            android:parentActivityName=".Emprendedores" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.Emprendedores" />
+        </activity>
     </application>
 
 </manifest>

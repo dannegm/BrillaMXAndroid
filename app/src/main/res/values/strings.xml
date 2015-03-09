@@ -137,5 +137,23 @@
     <string name="title_activity_noticia_self">Noticias</string>
     <string name="title_activity_logout">Logout</string>
     <string name="title_activity_user_viewer">Perfil de</string>
+    <string name="title_activity_emprendedores">Emprendedores</string>
+    <string name="title_activity_emp1">Emprendedores</string>
+
+    <!-- Info Emprendedores -->
+
+    <string name="desc_emp_1_1">Jahir Mojica de 28 años es Ingeniero Industrial por la UNAM y actualmente se encuentra cursando una Maestría en Alta Dirección.</string>
+    <string name="desc_emp_1_2">Fundador y CEO de Sustentabilidad en Energía y Medio Ambiente S.A. de C.V. (SUEMA), empresa creada para dar una solución a la problemática ambiental y combatir el cambio climático.</string>
+    <string name="desc_emp_1_3">Se dedica al diseño de sistemas híbridos de bioconversión de residuos en energía, además de ofrecer consultorías para mejorar sistemas existentes y todo tipo de equipos para manejo de desechos urbanos.</string>
+
+    <string name="desc_emp_2_1">Abraham Chetewy, Licenciado en Administración de Empresas es Socio Fundador y actual Director General de Somerset Technologies S.A. de C.V..</string>
+    <string name="desc_emp_2_2">Tiene especial interés en el área de energía y medio ambiente, así como en el desarrollo de tecnologías renovables.</string>
+    <string name="desc_emp_2_3">Ha realizado diversos proyectos relacionados con la eficiencia energética y actualmente contribuye al desarrollo de soluciones de alta ingeniería e innovación tecnológica en la industria de las turbinas eólicas.</string>
+
+    <string name="desc_emp_3_1">El Ingeniero Francisco X. Villaseñor se ha dedicado al estudio e investigación de biocombustibles y biomasas en la última década. Es Fundador y Presidente del consejo de administración de las empresas Carbon Diversion América Latina S.A. de C.V.</string>
+    <string name="desc_emp_3_2">Estudió Ingeniería Civil en la Universidad Autónoma de Guadalajara y actualmente, continua sus estudios cursando la Maestría en Energía Renovable en la misma institución.</string>
+    <string name="desc_emp_3_3">A la fecha ha desarrollado 4 patentes y solicitado su registro en el IMPI, todas ellas relacionadas con la transformación de materia orgánica en energía renovable.</string>
+    <string name="title_activity_emp2">Emprendedores</string>
+    <string name="title_activity_emp3">Emprendedores</string>
 
 </resources>

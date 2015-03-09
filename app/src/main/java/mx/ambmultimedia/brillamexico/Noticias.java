@@ -121,12 +121,22 @@ public class Noticias extends ActionBarActivity {
             }
         });
 
-        // Actividad
+        // Noticias
         LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
         toNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Emprendedores
+        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
+        toEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Noticias.this, Emprendedores.class);
+                startActivity(intent);
             }
         });
 

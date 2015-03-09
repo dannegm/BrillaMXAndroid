@@ -44,4 +44,7 @@ dependencies {
 
     // Loading Button
     compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.0'
+
+    // Text Justify
+    compile 'com.github.bluejamesbond:textjustify-android:2.1.0'
 }

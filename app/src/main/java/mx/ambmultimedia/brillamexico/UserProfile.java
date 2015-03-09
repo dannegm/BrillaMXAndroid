@@ -195,6 +195,16 @@ public class UserProfile extends ActionBarActivity {
             }
         });
 
+        // Emprendedores
+        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
+        toEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this, Emprendedores.class);
+                startActivity(intent);
+            }
+        });
+
         // Salir
         LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
         toSalir.setOnClickListener(new View.OnClickListener() {

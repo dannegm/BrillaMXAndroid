@@ -6,33 +6,26 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
-
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class LeaderBoard extends ActionBarActivity {
+public class Emprendedores extends ActionBarActivity {
     Context ctx;
     Config config;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leader_board);
+        setContentView(R.layout.activity_emprendedores);
         ctx = this;
         config = new Config(ctx);
 
@@ -44,10 +37,9 @@ public class LeaderBoard extends ActionBarActivity {
         DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
         navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
+        BuildProfile();
         DrawableEvents();
         GeneralEvents();
-        BuildProfile();
-        GetLeaderBoard();
     }
 
     public void BuildProfile () {
@@ -58,7 +50,7 @@ public class LeaderBoard extends ActionBarActivity {
         TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
         DrawerUserName.setText(name);
         TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
-        DrawerCountPuntos.setText( points + " puntos" );
+        DrawerCountPuntos.setText(points + " puntos");
 
         CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
         String avatarUrl = getString(R.string.fb_avatar_link);
@@ -70,49 +62,28 @@ public class LeaderBoard extends ActionBarActivity {
                 .into(ImgDrawerAvatar);
     }
 
-    public void GetLeaderBoard () {
-        String campoDeAccion = config.get("CampoDeAccion", "2");
-        AsyncHttpClient client = new AsyncHttpClient();
-
-        String hostname = "http://api.brillamexico.org";
-        client.get(hostname + "/users/leaderboard/" + campoDeAccion, null, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                try {
-                    final JSONArray users = response;
-
-                    ListLeaderBoard adapter = new ListLeaderBoard(ctx, users);
-                    ExtendableListView listUsers = (ExtendableListView) findViewById(R.id.lisLeaderBoard);
-
-                    listUsers.setAdapter(adapter);
-                    listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            try {
-                                JSONObject user = users.getJSONObject(position);
-                                String userID = user.getString("fbid");
-
-                                Intent intent = new Intent(LeaderBoard.this, UserViewer.class);
-                                intent.putExtra("userID", userID);
-                                startActivity(intent);
-                            } catch (JSONException e) {}
-                        }
-                    });
-
-                } catch (Exception e) {
-                }
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {}
-        });
-    }
-
-    public void GeneralEvents () {
-        FloatingActionButton toSelfie = (FloatingActionButton) findViewById(R.id.toSelfie);
-        toSelfie.setOnClickListener(new View.OnClickListener() {
+    public void GeneralEvents() {
+        LinearLayout toEmp1 = (LinearLayout) findViewById(R.id.toEmp1);
+        toEmp1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Foto.class);
+                Intent intent = new Intent(Emprendedores.this, Emp1.class);
+                startActivity(intent);
+            }
+        });
+        LinearLayout toEmp2 = (LinearLayout) findViewById(R.id.toEmp2);
+        toEmp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Emprendedores.this, Emp2.class);
+                startActivity(intent);
+            }
+        });
+        LinearLayout toEmp3 = (LinearLayout) findViewById(R.id.toEmp3);
+        toEmp3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Emprendedores.this, Emp3.class);
                 startActivity(intent);
             }
         });
@@ -124,7 +95,7 @@ public class LeaderBoard extends ActionBarActivity {
         toMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, UserProfile.class);
+                Intent intent = new Intent(Emprendedores.this, UserProfile.class);
                 startActivity(intent);
             }
         });
@@ -134,7 +105,8 @@ public class LeaderBoard extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Emprendedores.this, LeaderBoard.class);
+                startActivity(intent);
             }
         });
 
@@ -143,7 +115,7 @@ public class LeaderBoard extends ActionBarActivity {
         toNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Noticias.class);
+                Intent intent = new Intent(Emprendedores.this, Noticias.class);
                 startActivity(intent);
             }
         });
@@ -153,8 +125,7 @@ public class LeaderBoard extends ActionBarActivity {
         toEmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Emprendedores.class);
-                startActivity(intent);
+                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -163,7 +134,7 @@ public class LeaderBoard extends ActionBarActivity {
         toSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Logout.class);
+                Intent intent = new Intent(Emprendedores.this, Logout.class);
                 startActivity(intent);
             }
         });

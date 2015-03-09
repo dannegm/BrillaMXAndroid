@@ -103,7 +103,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/dw_tuto"
+            android:id="@+id/dw_emp"
             style="@style/dw_pmenu_itemcontainer"
             android:clickable="true"
             >
