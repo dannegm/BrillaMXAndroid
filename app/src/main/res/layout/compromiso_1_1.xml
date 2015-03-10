@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/c_back_enable"
+        android:background="@color/c_back_disable"
         android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/c_cualestuyo"
+            android:text="¡Compromiso realizado!"
             android:id="@+id/textView11"
             android:layout_gravity="center_horizontal"
             android:textSize="20sp"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
 
-            fab:fab_icon="@drawable/ic_camera"
+            fab:fab_icon="@drawable/ic_checked"
             fab:fab_colorNormal="@color/c_btn_enable"
             fab:fab_colorPressed="@color/c_btn_enable" />
 
