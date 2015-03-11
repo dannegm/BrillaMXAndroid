@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BinaryHttpResponseHandler;
@@ -34,6 +35,7 @@ public class UserViewer extends ActionBarActivity {
 
     String userID;
     Toolbar toolbar;
+    PullRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +57,22 @@ public class UserViewer extends ActionBarActivity {
 
         DrawableEvents();
         GeneralEvents();
+        BuildSelfProfile();
+
         BuildProfile();
         GetSelfies();
+
+        refreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        refreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                BuildProfile();
+                GetSelfies();
+            }
+        });
     }
 
-    public void BuildProfile () {
+    public void BuildSelfProfile () {
         String name = config.get("Nombre", "unknown");
         String points = config.get("Puntos", "0");
         String fbID = config.get("fbID", "0");
@@ -67,10 +80,20 @@ public class UserViewer extends ActionBarActivity {
         TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
         DrawerUserName.setText(name);
         TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
-        DrawerCountPuntos.setText( points + " puntos" );
+        DrawerCountPuntos.setText(points + " puntos");
 
+        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
+        String _avatarUrl = getString(R.string.fb_avatar_link);
+        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
+        Picasso.with(ctx)
+                .load(miniAvatarUrl)
+                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                .into(ImgDrawerAvatar);
+    }
+
+    void BuildProfile () {
         AsyncHttpClient client = new AsyncHttpClient();
-        String hostname = "http://danielgarcia.biz";
+        String hostname = getString(R.string.hostname);
         client.get(hostname + "/user/" + userID, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -92,16 +115,7 @@ public class UserViewer extends ActionBarActivity {
         });
 
         CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
-        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
-
         String _avatarUrl = getString(R.string.fb_avatar_link);
-
-        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
-        Picasso.with(ctx)
-                .load(miniAvatarUrl)
-                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
-                .into(ImgDrawerAvatar);
-
         String avatarUrl = _avatarUrl.replaceAll("__fbid__", userID);
         Picasso.with(ctx)
                 .load(avatarUrl)
@@ -112,7 +126,7 @@ public class UserViewer extends ActionBarActivity {
     public void GetSelfies () {
         AsyncHttpClient client = new AsyncHttpClient();
 
-        String hostname = "http://api.brillamexico.org";
+        String hostname = getString(R.string.hostname);
         client.get(hostname + "/user/selfies/" + userID, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -139,6 +153,8 @@ public class UserViewer extends ActionBarActivity {
                     TextView LabelCountFotos = (TextView) findViewById(R.id.LabelCountFotos);
                     String nFotos = String.valueOf(selfies.length());
                     LabelCountFotos.setText(nFotos);
+
+                    refreshLayout.setRefreshing(false);
 
                 } catch (Exception e) {}
             }

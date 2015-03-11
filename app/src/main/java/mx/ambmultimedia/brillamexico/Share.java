@@ -70,8 +70,7 @@ public class Share extends ActionBarActivity {
                     params.put("picture", photo);
                 } catch(FileNotFoundException e) {}
 
-                Toast.makeText(ctx, "Subiendo selfie...", Toast.LENGTH_LONG).show();
-                String hostname = "http://danielgarcia.biz";
+                String hostname = getString(R.string.hostname);
                 client.post(hostname + "/user/selfie/" + fbID, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -93,8 +92,6 @@ public class Share extends ActionBarActivity {
 
                     @Override
                     public void onProgress(int bytesWritten, int totalSize) {
-                        Log.i("[Client]", "Uploading...[" + bytesWritten + "/" + totalSize + "]");
-
                         int progress = (bytesWritten / totalSize) * 100;
                         sendFoto.setProgress(progress);
                     }

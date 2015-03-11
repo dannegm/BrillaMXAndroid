@@ -40,8 +40,8 @@ public class Selfie extends ActionBarActivity {
         final String selfieID = bundle.getString("selfieID");
 
         final AsyncHttpClient client = new AsyncHttpClient();
-        final String hostname = "http://danielgarcia.biz";
-        client.get(hostname + "/selfie/" + selfieID, null, new JsonHttpResponseHandler() {
+        final String hostname = getString(R.string.hostname);
+        client.get(hostname + "/user/selfie/" + selfieID, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

@@ -11,7 +11,7 @@
     <string name="txt_void">...</string>
 
     <!-- Config strings -->
-    <string name="hostname">http://api.brillamexico.org/</string>
+    <string name="hostname">http://api.brillamexico.org</string>
     <string name="facebook_app_id">605895716209070</string>
     <string name="fb_avatar_link">https://graph.facebook.com/__fbid__/picture?type=large</string>
     <string name="fb_avatarmini_link">https://graph.facebook.com/__fbid__/picture</string>
@@ -155,5 +155,6 @@
     <string name="desc_emp_3_3">A la fecha ha desarrollado 4 patentes y solicitado su registro en el IMPI, todas ellas relacionadas con la transformación de materia orgánica en energía renovable.</string>
     <string name="title_activity_emp2">Emprendedores</string>
     <string name="title_activity_emp3">Emprendedores</string>
+    <string name="title_activity_actividad">Actividad</string>
 
 </resources>

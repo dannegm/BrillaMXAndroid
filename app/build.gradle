@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
     compileSdkVersion 21
@@ -27,14 +42,13 @@ dependencies {
     compile 'com.android.support:cardview-v7:21.0.3'
     compile 'com.android.support:recyclerview-v7:21.0.0'
 
-    // Imágenes circulares
-    compile 'de.hdodenhof:circleimageview:1.2.1'
-
-    // Floating Action Button
-    compile 'com.getbase:floatingactionbutton:1.2.1'
-
     // SDK Facebook
     compile 'com.facebook.android:facebook-android-sdk:3.23.0'
+
+    // SDK Twitter
+    compile('com.twitter.sdk.android:twitter:1.3.1@aar') {
+        transitive = true;
+    }
 
     // loopj -> HTTP Client
     compile 'com.loopj.android:android-async-http:1.4.+'
@@ -42,9 +56,24 @@ dependencies {
     // Picasso -> Cliente HTTP de imágenes y cache
     compile 'com.squareup.picasso:picasso:2.5.+'
 
+    // Imágenes circulares
+    compile 'de.hdodenhof:circleimageview:1.2.1'
+
+    // Floating Action Button
+    compile 'com.getbase:floatingactionbutton:1.2.1'
+
     // Loading Button
     compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.0'
 
     // Text Justify
     compile 'com.github.bluejamesbond:textjustify-android:2.1.0'
+
+    // Ripple Effect
+    compile 'com.github.traex.rippleeffect:library:1.2.3'
+
+    // PullRefresh
+    compile 'com.cuneytayyildiz:pullrefreshlayout-library:1.+'
+
+    // Parallax ImageView
+    compile 'com.fmsirvent:parallaxeverywhere:1.0.3'
 }

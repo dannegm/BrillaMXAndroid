@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BinaryHttpResponseHandler;
@@ -31,6 +32,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserProfile extends ActionBarActivity {
     Context ctx;
     Config config;
+
+    PullRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +58,21 @@ public class UserProfile extends ActionBarActivity {
 
             DrawableEvents();
             GeneralEvents();
-            BuildProfile();
+            BuildProfile(false);
             GetSelfies();
+
+            refreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+            refreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    BuildProfile(true);
+                    GetSelfies();
+                }
+            });
         }
     }
 
-    public void BuildProfile () {
+    public void BuildProfile (Boolean refresh) {
         String fbID = config.get("fbID", "0");
         String name = config.get("Nombre", "unknown");
         String points = config.get("Puntos", "0");
@@ -69,7 +81,7 @@ public class UserProfile extends ActionBarActivity {
         LabelUserName.setText(name);
 
         final TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
-            LabelCountPuntos.setText( points + " puntos" );
+            LabelCountPuntos.setText(points);
         final TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
             LabelCountLogros.setText("0");
 
@@ -78,9 +90,9 @@ public class UserProfile extends ActionBarActivity {
         final TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
             DrawerCountPuntos.setText( points + " puntos" );
 
-        if (name == "unknown") {
+        if (name == "unknown" || refresh) {
             AsyncHttpClient client = new AsyncHttpClient();
-            String hostname = "http://api.brillamexico.org";
+            String hostname = getString(R.string.hostname);
             client.get(hostname + "/user/" + fbID, null, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -121,7 +133,7 @@ public class UserProfile extends ActionBarActivity {
         String fbID = config.get("fbID", "0");
         AsyncHttpClient client = new AsyncHttpClient();
 
-        String hostname = "http://danielgarcia.biz";
+        String hostname = getString(R.string.hostname);
         client.get(hostname + "/user/selfies/" + fbID, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -130,6 +142,7 @@ public class UserProfile extends ActionBarActivity {
 
                     GridSelfies adapter = new GridSelfies(ctx, selfies);
                     ExtendableGridView gridSelfies = (ExtendableGridView) findViewById(R.id.selfiesGrid);
+
                     gridSelfies.setAdapter(adapter);
                     gridSelfies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -148,6 +161,8 @@ public class UserProfile extends ActionBarActivity {
                     TextView LabelCountFotos = (TextView) findViewById(R.id.LabelCountFotos);
                     String nFotos = String.valueOf(selfies.length());
                     LabelCountFotos.setText(nFotos);
+
+                    refreshLayout.setRefreshing(false);
 
                 } catch (Exception e) {}
             }

@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
@@ -27,6 +28,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Noticias extends ActionBarActivity {
     Context ctx;
     Config config;
+
+    ExtendableListView listNoticias;
+    PullRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,26 @@ public class Noticias extends ActionBarActivity {
 
         BuildProfile();
         DrawableEvents();
-        GetNoticias();
+        GetNoticias(1);
+
+        listNoticias = (ExtendableListView) findViewById(R.id.listNoticias);
+
+        /*
+        listNoticias.setOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                GetNoticias(page);
+            }
+        });
+        */
+
+        refreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        refreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                GetNoticias(1);
+            }
+        });
     }
 
     public void BuildProfile () {
@@ -68,16 +91,14 @@ public class Noticias extends ActionBarActivity {
                 .into(ImgDrawerAvatar);
     }
 
-    public void GetNoticias () {
+    public void GetNoticias (int page) {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://brillamexico.org/api.php?page=1", null, new JsonHttpResponseHandler() {
+        client.get("http://brillamexico.org/api.php?page=" + page, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
                     final JSONArray noticias = response;
-
                     ListNoticias adapter = new ListNoticias(ctx, noticias);
-                    ExtendableListView listNoticias = (ExtendableListView) findViewById(R.id.listNoticias);
 
                     listNoticias.setAdapter(adapter);
                     listNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,6 +114,8 @@ public class Noticias extends ActionBarActivity {
                             } catch (JSONException e) {}
                         }
                     });
+
+                    refreshLayout.setRefreshing(false);
                 } catch (Exception e) { }
             }
             @Override

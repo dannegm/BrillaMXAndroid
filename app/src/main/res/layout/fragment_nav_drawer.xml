@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="mx.ambmultimedia.brillamexico.NavDrawerFrag"
     android:orientation="vertical"
-    android:background="@color/g_white"
-    >
+    android:background="@color/g_white">
 
 
     <!-- User Profile -->
@@ -50,74 +49,108 @@
         style="@style/dw_pmenu_container"
         >
 
-        <LinearLayout
-            android:id="@+id/dw_myprofile"
-            style="@style/dw_pmenu_itemcontainer"
-            android:clickable="true"
-            android:focusableInTouchMode="true"
-            android:focusable="true">
 
-            <ImageView
-                android:src="@drawable/ic_profile"
-                style="@style/dw_pmenu_icon"
-                />
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
 
-            <TextView
-                android:text="@string/drawer_txt_myprofile"
-                style="@style/dw_pmenu_label"
-                />
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/dw_myprofile"
+                style="@style/dw_pmenu_itemcontainer"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true">
 
-        <LinearLayout
-            android:id="@+id/dw_activity"
-            style="@style/dw_pmenu_itemcontainer"
-            android:clickable="true"
-            >
+                    <ImageView
+                        android:src="@drawable/ic_profile"
+                        style="@style/dw_pmenu_icon"
+                        />
 
-            <ImageView
-                android:src="@drawable/ic_activity"
-                style="@style/dw_pmenu_icon"
-                />
+                    <TextView
+                        android:text="@string/drawer_txt_myprofile"
+                        style="@style/dw_pmenu_label"
+                        />
 
-            <TextView
-                android:text="@string/drawer_txt_activity"
-                style="@style/dw_pmenu_label"
-                />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/dw_news"
-            style="@style/dw_pmenu_itemcontainer"
-            android:clickable="true"
-            >
+            </LinearLayout>
+        </com.andexert.library.RippleView>
 
-            <ImageView
-                android:src="@drawable/ic_news"
-                style="@style/dw_pmenu_icon"
-                />
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
+            <LinearLayout
+                android:id="@+id/dw_activity"
+                style="@style/dw_pmenu_itemcontainer"
+                android:clickable="true"
+                >
 
-            <TextView
-                android:text="@string/drawer_txt_new"
-                style="@style/dw_pmenu_label"
-                />
-        </LinearLayout>
+                <ImageView
+                    android:src="@drawable/ic_activity"
+                    style="@style/dw_pmenu_icon"
+                    />
 
-        <LinearLayout
-            android:id="@+id/dw_emp"
-            style="@style/dw_pmenu_itemcontainer"
-            android:clickable="true"
-            >
+                <TextView
+                    android:text="@string/drawer_txt_activity"
+                    style="@style/dw_pmenu_label"
+                    />
+            </LinearLayout>
+        </com.andexert.library.RippleView>
 
-            <ImageView
-                android:src="@drawable/ic_star"
-                style="@style/dw_pmenu_icon"
-                />
 
-            <TextView
-                android:text="Emprendedores"
-                style="@style/dw_pmenu_label"
-                />
-        </LinearLayout>
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
+            <LinearLayout
+                android:id="@+id/dw_news"
+                style="@style/dw_pmenu_itemcontainer"
+                android:clickable="true"
+                >
+
+                <ImageView
+                    android:src="@drawable/ic_news"
+                    style="@style/dw_pmenu_icon"
+                    />
+
+                <TextView
+                    android:text="@string/drawer_txt_new"
+                    style="@style/dw_pmenu_label"
+                    />
+            </LinearLayout>
+        </com.andexert.library.RippleView>
+
+
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
+            <LinearLayout
+                android:id="@+id/dw_emp"
+                style="@style/dw_pmenu_itemcontainer"
+                android:clickable="true"
+                >
+
+                <ImageView
+                    android:src="@drawable/ic_star"
+                    style="@style/dw_pmenu_icon"
+                    />
+
+                <TextView
+                    android:text="Emprendedores"
+                    style="@style/dw_pmenu_label"
+                    />
+            </LinearLayout>
+        </com.andexert.library.RippleView>
 
     </LinearLayout>
     <View style="@style/Divider"/>
@@ -126,38 +159,54 @@
     <LinearLayout
         style="@style/dw_smenu_container">
 
-        <LinearLayout
-            android:id="@+id/dw_privacy"
-            style="@style/dw_smenu_itemcontainer"
-            >
 
-            <TextView
-                android:text="@string/drawer_txt_privacy"
-                style="@style/dw_smenu_label"
-                />
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
+            <LinearLayout
+                android:id="@+id/dw_privacy"
+                style="@style/dw_smenu_itemcontainer"
+                >
 
-            <ImageView
-                android:src="@drawable/ic_info"
-                style="@style/dw_smenu_icon"
-                />
+                <TextView
+                    android:text="@string/drawer_txt_privacy"
+                    style="@style/dw_smenu_label"
+                    />
 
-        </LinearLayout>
+                <ImageView
+                    android:src="@drawable/ic_info"
+                    style="@style/dw_smenu_icon"
+                    />
 
-        <LinearLayout
-            android:id="@+id/dw_credits"
-            style="@style/dw_smenu_itemcontainer"
-            >
+            </LinearLayout>
+        </com.andexert.library.RippleView>
 
-            <TextView
-                android:text="@string/drawer_txt_credits"
-                style="@style/dw_smenu_label"
-                />
 
-            <ImageView
-                android:src="@drawable/ic_info"
-                style="@style/dw_smenu_icon"
-                />
-        </LinearLayout>
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
+            <LinearLayout
+                android:id="@+id/dw_credits"
+                style="@style/dw_smenu_itemcontainer"
+                >
+
+                <TextView
+                    android:text="@string/drawer_txt_credits"
+                    style="@style/dw_smenu_label"
+                    />
+
+                <ImageView
+                    android:src="@drawable/ic_info"
+                    style="@style/dw_smenu_icon"
+                    />
+            </LinearLayout>
+        </com.andexert.library.RippleView>
 
     </LinearLayout>
     <View style="@style/Divider"/>
@@ -166,21 +215,30 @@
     <LinearLayout
         style="@style/dw_smenu_container">
 
-        <LinearLayout
-            android:id="@+id/dw_salir"
-            style="@style/dw_smenu_itemcontainer">
 
-            <TextView
-                android:text="Salir"
-                style="@style/dw_smenu_label"
-                />
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
 
-            <ImageView
-                android:src="@drawable/ic_logout"
-                style="@style/dw_smenu_icon"
-                />
+            <LinearLayout
+                android:id="@+id/dw_salir"
+                style="@style/dw_smenu_itemcontainer">
 
-        </LinearLayout>
+                <TextView
+                    android:text="Salir"
+                    style="@style/dw_smenu_label"
+                    />
+
+                <ImageView
+                    android:src="@drawable/ic_logout"
+                    style="@style/dw_smenu_icon"
+                    />
+
+            </LinearLayout>
+        </com.andexert.library.RippleView>
 
     </LinearLayout>
 

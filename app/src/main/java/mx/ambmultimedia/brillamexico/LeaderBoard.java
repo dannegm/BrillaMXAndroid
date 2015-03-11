@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -28,6 +29,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class LeaderBoard extends ActionBarActivity {
     Context ctx;
     Config config;
+
+    PullRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,14 @@ public class LeaderBoard extends ActionBarActivity {
         GeneralEvents();
         BuildProfile();
         GetLeaderBoard();
+
+        refreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        refreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                GetLeaderBoard();
+            }
+        });
     }
 
     public void BuildProfile () {
@@ -74,7 +85,7 @@ public class LeaderBoard extends ActionBarActivity {
         String campoDeAccion = config.get("CampoDeAccion", "2");
         AsyncHttpClient client = new AsyncHttpClient();
 
-        String hostname = "http://danielgarcia.biz";
+        String hostname = getString(R.string.hostname);
         client.get(hostname + "/users/leaderboard/" + campoDeAccion, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -98,6 +109,8 @@ public class LeaderBoard extends ActionBarActivity {
                             } catch (JSONException e) {}
                         }
                     });
+
+                    refreshLayout.setRefreshing(false);
 
                 } catch (Exception e) {
                 }
