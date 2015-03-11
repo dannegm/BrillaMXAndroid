@@ -76,4 +76,10 @@ dependencies {
 
     // Parallax ImageView
     compile 'com.fmsirvent:parallaxeverywhere:1.0.3'
+
+    // Bootstrapp Forms
+    compile 'com.beardedhen:androidbootstrap:+'
+
+    // Easy camera
+    compile 'net.bozho.easycamera:easycamera:0.0.1:aar@aar'
 }

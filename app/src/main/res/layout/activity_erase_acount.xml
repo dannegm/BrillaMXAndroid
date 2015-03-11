@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.ambmultimedia.brillamexico.Logout">
+    tools:context="mx.ambmultimedia.brillamexico.EraseAcount">
 
     <include android:id="@+id/app_bar" layout="@layout/app_bar" />
 
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/l_userName"
             android:layout_centerHorizontal="true"
-            android:background="@color/bmx_purple"
+            android:background="@color/bmx_pink"
             android:layout_marginLeft="48dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="48dp"
@@ -50,42 +50,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿Estás seguro de que quieres cerrar sessión?"
+                android:text="Borrar tu cuenta significa perder tus fotos, puntos y logros en el concurso, ¿estás seguro de que deseas eliminar tu cuenta y todos sus datos?"
                 android:id="@+id/textView6"
                 android:padding="16dp"
                 android:gravity="center"
                 android:textColor="@color/c_text_white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="¡Te vamos a extrañar!"
-                android:id="@+id/textView8"
-                android:gravity="center"
-                android:textColor="@color/c_text_white"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp" />
         </LinearLayout>
 
-        <com.facebook.widget.LoginButton
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/authButton"
-            android:layout_marginTop="20dp"
+            android:id="@+id/button"
             android:layout_below="@+id/linearLayout2"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&lt;u>Quiero Eliminar mi ceunta&lt;/u>"
-            android:id="@+id/deleteAcount"
-            android:layout_below="@+id/authButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="22dp"
-            android:textColor="@color/bmx_purple"
-            android:textSize="14sp" />
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignStart="@+id/linearLayout2"
+            android:layout_marginTop="40dp"
+            android:text="Success"
+            bootstrap:bb_icon_right="fa-android"
+            bootstrap:bb_type="success"
+            />
 
     </RelativeLayout>
 

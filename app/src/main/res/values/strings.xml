@@ -156,5 +156,6 @@
     <string name="title_activity_emp2">Emprendedores</string>
     <string name="title_activity_emp3">Emprendedores</string>
     <string name="title_activity_actividad">Actividad</string>
+    <string name="title_activity_erase_acount">Salir</string>
 
 </resources>

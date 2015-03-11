@@ -8,9 +8,11 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +62,17 @@ public class Logout extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        TextView deleteAcount = (TextView) findViewById(R.id.deleteAcount);
+        deleteAcount.setText(Html.fromHtml( deleteAcount.getText().toString() ));
+
+        deleteAcount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Logout.this, EraseAcount.class);
+                startActivity(intent);
+            }
+        });
+
         BuildProfile();
 
         /***
@@ -70,7 +83,7 @@ public class Logout extends ActionBarActivity {
         uiHelper.onCreate(savedInstanceState);
 
         LoginButton loginBtn = (LoginButton) findViewById(R.id.authButton);
-        loginBtn.setPublishPermissions(Arrays.asList("email", "public_profile"));
+        loginBtn.setPublishPermissions(Arrays.asList("email", "public_profile", "publish_actions"));
     }
 
     public void BuildProfile () {

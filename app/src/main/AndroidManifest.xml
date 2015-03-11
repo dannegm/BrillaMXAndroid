@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="mx.ambmultimedia.brillamexico">
+    package="mx.ambmultimedia.brillamexico" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -14,9 +13,9 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        tools:replace="android:icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon" >
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
@@ -102,7 +101,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mx.ambmultimedia.brillamexico.UserProfile" />
         </activity>
-
         <activity
             android:name=".UserViewer"
             android:label="@string/title_activity_user_viewer" >
@@ -152,6 +150,15 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="518ebe8aa32790e6be7e289acb0f55cfa43cdc3a" />
+
+        <activity
+            android:name=".EraseAcount"
+            android:label="@string/title_activity_erase_acount"
+            android:parentActivityName=".Logout" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.Logout" />
+        </activity>
     </application>
 
 </manifest>

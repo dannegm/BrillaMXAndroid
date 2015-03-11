@@ -2,6 +2,11 @@ package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
@@ -27,6 +32,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class Share extends ActionBarActivity {
     Context ctx;
@@ -44,9 +50,12 @@ public class Share extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Uri pictureUri = getIntent().getData();
+        final Bitmap pictureBitmap = cropImage(pictureUri,
+                0, 0, 512);
 
         ImageView preview = (ImageView) findViewById(R.id.imageSelfie);
-        preview.setImageURI(pictureUri);
+        //preview.setImageURI(pictureUri);
+        preview.setImageBitmap(pictureBitmap);
 
         final ActionProcessButton sendFoto = (ActionProcessButton) findViewById(R.id.sendPhoto);
         sendFoto.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +70,8 @@ public class Share extends ActionBarActivity {
                 RequestParams params = new RequestParams();
                 params.put("x", "0");
                 params.put("x", "0");
-                params.put("width", "512");
-                params.put("height", "512");
+                params.put("width", pictureBitmap.getWidth());
+                params.put("height", pictureBitmap.getHeight());
 
                 params.put("engagement_id", "1");
                 params.put("description", pieDeFoto.getText().toString());
@@ -99,6 +108,35 @@ public class Share extends ActionBarActivity {
                 });
             }
         });
+    }
+
+    public Bitmap cropImage (Uri image, int bleft, int btop, int size) {
+        Bitmap bMap = BitmapFactory.decodeFile(image.getPath());
+
+        int nwidth = size;
+        int nheight = size;
+
+        if (bMap.getWidth() < nwidth || bMap.getHeight() < nheight) {
+            if (bMap.getWidth() > bMap.getHeight()) {
+                nwidth = bMap.getHeight();
+                nheight = bMap.getHeight();
+            }
+            else if (bMap.getWidth() < bMap.getHeight()) {
+                nwidth = bMap.getWidth();
+                nheight = bMap.getWidth();
+            }
+            else {
+                nwidth = bMap.getWidth();
+                nheight = bMap.getHeight();
+            }
+        }
+        else {
+            nwidth = size;
+            nheight = size;
+        }
+
+        Bitmap croppedBitmap = Bitmap.createBitmap(bMap, bleft, btop, nwidth, nheight);
+        return croppedBitmap;
     }
 
     @Override
