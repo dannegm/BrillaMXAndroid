@@ -65,8 +65,6 @@ public class Foto extends ActionBarActivity {
         }
     };
 
-
-
     private boolean isLight = false;
 
     private static final int SELECT_PICTURE = 1;
@@ -109,11 +107,10 @@ public class Foto extends ActionBarActivity {
         browseImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,
-                        "Selecciona una imagen"), SELECT_PICTURE);
+                Intent intent = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, SELECT_PICTURE);
             }
         });
 
@@ -142,13 +139,18 @@ public class Foto extends ActionBarActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == SELECT_PICTURE) {
-                Uri ofinalPicture = data.getData();
-                Intent intent = new Intent(Foto.this, Share.class);
-                intent.setData(ofinalPicture);
-                startActivity(intent);
-            }
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && null != data) {
+            Uri ofinalPicture = data.getData();
+            String resultt = ofinalPicture.toString();
+
+            Toast.makeText(ctx, resultt, Toast.LENGTH_SHORT).show();
+
+            /*
+            Intent intent = new Intent(Foto.this, Share.class);
+            intent.setData(ofinalPicture);
+            startActivity(intent);
+            */
         }
     }
 

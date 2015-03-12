@@ -51,7 +51,7 @@ public class Share extends ActionBarActivity {
 
         final Uri pictureUri = getIntent().getData();
         final Bitmap pictureBitmap = cropImage(pictureUri,
-                0, 0, 512);
+                    0, 0, 512);
 
         ImageView preview = (ImageView) findViewById(R.id.imageSelfie);
         //preview.setImageURI(pictureUri);
