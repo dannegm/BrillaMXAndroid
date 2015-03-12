@@ -59,10 +59,7 @@
 
             <LinearLayout
                 android:id="@+id/dw_myprofile"
-                style="@style/dw_pmenu_itemcontainer"
-                android:clickable="true"
-                android:focusableInTouchMode="true"
-                android:focusable="true">
+                style="@style/dw_pmenu_itemcontainer">
 
                     <ImageView
                         android:src="@drawable/ic_profile"
@@ -167,6 +164,30 @@
             app:rv_centered="false"
             app:rv_rippleDuration="200">
             <LinearLayout
+                android:id="@+id/dw_bases"
+                style="@style/dw_smenu_itemcontainer"
+                >
+
+                <TextView
+                    android:text="Bases del Concurso"
+                    style="@style/dw_smenu_label"
+                    />
+
+                <ImageView
+                    android:src="@drawable/ic_info"
+                    style="@style/dw_smenu_icon"
+                    />
+            </LinearLayout>
+        </com.andexert.library.RippleView>
+
+
+        <com.andexert.library.RippleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_color="@color/c_text_gray"
+            app:rv_centered="false"
+            app:rv_rippleDuration="200">
+            <LinearLayout
                 android:id="@+id/dw_privacy"
                 style="@style/dw_smenu_itemcontainer"
                 >
@@ -181,30 +202,6 @@
                     style="@style/dw_smenu_icon"
                     />
 
-            </LinearLayout>
-        </com.andexert.library.RippleView>
-
-
-        <com.andexert.library.RippleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:rv_color="@color/c_text_gray"
-            app:rv_centered="false"
-            app:rv_rippleDuration="200">
-            <LinearLayout
-                android:id="@+id/dw_credits"
-                style="@style/dw_smenu_itemcontainer"
-                >
-
-                <TextView
-                    android:text="@string/drawer_txt_credits"
-                    style="@style/dw_smenu_label"
-                    />
-
-                <ImageView
-                    android:src="@drawable/ic_info"
-                    style="@style/dw_smenu_icon"
-                    />
             </LinearLayout>
         </com.andexert.library.RippleView>
 

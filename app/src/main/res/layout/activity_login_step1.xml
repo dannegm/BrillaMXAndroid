@@ -54,28 +54,32 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registrate para participar"
+                android:id="@+id/toStepp22"
+                android:layout_below="@+id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bmx_purple"
+                android:background="@color/bmx_lemon"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                android:textSize="16dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/l_text_3"
-                android:id="@+id/textView3"
-                android:layout_marginTop="24dp"
-                android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:layout_below="@+id/imageView2"
-                android:layout_centerHorizontal="true" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:id="@+id/toStep2"
-                android:src="@drawable/ic_down"
-                android:clickable="true"
-                android:layout_below="@+id/textView3"
+                android:text="&lt;u>Ya tengo una cuenta&lt;/u>"
+                android:id="@+id/toLogin"
+                android:layout_below="@+id/toStepp22"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="29dp" />
+                android:textColor="@color/bmx_purple"
+                android:textSize="16sp"
+                android:padding="16dp" />
 
         </RelativeLayout>
 

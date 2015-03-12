@@ -107,6 +107,8 @@ public class UserProfile extends ActionBarActivity {
 
                         config.set("Nombre", user.getString("name"));
                         config.set("Puntos", user.getString("points"));
+                        config.set("CampoDeAccion", user.getString("fieldaction_id"));
+
                     } catch (JSONException e) {
                     }
                 }
@@ -216,6 +218,28 @@ public class UserProfile extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserProfile.this, Emprendedores.class);
+                startActivity(intent);
+            }
+        });
+
+        // Otros
+
+        // Bases
+        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
+        toBases.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this, Bases.class);
+                startActivity(intent);
+            }
+        });
+
+        // Privacidad
+        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
+        toPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfile.this, Privacy.class);
                 startActivity(intent);
             }
         });

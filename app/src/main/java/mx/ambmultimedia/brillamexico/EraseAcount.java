@@ -10,9 +10,15 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
+
+import org.apache.http.Header;
+import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -33,6 +39,41 @@ public class EraseAcount extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         BuildProfile();
+
+        Button cancel = (Button) findViewById(R.id.deleteCancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EraseAcount.this, Logout.class);
+                startActivity(intent);
+            }
+        });
+        Button doit = (Button) findViewById(R.id.deleteConfirm);
+        doit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String hostname = getString(R.string.hostname);
+                AsyncHttpClient client = new AsyncHttpClient();
+                String fbID = config.get("fbID", "0");
+                client.post(hostname + "/user/delete/" + fbID, null, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        config.set("isLogin", "false");
+                        config.set("fbID", "");
+                        config.set("Nombre", "unknown");
+                        config.set("CampoDeAccion", "0");
+                        config.set("Puntos", "0");
+
+                        Intent intent = new Intent(EraseAcount.this, LoginStep1.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                    }
+                });
+            }
+        });
     }
 
     public void BuildProfile () {

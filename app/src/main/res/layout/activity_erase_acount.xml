@@ -57,18 +57,40 @@
                 android:textColor="@color/c_text_white" />
         </LinearLayout>
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button"
+        <LinearLayout
             android:layout_below="@+id/linearLayout2"
-            android:layout_alignLeft="@+id/linearLayout2"
-            android:layout_alignStart="@+id/linearLayout2"
-            android:layout_marginTop="40dp"
-            android:text="Success"
-            bootstrap:bb_icon_right="fa-android"
-            bootstrap:bb_type="success"
-            />
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:weightSum="2">
+
+            <Button
+                android:background="@color/bmx_lemon"
+                android:textColor="@color/c_text_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="No, gracias"
+                android:layout_weight="1"
+                android:layout_marginRight="8dp"
+                android:id="@+id/deleteCancel" />
+
+            <Button
+                android:background="#d00824"
+                android:textColor="@color/c_text_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="Sí, seguro"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/deleteConfirm" />
+        </LinearLayout>
 
     </RelativeLayout>
 

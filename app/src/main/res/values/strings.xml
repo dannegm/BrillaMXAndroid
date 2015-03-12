@@ -157,5 +157,15 @@
     <string name="title_activity_emp3">Emprendedores</string>
     <string name="title_activity_actividad">Actividad</string>
     <string name="title_activity_erase_acount">Salir</string>
+    <string name="title_activity_bases">Bases del Concurso</string>
+    <string name="title_activity_privacy">Aviso de Privacidad</string>
+
+
+    <!-- Youtube -->
+    <string name="embed_youtube">https://www.youtube.com/embed/</string>
+    <string name="videoid_concurso">t1UPLPS419E</string>
+    <string name="videoid_jahir">Ie6fX3USUbg</string>
+    <string name="videoid_abraham">WlEBo2YOq8U</string>
+    <string name="videoid_francisco">HuT23pQG8gE</string>
 
 </resources>

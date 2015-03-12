@@ -159,6 +159,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mx.ambmultimedia.brillamexico.Logout" />
         </activity>
+        <activity
+            android:name=".Bases"
+            android:label="@string/title_activity_bases" >
+        </activity>
+        <activity
+            android:name=".Privacy"
+            android:label="@string/title_activity_privacy" >
+        </activity>
     </application>
 
 </manifest>

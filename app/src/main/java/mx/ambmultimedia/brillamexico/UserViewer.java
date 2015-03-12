@@ -195,6 +195,38 @@ public class UserViewer extends ActionBarActivity {
             }
         });
 
+        // Emprendedores
+        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
+        toEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserViewer.this, Emprendedores.class);
+                startActivity(intent);
+            }
+        });
+
+        // Otros
+
+        // Bases
+        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
+        toBases.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserViewer.this, Bases.class);
+                startActivity(intent);
+            }
+        });
+
+        // Privacidad
+        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
+        toPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserViewer.this, Privacy.class);
+                startActivity(intent);
+            }
+        });
+
         // Salir
         LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
         toSalir.setOnClickListener(new View.OnClickListener() {

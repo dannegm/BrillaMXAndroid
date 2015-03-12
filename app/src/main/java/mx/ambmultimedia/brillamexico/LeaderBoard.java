@@ -171,6 +171,28 @@ public class LeaderBoard extends ActionBarActivity {
             }
         });
 
+        // Otros
+
+        // Bases
+        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
+        toBases.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeaderBoard.this, Bases.class);
+                startActivity(intent);
+            }
+        });
+
+        // Privacidad
+        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
+        toPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeaderBoard.this, Privacy.class);
+                startActivity(intent);
+            }
+        });
+
         // Salir
         LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
         toSalir.setOnClickListener(new View.OnClickListener() {

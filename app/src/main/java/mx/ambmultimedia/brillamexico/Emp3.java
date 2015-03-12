@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
@@ -43,6 +46,19 @@ public class Emp3 extends ActionBarActivity {
         like_view.setLikeViewStyle(LikeView.Style.STANDARD);
         like_view.setAuxiliaryViewPosition(LikeView.AuxiliaryViewPosition.INLINE);
         like_view.setHorizontalAlignment(LikeView.HorizontalAlignment.LEFT);
+
+        /**
+         * Video Youtube
+         */
+
+        WebView youtube = (WebView) findViewById(R.id.videoYoutube);
+        youtube.setWebChromeClient(new WebChromeClient());
+
+        WebSettings ws = youtube.getSettings();
+        ws.setBuiltInZoomControls(true);
+        ws.setJavaScriptEnabled(true);
+
+        youtube.loadUrl("https://www.youtube.com/embed/HuT23pQG8gE");
     }
 
     @Override

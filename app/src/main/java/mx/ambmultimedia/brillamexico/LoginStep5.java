@@ -55,11 +55,19 @@ public class LoginStep5 extends FragmentActivity {
         CampoDeAccion = bundle.getInt("CampoDeAccion");
         Nombre = bundle.getString("Nombre");
 
+        Boolean isReturn = Boolean.valueOf(bundle.getString("ReturnUser"));
+
         String pHiText = getString(R.string.l_text_11);
         pHiText = pHiText.replaceAll("__username__", Nombre);
 
         TextView hiText = (TextView) findViewById(R.id.hiText);
-        hiText.setText(Html.fromHtml(pHiText));
+
+
+        if (isReturn) {
+            hiText.setText("¡Hola de nuevo!, por favor vuelve a iniciar sesión");
+        } else {
+            hiText.setText(Html.fromHtml(pHiText));
+        }
 
         /***
          * Creando Login de facebook
@@ -135,7 +143,7 @@ public class LoginStep5 extends FragmentActivity {
                         nuevoUsuario.put("gender", user.getProperty("gender").toString());
                         nuevoUsuario.put("age", "");
 
-                        String hostname = "http://api.brillamexico.org";
+                        String hostname = getString(R.string.hostname);
                         AsyncHttpClient client = new AsyncHttpClient();
                         client.post(hostname + "/user/register", nuevoUsuario, new JsonHttpResponseHandler() {
                             @Override
@@ -150,7 +158,9 @@ public class LoginStep5 extends FragmentActivity {
                                 startActivity(intent);
                             }
                             @Override
-                            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
+                            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                                Toast.makeText(ctx, "Algo salió mal: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         });
                     }
                 }

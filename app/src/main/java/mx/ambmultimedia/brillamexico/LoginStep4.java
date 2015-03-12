@@ -29,6 +29,7 @@ public class LoginStep4 extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginStep4.this, LoginStep5.class);
 
+                intent.putExtra("ReturnUser", "false");
                 intent.putExtra("CampoDeAccion", CampoDeAccion);
                 intent.putExtra("Nombre", editTextHola.getText().toString());
 
