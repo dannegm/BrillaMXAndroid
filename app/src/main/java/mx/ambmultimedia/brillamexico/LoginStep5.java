@@ -31,6 +31,7 @@ public class LoginStep5 extends FragmentActivity {
 
     private String Nombre;
     private int CampoDeAccion;
+    private Boolean isReturn;
 
     private UiLifecycleHelper uiHelper;
     private Session.StatusCallback callback = new Session.StatusCallback() {
@@ -55,7 +56,7 @@ public class LoginStep5 extends FragmentActivity {
         CampoDeAccion = bundle.getInt("CampoDeAccion");
         Nombre = bundle.getString("Nombre");
 
-        Boolean isReturn = Boolean.valueOf(bundle.getString("ReturnUser"));
+        isReturn = Boolean.valueOf(bundle.getString("ReturnUser"));
 
         String pHiText = getString(R.string.l_text_11);
         pHiText = pHiText.replaceAll("__username__", Nombre);
@@ -128,40 +129,53 @@ public class LoginStep5 extends FragmentActivity {
                         Toast.makeText(ctx, "Bienvenido " + user.getName(), Toast.LENGTH_SHORT).show();
 
                         final String fbID = user.getId();
-                        String email = user.getProperty("email").toString();
 
-                        if (Nombre.isEmpty()) {
-                            Nombre = user.getFirstName();
+                        if (!isReturn) {
+                            String email = user.getProperty("email").toString();
+
+                            if (Nombre.isEmpty()) {
+                                Nombre = user.getFirstName();
+                            }
+
+                            RequestParams nuevoUsuario = new RequestParams();
+                            nuevoUsuario.put("fbid", fbID);
+                            nuevoUsuario.put("twid", "");
+                            nuevoUsuario.put("name", Nombre);
+                            nuevoUsuario.put("email", email);
+                            nuevoUsuario.put("fieldaction_id", CampoDeAccion);
+                            nuevoUsuario.put("gender", user.getProperty("gender").toString());
+                            nuevoUsuario.put("age", "");
+
+                            String hostname = getString(R.string.hostname);
+                            AsyncHttpClient client = new AsyncHttpClient();
+                            client.post(hostname + "/user/register", nuevoUsuario, new JsonHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                    config.set("isLogin", "true");
+                                    config.set("fbID", fbID);
+                                    config.set("Nombre", Nombre);
+                                    config.set("CampoDeAccion", String.valueOf(CampoDeAccion));
+                                    config.set("Puntos", "0");
+
+                                    Intent intent = new Intent(LoginStep5.this, UserProfile.class);
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                                    Toast.makeText(ctx, "Algo salió mal: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            config.set("isLogin", "true");
+                            config.set("fbID", fbID);
+                            config.set("Nombre", "unknown");
+                            config.set("CampoDeAccion", "");
+                            config.set("Puntos", "0");
+
+                            Intent intent = new Intent(LoginStep5.this, UserProfile.class);
+                            startActivity(intent);
                         }
-
-                        RequestParams nuevoUsuario = new RequestParams();
-                        nuevoUsuario.put("fbid", fbID);
-                        nuevoUsuario.put("twid", "");
-                        nuevoUsuario.put("name", Nombre);
-                        nuevoUsuario.put("email", email);
-                        nuevoUsuario.put("fieldaction_id", CampoDeAccion);
-                        nuevoUsuario.put("gender", user.getProperty("gender").toString());
-                        nuevoUsuario.put("age", "");
-
-                        String hostname = getString(R.string.hostname);
-                        AsyncHttpClient client = new AsyncHttpClient();
-                        client.post(hostname + "/user/register", nuevoUsuario, new JsonHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                config.set("isLogin", "true");
-                                config.set("fbID", fbID);
-                                config.set("Nombre", Nombre);
-                                config.set("CampoDeAccion", String.valueOf(CampoDeAccion));
-                                config.set("Puntos", "0");
-
-                                Intent intent = new Intent(LoginStep5.this, UserProfile.class);
-                                startActivity(intent);
-                            }
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                                Toast.makeText(ctx, "Algo salió mal: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
                     }
                 }
             }).executeAsync();
