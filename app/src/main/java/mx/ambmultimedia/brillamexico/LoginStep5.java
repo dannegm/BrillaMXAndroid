@@ -159,7 +159,10 @@ public class LoginStep5 extends FragmentActivity {
                                     config.set("CampoDeAccion", String.valueOf(CampoDeAccion));
                                     config.set("Puntos", "0");
 
-                                    Intent intent = new Intent(LoginStep5.this, UserProfile.class);
+                                    config.set("isFirstSelfie", "true");
+
+                                    //Intent intent = new Intent(LoginStep5.this, UserProfile.class);
+                                    Intent intent = new Intent(LoginStep5.this, Foto.class);
                                     startActivity(intent);
                                 }
 

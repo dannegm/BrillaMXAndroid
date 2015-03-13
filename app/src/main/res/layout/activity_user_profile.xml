@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
 
-            fab:fab_icon="@drawable/ic_add"
+            fab:fab_icon="@drawable/ic_camera"
             fab:fab_colorNormal="@color/c_text_link_2"
             fab:fab_colorPressed="@color/bmx_magenta"
 

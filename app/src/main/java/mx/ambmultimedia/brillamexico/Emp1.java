@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -15,6 +16,7 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LikeView;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 
 public class Emp1 extends ActionBarActivity {
@@ -58,6 +60,26 @@ public class Emp1 extends ActionBarActivity {
         ws.setJavaScriptEnabled(true);
 
         youtube.loadUrl("https://www.youtube.com/embed/Ie6fX3USUbg");
+
+        /**
+         * Compartir emprendedor
+         */
+
+        final String title = "JAHIR MOJICA HERNÁNDEZ";
+        final String link = "http://www.brillamexico.org/jahir-mojica-hernandez/";
+        FloatingActionButton share = (FloatingActionButton) findViewById(R.id.shareContent);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, title);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, link);
+
+                startActivity(Intent.createChooser(sharingIntent, "Compartir"));
+            }
+        });
     }
 
     @Override

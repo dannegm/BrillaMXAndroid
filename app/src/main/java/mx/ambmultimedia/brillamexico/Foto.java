@@ -1,20 +1,16 @@
 package mx.ambmultimedia.brillamexico;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
-import android.os.ParcelFileDescriptor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -24,7 +20,6 @@ import android.widget.Toast;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -66,6 +61,7 @@ public class Foto extends ActionBarActivity {
     };
 
     private boolean isLight = false;
+    private Config config;
 
     private static final int SELECT_PICTURE = 1;
 
@@ -74,10 +70,18 @@ public class Foto extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foto);
         ctx = this;
+        config = new Config(ctx);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Boolean isFirstSelfie = Boolean.valueOf( config.get("isFirstSelfie", "false") );
+        if (isFirstSelfie) {
+            Toast.makeText(ctx, "Antes de comezar tómate una selfie", Toast.LENGTH_LONG).show();
+            config.set("isFirstSelfie", "false");
+        }
+
 
         mCamera = getCameraInstance();
         mPreview = new CameraPreview(this, mCamera);
@@ -184,5 +188,17 @@ public class Foto extends ActionBarActivity {
                 "BrillaMX_"+ timeStamp + ".jpg");
 
         return mediaFile;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
