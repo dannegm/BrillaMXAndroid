@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/editTextHola"
                     android:textSize="22sp"
-                    android:singleLine="false"
+                    android:singleLine="true"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
                     android:textColor="@color/l_text_preview"
@@ -46,7 +46,10 @@
                     android:ellipsize="end"
                     android:textColorHint="@color/l_text_holder"
                     android:hint="@string/l_text_10"
-                    android:backgroundTint="@color/g_white" />
+                    android:backgroundTint="@color/g_white"
+                    android:capitalize="words"
+                    android:nestedScrollingEnabled="false"
+                    android:imeOptions="actionNext"/>
 
                 <TextView
                     android:layout_width="wrap_content"

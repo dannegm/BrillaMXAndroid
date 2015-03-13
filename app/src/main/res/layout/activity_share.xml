@@ -66,7 +66,9 @@
                 android:textColorHint="@color/c_text_gray"
                 android:hint="@string/vp_hint"
                 android:backgroundTint="@color/c_text_gray"
-                android:gravity="top" />
+                android:gravity="top"
+                android:imeOptions="actionNext"
+                android:elegantTextHeight="true" />
 
             <com.dd.processbutton.iml.ActionProcessButton
                 android:layout_width="fill_parent"

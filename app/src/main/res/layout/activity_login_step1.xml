@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/l_text_1"
                 android:id="@+id/textView"
-                android:layout_marginTop="42dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginLeft="56dp"
                 android:layout_marginRight="56dp"
                 android:gravity="center"
@@ -63,12 +63,15 @@
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/bmx_purple"
                 android:background="@color/bmx_lemon"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:padding="16dp"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
 
             <TextView
                 android:layout_width="wrap_content"

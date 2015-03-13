@@ -21,6 +21,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -150,7 +152,7 @@ public class LoginStep5 extends FragmentActivity {
                             AsyncHttpClient client = new AsyncHttpClient();
                             client.post(hostname + "/user/register", nuevoUsuario, new JsonHttpResponseHandler() {
                                 @Override
-                                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                                     config.set("isLogin", "true");
                                     config.set("fbID", fbID);
                                     config.set("Nombre", Nombre);
@@ -163,7 +165,7 @@ public class LoginStep5 extends FragmentActivity {
 
                                 @Override
                                 public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                                    Toast.makeText(ctx, "Algo salió mal: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ctx, "¡Ups! Something was wrong :(", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } else {
