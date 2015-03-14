@@ -1,7 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="mx.ambmultimedia.brillamexico.UserProfile">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item
+        android:id="@+id/edit_profile"
+        yourapp:showAsAction="ifRoom"
+        android:title="Editar perfil"
+        android:visible="true"
+        android:icon="@drawable/ic_edit"/>
 </menu>

@@ -1,5 +1,6 @@
 package mx.ambmultimedia.brillamexico;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,6 +26,10 @@ import android.widget.TextView;
 
 import com.bluejamesbond.text.DocumentView;
 import com.bluejamesbond.text.style.TextAlignment;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.widget.LikeView;
 import com.fmsirvent.ParallaxEverywhere.PEWImageView;
 import com.fmsirvent.ParallaxEverywhere.PEWTextView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -42,12 +47,17 @@ import org.json.JSONObject;
 
 public class NoticiaSelf extends ActionBarActivity {
     Context ctx;
+    Activity atx;
+
+    private UiLifecycleHelper uiHelper;
+    private LikeView like_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticia_self);
         ctx = this;
+        atx = this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -109,6 +119,18 @@ public class NoticiaSelf extends ActionBarActivity {
                             startActivity(Intent.createChooser(sharingIntent, "Compartir"));
                         }
                     });
+
+                    /**
+                     * Facebook like
+                     */
+
+                    uiHelper = new UiLifecycleHelper(atx, mStatusCallback);
+
+                    like_view = (LikeView) findViewById(R.id.likeNoti);
+                    like_view.setObjectId(link);
+                    like_view.setLikeViewStyle(LikeView.Style.STANDARD);
+                    like_view.setAuxiliaryViewPosition(LikeView.AuxiliaryViewPosition.INLINE);
+                    like_view.setHorizontalAlignment(LikeView.HorizontalAlignment.LEFT);
                 } catch (JSONException e) {
                 }
             }
@@ -129,5 +151,17 @@ public class NoticiaSelf extends ActionBarActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    Session.StatusCallback mStatusCallback = new Session.StatusCallback (){
+        @Override
+        public void call(Session session, SessionState state, Exception exception) {
+
+        }
+    };
+
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        uiHelper.onActivityResult(requestCode, resultCode, data, null);
     }
 }

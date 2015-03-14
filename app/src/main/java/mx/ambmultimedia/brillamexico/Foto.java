@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 
 public class Foto extends ActionBarActivity {
     private Context ctx;
@@ -84,7 +84,7 @@ public class Foto extends ActionBarActivity {
 
 
         mCamera = getCameraInstance();
-        mPreview = new CameraPreview(this, mCamera);
+        mPreview = new CameraPreview(this, this, mCamera);
         FrameLayout preview = (FrameLayout) findViewById(R.id.imageCamera);
         ViewGroup.LayoutParams params = preview.getLayoutParams();
 
@@ -166,9 +166,7 @@ public class Foto extends ActionBarActivity {
     }
 
     /** Create a file Uri for saving an image or video */
-    private static Uri getOutputMediaFileUri (){
-        return Uri.fromFile(getOutputMediaFile());
-    }
+    //private static Uri getOutputMediaFileUri (){ return Uri.fromFile(getOutputMediaFile()); }
 
     /** Create a File for saving an image or video */
     private static File getOutputMediaFile () {
@@ -192,13 +190,46 @@ public class Foto extends ActionBarActivity {
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_foto, menu);
+        return true;
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.flip_camera:
+                // Aquí giramos la cámara
+                mPreview.flipCamera();
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPreview.PausePreview();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mPreview.PausePreview();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPreview.PausePreview();
     }
 }

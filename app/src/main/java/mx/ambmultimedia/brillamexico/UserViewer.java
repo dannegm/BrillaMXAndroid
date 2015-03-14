@@ -104,6 +104,9 @@ public class UserViewer extends ActionBarActivity {
                     TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
                     LabelUserName.setText( user.getString("name") );
 
+                    TextView LabelUserBio = (TextView) findViewById(R.id.LabelUserBio);
+                    LabelUserBio.setText( user.getString("bio") );
+
                     TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
                     LabelCountPuntos.setText( user.getString("points") + " puntos" );
 

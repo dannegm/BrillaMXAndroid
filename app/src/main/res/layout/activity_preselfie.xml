@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.ambmultimedia.brillamexico.LoginStep1">
+    tools:context="mx.ambmultimedia.brillamexico.Preselfie">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
-            <!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +43,7 @@
                 android:layout_centerHorizontal="true" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:id="@+id/imageView2"
                 android:layout_marginTop="24dp"
@@ -54,44 +53,25 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp" />
-                -->
-
-            <WebView
-                android:layout_width="match_parent"
-                android:layout_below="@+id/imageView"
-                android:layout_height="140dp"
-                android:layout_margin="32dp"
-                android:id="@+id/videoYoutube" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registrate para participar"
-                android:id="@+id/toStepp22"
-                android:layout_below="@+id/videoYoutube"
+                android:text="Toma tu primera #selfie"
+                android:id="@+id/firstSelfie"
+                android:layout_below="@+id/imageView2"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/bmx_purple"
                 android:background="@color/bmx_lemon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"
                 android:textSize="16dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&lt;u>Ya tengo una cuenta&lt;/u>"
-                android:id="@+id/toLogin"
-                android:layout_below="@+id/toStepp22"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/bmx_purple"
-                android:textSize="16sp"
-                android:padding="16dp" />
 
         </RelativeLayout>
 

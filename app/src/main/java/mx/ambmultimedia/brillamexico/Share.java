@@ -27,6 +27,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,8 +62,7 @@ public class Share extends ActionBarActivity {
         sendFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fbID = config.get("fbID", "0");
-                AsyncHttpClient client = new AsyncHttpClient();
+                final String fbID = config.get("fbID", "0");
 
                 EditText pieDeFoto = (EditText) findViewById(R.id.pieDeFoto);
                 File photo = new File(pictureUri.getPath());
@@ -79,15 +79,29 @@ public class Share extends ActionBarActivity {
                     params.put("picture", photo);
                 } catch(FileNotFoundException e) {}
 
-                String hostname = getString(R.string.hostname);
+                final String hostname = getString(R.string.hostname);
+                final AsyncHttpClient client = new AsyncHttpClient();
                 client.post(hostname + "/user/selfie/" + fbID, params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try {
                             String selfieID = response.getString("id");
 
+                            RequestParams points = new RequestParams();
+                            points.put("points", "10");
+                            client.post(hostname + "/user/points/" + fbID, points, new JsonHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                                    Toast.makeText(ctx, "Has ganado 10 puntos", Toast.LENGTH_LONG).show();
+                                }
+
+                                @Override
+                                public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
+                            });
+
                             Intent intent = new Intent(Share.this, Selfie.class);
                             intent.putExtra("selfieID", selfieID);
+                            config.set("Refer", "ShareActivity");
                             startActivity(intent);
                         } catch (JSONException e) {}
                     }
@@ -101,8 +115,10 @@ public class Share extends ActionBarActivity {
 
                     @Override
                     public void onProgress(int bytesWritten, int totalSize) {
-                        int progress = (bytesWritten / totalSize) * 100;
+                        int progress = (bytesWritten / totalSize) / 10;
                         sendFoto.setProgress(progress);
+                        Log.i("[Progrees]", "Bytes Written: " + bytesWritten);
+                        Log.i("[Progrees]", "Progress %: " + bytesWritten);
                     }
 
                 });
@@ -116,7 +132,7 @@ public class Share extends ActionBarActivity {
         int nwidth = size;
         int nheight = size;
 
-        if (bMap.getWidth() < nwidth || bMap.getHeight() < nheight) {
+        //if (bMap.getWidth() < nwidth || bMap.getHeight() < nheight) {
             if (bMap.getWidth() > bMap.getHeight()) {
                 nwidth = bMap.getHeight();
                 nheight = bMap.getHeight();
@@ -129,14 +145,18 @@ public class Share extends ActionBarActivity {
                 nwidth = bMap.getWidth();
                 nheight = bMap.getHeight();
             }
-        }
+       /* }
         else {
             nwidth = size;
             nheight = size;
-        }
+        }*/
 
         Bitmap croppedBitmap = Bitmap.createBitmap(bMap, bleft, btop, nwidth, nheight);
-        return croppedBitmap;
+
+        Matrix matrix = new Matrix();
+        matrix.postRotate(90);
+        Bitmap rotatedBitmap = Bitmap.createBitmap(croppedBitmap , 0, 0, nwidth, nheight, matrix, true);
+        return rotatedBitmap;
     }
 
     @Override

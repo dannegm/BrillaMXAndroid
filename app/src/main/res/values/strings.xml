@@ -167,5 +167,15 @@
     <string name="videoid_jahir">Ie6fX3USUbg</string>
     <string name="videoid_abraham">WlEBo2YOq8U</string>
     <string name="videoid_francisco">HuT23pQG8gE</string>
+    <string name="title_activity_tweets">Tweets</string>
+    <string name="title_activity_top_users">TopUsers</string>
+    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_preselfie">Preselfie</string>
+    <string name="title_activity_edit_user_info">Editar Perfil</string>
 
 </resources>

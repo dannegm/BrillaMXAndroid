@@ -72,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/p_samplebio"
-                        android:id="@+id/textView4"
+                        android:id="@+id/LabelUserBio"
                         android:layout_below="@+id/LabelUserName"
                         android:layout_centerHorizontal="true"
                         android:padding="4dp"
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/textView4"
+                        android:layout_below="@+id/LabelUserBio"
                         android:layout_marginTop="16dp"
                         android:weightSum="3">
 
@@ -180,6 +180,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:numColumns="3"
+                    android:layout_margin="4dp"
                     android:id="@+id/selfiesGrid" />
 
             </LinearLayout>

@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="mx.ambmultimedia.brillamexico" >
 
+    <uses-sdk
+        android:maxSdkVersion="21"
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
     <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="false"
+        android:normalScreens="true"
         android:resizeable="false"
         android:smallScreens="true"
-        android:normalScreens="true"
-        android:largeScreens="false"
-        android:xlargeScreens="false"
-        android:anyDensity="true" />
-
-    <uses-sdk android:minSdkVersion="14"
-        android:targetSdkVersion="21"
-        android:maxSdkVersion="21" />
+        android:xlargeScreens="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -22,8 +23,12 @@
 
     <uses-feature android:name="android.hardware.camera2" />
 
-    <uses-configuration
-        android:reqTouchScreen="finger" />
+    <uses-configuration android:reqTouchScreen="finger" />
+
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -152,7 +157,6 @@
             android:name=".Actividad"
             android:label="@string/title_activity_actividad" >
         </activity>
-
         <activity
             android:name=".EraseAcount"
             android:label="@string/title_activity_erase_acount"
@@ -182,6 +186,31 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="518ebe8aa32790e6be7e289acb0f55cfa43cdc3a" />
+
+        <activity
+            android:name=".Tweets"
+            android:label="@string/title_activity_tweets" >
+        </activity>
+        <activity
+            android:name=".TopUsers"
+            android:label="@string/title_activity_top_users" >
+        </activity>
+        <activity
+            android:name=".MainActivity2Activity"
+            android:label="@string/title_activity_main_activity2" >
+        </activity>
+        <activity
+            android:name=".Preselfie"
+            android:label="@string/title_activity_preselfie" >
+        </activity>
+        <activity
+            android:name=".EditUserInfo"
+            android:label="@string/title_activity_edit_user_info"
+            android:parentActivityName=".UserProfile" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mx.ambmultimedia.brillamexico.UserProfile" />
+        </activity>
     </application>
 
 </manifest>

@@ -148,8 +148,8 @@ public class LoginStep5 extends FragmentActivity {
                             nuevoUsuario.put("gender", user.getProperty("gender").toString());
                             nuevoUsuario.put("age", "");
 
-                            String hostname = getString(R.string.hostname);
-                            AsyncHttpClient client = new AsyncHttpClient();
+                            final String hostname = getString(R.string.hostname);
+                            final AsyncHttpClient client = new AsyncHttpClient();
                             client.post(hostname + "/user/register", nuevoUsuario, new JsonHttpResponseHandler() {
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -161,8 +161,20 @@ public class LoginStep5 extends FragmentActivity {
 
                                     config.set("isFirstSelfie", "true");
 
+                                    RequestParams points = new RequestParams();
+                                    points.put("points", "50");
+                                    client.post(hostname + "/user/points/" + fbID, points, new JsonHttpResponseHandler() {
+                                        @Override
+                                        public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                                            Toast.makeText(ctx, "Has ganado 50 puntos", Toast.LENGTH_LONG).show();
+                                        }
+
+                                        @Override
+                                        public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
+                                    });
+
                                     //Intent intent = new Intent(LoginStep5.this, UserProfile.class);
-                                    Intent intent = new Intent(LoginStep5.this, Foto.class);
+                                    Intent intent = new Intent(LoginStep5.this, Preselfie.class);
                                     startActivity(intent);
                                 }
 

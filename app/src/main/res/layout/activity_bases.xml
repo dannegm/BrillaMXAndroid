@@ -14,53 +14,60 @@
 
         <include android:id="@+id/app_bar" layout="@layout/app_bar" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/app_bar"
-            android:layout_centerHorizontal="true">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView6"
+            android:layout_below="@+id/app_bar">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@color/bmx_purpleDark">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/app_bar"
+                android:layout_centerHorizontal="true">
 
-                <WebView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/videoYoutube"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="16dp" />
-            </RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/bmx_purpleDark">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Concurso #MiSelfieBrilla"
-                android:id="@+id/textView14"
-                android:layout_gravity="center_horizontal"
-                android:padding="16dp"
-                android:textColor="@color/bmx_purple"
-                android:textSize="22sp"
-                android:layout_marginTop="16dp" />
+                    <WebView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/videoYoutube"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="16dp" />
+                </RelativeLayout>
 
-            <View style="@style/Divider"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Concurso #MiSelfieBrilla"
+                    android:id="@+id/textView14"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="16dp"
+                    android:textColor="@color/bmx_purple"
+                    android:textSize="22sp"
+                    android:layout_marginTop="16dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="This is Photoshop&apos;s version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim."
-                android:id="@+id/textView17"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="16dp"
-                android:textColor="@color/c_text_dark"
-                android:textSize="14sp" />
+                <View style="@style/Divider"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="This is Photoshop&apos;s version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim."
+                    android:id="@+id/textView17"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="16dp"
+                    android:textColor="@color/c_text_dark"
+                    android:textSize="14sp" />
 
 
-        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
 
     </RelativeLayout>

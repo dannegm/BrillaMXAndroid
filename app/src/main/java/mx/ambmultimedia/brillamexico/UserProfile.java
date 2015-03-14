@@ -8,6 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -76,9 +78,12 @@ public class UserProfile extends ActionBarActivity {
         String fbID = config.get("fbID", "0");
         String name = config.get("Nombre", "unknown");
         String points = config.get("Puntos", "0");
+        String bio = config.get("Bio", "");
 
         final TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
         LabelUserName.setText(name);
+        final TextView LabelUserBio = (TextView) findViewById(R.id.LabelUserBio);
+        LabelUserBio.setText(bio);
 
         final TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
             LabelCountPuntos.setText(points);
@@ -100,12 +105,14 @@ public class UserProfile extends ActionBarActivity {
                         JSONObject user = response;
 
                         LabelUserName.setText(user.getString("name"));
+                        LabelUserBio.setText(user.getString("bio"));
                         DrawerUserName.setText(user.getString("name"));
 
                         LabelCountPuntos.setText(user.getString("points"));
                         DrawerCountPuntos.setText(user.getString("points") + " puntos");
 
                         config.set("Nombre", user.getString("name"));
+                        config.get("Bio", user.getString("bio"));
                         config.set("Puntos", user.getString("points"));
                         config.set("CampoDeAccion", user.getString("fieldaction_id"));
 
@@ -253,5 +260,34 @@ public class UserProfile extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_user_profile, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            case R.id.edit_profile:
+                Intent intent = new Intent(UserProfile.this, EditUserInfo.class);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

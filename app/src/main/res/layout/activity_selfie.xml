@@ -9,64 +9,86 @@
 
     <include android:id="@+id/app_bar" layout="@layout/app_bar" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/app_bar"
-        android:layout_gravity="center"
-        android:orientation="vertical"
+        android:id="@+id/scrollView5"
         android:background="@color/g_gray_statusbar"
-        android:weightSum="1">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/selfiePicture"
-            android:layout_margin="16dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:background="@color/g_black" />
+        android:layout_below="@+id/app_bar">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/toProfile"
-            android:layout_margin="16dp"
-            android:background="@color/g_gray"
-            android:elevation="1dp"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/g_gray_statusbar">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:id="@+id/authorAvatar"
-                android:src="@drawable/com_facebook_profile_picture_blank_square" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/selfiePicture"
+                android:layout_margin="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@color/g_black" />
+
+            <com.facebook.widget.LikeView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_margin="16dp"
+                android:id="@+id/likeSelfie" />
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="16dp">
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toProfile"
+                android:layout_margin="16dp"
+                android:background="@color/g_gray"
+                android:elevation="1dp"
+                android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/authorName"
-                    android:textColor="@color/c_text_dark"
-                    android:textSize="20dp"
-                    android:layout_marginBottom="4dp" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/authorAvatar"
+                    android:src="@drawable/com_facebook_profile_picture_blank_square" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/authorPoints"
-                    android:textSize="16dp"
-                    android:textColor="@color/bmx_purple" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/authorName"
+                        android:textColor="@color/c_text_dark"
+                        android:textSize="20dp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/authorPoints"
+                        android:textSize="16dp"
+                        android:textColor="@color/bmx_purple" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-    </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¡Tómate otra #selfie!"
+                android:id="@+id/toCamara"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:textColor="@color/bmx_purple"
+                android:background="@color/bmx_lemon"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
 

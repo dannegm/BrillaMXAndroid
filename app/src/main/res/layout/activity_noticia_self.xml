@@ -57,6 +57,14 @@
 
             <View style="@style/Divider"/>
 
+            <com.facebook.widget.LikeView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_margin="16dp"
+                android:id="@+id/likeNoti" />
+
+            <View style="@style/Divider"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

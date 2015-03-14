@@ -1,5 +1,6 @@
 package mx.ambmultimedia.brillamexico;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +9,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.widget.LikeView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
@@ -25,12 +31,23 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Selfie extends ActionBarActivity {
     Context ctx;
+    Activity atx;
+    Config config;
+
+    private UiLifecycleHelper uiHelper;
+    private LikeView like_view;
+
+    public String refer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selfie);
         ctx = this;
+        atx = this;
+        config = new Config(ctx);
+        refer = config.get("Refer", "none");
+                config.set("Refer", "none");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -81,9 +98,34 @@ public class Selfie extends ActionBarActivity {
                         }
                     });
 
+                    /**
+                     * Facebook like
+                     */
+
+                    uiHelper = new UiLifecycleHelper(atx, mStatusCallback);
+
+                    like_view = (LikeView) findViewById(R.id.likeSelfie);
+                    like_view.setObjectId("http://api.brillamexico.org/selfie/" + selfieID);
+                    like_view.setLikeViewStyle(LikeView.Style.STANDARD);
+                    like_view.setAuxiliaryViewPosition(LikeView.AuxiliaryViewPosition.INLINE);
+                    like_view.setHorizontalAlignment(LikeView.HorizontalAlignment.LEFT);
+
                 } catch (JSONException e) {}
             }
         });
+
+        Button toCamara = (Button) findViewById(R.id.toCamara);
+        toCamara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Selfie.this, Foto.class);
+                startActivity(intent);
+            }
+        });
+
+        if (refer != "ShareActivity") {
+            toCamara.setVisibility(View.INVISIBLE);
+        }
     }
 
 
@@ -96,5 +138,27 @@ public class Selfie extends ActionBarActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    Session.StatusCallback mStatusCallback = new Session.StatusCallback (){
+        @Override
+        public void call(Session session, SessionState state, Exception exception) {
+
+        }
+    };
+
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        uiHelper.onActivityResult(requestCode, resultCode, data, null);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (refer == "ShareActivity") {
+            Intent intent = new Intent(Selfie.this, UserProfile.class);
+            startActivity(intent);
+        } else {
+            this.finish();
+        }
     }
 }

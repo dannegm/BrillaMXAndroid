@@ -6,6 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +24,14 @@ public class LoginStep1 extends ActionBarActivity {
         setContentView(R.layout.activity_login_step1);
         ctx = this;
         config = new Config(ctx);
+
+        WebView youtube = (WebView) findViewById(R.id.videoYoutube);
+        youtube.setWebChromeClient(new WebChromeClient());
+
+        WebSettings ws = youtube.getSettings();
+        ws.setBuiltInZoomControls(true);
+        ws.setJavaScriptEnabled(true);
+        youtube.loadUrl("https://www.youtube.com/embed/t1UPLPS419E");
 
         Boolean isLogin = Boolean.valueOf(config.get("isLogin", "false"));
         if (isLogin) {
@@ -51,5 +62,13 @@ public class LoginStep1 extends ActionBarActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
