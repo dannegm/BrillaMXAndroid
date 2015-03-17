@@ -2,23 +2,20 @@ package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v4.app.NavUtils;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.dd.processbutton.iml.ActionProcessButton;
@@ -33,7 +30,6 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 public class Share extends ActionBarActivity {
     Context ctx;
@@ -51,11 +47,9 @@ public class Share extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Uri pictureUri = getIntent().getData();
-        final Bitmap pictureBitmap = cropImage(pictureUri,
-                    0, 0, 512);
+        final Bitmap pictureBitmap = cropImage(pictureUri);
 
         ImageView preview = (ImageView) findViewById(R.id.imageSelfie);
-        //preview.setImageURI(pictureUri);
         preview.setImageBitmap(pictureBitmap);
 
         final ActionProcessButton sendFoto = (ActionProcessButton) findViewById(R.id.sendPhoto);
@@ -142,41 +136,30 @@ public class Share extends ActionBarActivity {
         });
     }
 
-    public Bitmap cropImage (Uri image, int bleft, int btop, int size) {
+    public Bitmap cropImage (Uri image) {
         Bitmap bMap = BitmapFactory.decodeFile(image.getPath());
+        int nwidth, nheight;
 
-        int nwidth = size;
-        int nheight = size;
+        if (bMap.getWidth() > bMap.getHeight()) {
+            nwidth = bMap.getHeight();
+            nheight = bMap.getHeight();
+        } else if (bMap.getWidth() < bMap.getHeight()) {
+            nwidth = bMap.getWidth();
+            nheight = bMap.getWidth();
+        } else {
+            nwidth = bMap.getWidth();
+            nheight = bMap.getHeight();
+        }
 
-        //if (bMap.getWidth() < nwidth || bMap.getHeight() < nheight) {
-            if (bMap.getWidth() > bMap.getHeight()) {
-                nwidth = bMap.getHeight();
-                nheight = bMap.getHeight();
-            }
-            else if (bMap.getWidth() < bMap.getHeight()) {
-                nwidth = bMap.getWidth();
-                nheight = bMap.getWidth();
-            }
-            else {
-                nwidth = bMap.getWidth();
-                nheight = bMap.getHeight();
-            }
-       /* }
-        else {
-            nwidth = size;
-            nheight = size;
-        }*/
-
-        Bitmap croppedBitmap = Bitmap.createBitmap(bMap, bleft, btop, nwidth, nheight);
-
+        Bitmap croppedBitmap = Bitmap.createBitmap(bMap, 0, 0, nwidth, nheight);
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
-        //Bitmap rotatedBitmap = Bitmap.createBitmap(croppedBitmap , 0, 0, nwidth, nheight, matrix, true);
+        Bitmap rotatedBitmap = Bitmap.createBitmap(croppedBitmap, 0, 0, nwidth, nheight, matrix, true);
         return croppedBitmap;
     }
 
     @Override
-     public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:

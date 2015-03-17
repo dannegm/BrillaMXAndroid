@@ -112,7 +112,7 @@
                             android:layout_height="72dp"
                             android:layout_gravity="center"
                             android:clickable="true"
-                            android:src="@drawable/ic_flash"/>
+                            android:src="@drawable/ic_flash_off"/>
 
                     </LinearLayout>
 

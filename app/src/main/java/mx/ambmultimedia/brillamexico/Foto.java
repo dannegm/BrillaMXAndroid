@@ -111,7 +111,7 @@ public class Foto extends ActionBarActivity {
             }
         });
 
-        ImageView turnOnFlash = (ImageView) findViewById(R.id.toggleFalsh);
+        final ImageView turnOnFlash = (ImageView) findViewById(R.id.toggleFalsh);
         turnOnFlash.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -122,12 +122,12 @@ public class Foto extends ActionBarActivity {
                         if (!isLight) {
                             p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
                             mCamera.setParameters(p);
-                            Toast.makeText(ctx, "Flash On", Toast.LENGTH_SHORT).show();
+                            turnOnFlash.setImageResource(R.drawable.ic_flash);
                             isLight = true;
                         } else {
                             p.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
                             mCamera.setParameters(p);
-                            Toast.makeText(ctx, "Flash Off", Toast.LENGTH_SHORT).show();
+                            turnOnFlash.setImageResource(R.drawable.ic_flash_off);
                             isLight = false;
                         }
                     }
@@ -138,16 +138,11 @@ public class Foto extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && null != data) {
-            Uri ofinalPicture = data.getData();
-            String resultt = ofinalPicture.toString();
-
-            Toast.makeText(ctx, resultt, Toast.LENGTH_SHORT).show();
-
-            /*
+            //Uri ofinalPicture = data.getData();
+            Uri ofinalPicture = getOutputMediaFileUri();
             Intent intent = new Intent(Foto.this, Share.class);
             intent.setData(ofinalPicture);
             startActivity(intent);
-            */
         }
     }
 
@@ -159,7 +154,7 @@ public class Foto extends ActionBarActivity {
     }
 
     /** Create a file Uri for saving an image or video */
-    //private static Uri getOutputMediaFileUri (){ return Uri.fromFile(getOutputMediaFile()); }
+    private static Uri getOutputMediaFileUri (){ return Uri.fromFile(getOutputMediaFile()); }
 
     /** Create a File for saving an image or video */
     private static File getOutputMediaFile () {
