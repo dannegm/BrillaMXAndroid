@@ -76,13 +76,6 @@ public class Foto extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Boolean isFirstSelfie = Boolean.valueOf( config.get("isFirstSelfie", "false") );
-        if (isFirstSelfie) {
-            Toast.makeText(ctx, "Antes de comezar tómate una selfie", Toast.LENGTH_LONG).show();
-            config.set("isFirstSelfie", "false");
-        }
-
-
         mCamera = getCameraInstance();
         mPreview = new CameraPreview(this, this, mCamera);
         FrameLayout preview = (FrameLayout) findViewById(R.id.imageCamera);

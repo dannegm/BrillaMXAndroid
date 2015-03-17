@@ -59,6 +59,11 @@
     Hola <font color="#7d00a8">__username__</font>, nos gustaría saber un poco más de ti, conecta tu cuenta de <font color="#2f77d8">facebook</font> para participar.
     ]]>
     </string>
+    <string name="l_text_logro">
+    <![CDATA[
+    Has conseguido el logro <font color="#7d00a8">__logroname__</font>.
+    ]]>
+    </string>
 
     <!-- Perfil de usuario -->
     <string name="title_activity_user_profile">Mi Perfil</string>
@@ -177,5 +182,6 @@
     <string name="title_section3">Section 3</string>
     <string name="title_activity_preselfie">Preselfie</string>
     <string name="title_activity_edit_user_info">Editar Perfil</string>
+    <string name="title_activity_logro">Nuevo Logro</string>
 
 </resources>

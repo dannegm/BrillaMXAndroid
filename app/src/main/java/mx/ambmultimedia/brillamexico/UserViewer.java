@@ -72,25 +72,6 @@ public class UserViewer extends ActionBarActivity {
         });
     }
 
-    public void BuildSelfProfile () {
-        String name = config.get("Nombre", "unknown");
-        String points = config.get("Puntos", "0");
-        String fbID = config.get("fbID", "0");
-
-        TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
-        DrawerUserName.setText(name);
-        TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
-        DrawerCountPuntos.setText(points + " puntos");
-
-        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
-        String _avatarUrl = getString(R.string.fb_avatar_link);
-        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
-        Picasso.with(ctx)
-                .load(miniAvatarUrl)
-                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
-                .into(ImgDrawerAvatar);
-    }
-
     void BuildProfile () {
         AsyncHttpClient client = new AsyncHttpClient();
         String hostname = getString(R.string.hostname);
@@ -111,7 +92,12 @@ public class UserViewer extends ActionBarActivity {
                     LabelCountPuntos.setText( user.getString("points") + " puntos" );
 
                     TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
-                    LabelCountLogros.setText("0");
+                    String nLogros = user.getJSONArray("achievement").length() + "";
+                    LabelCountLogros.setText(nLogros);
+
+                    ListLogros adapter = new ListLogros(ctx, user.getJSONArray("achievement"));
+                    ExtendableGridView listAchievements = (ExtendableGridView) findViewById(R.id.list_logros);
+                    listAchievements.setAdapter(adapter);
                 } catch (JSONException e) {
                 }
             }
@@ -124,6 +110,28 @@ public class UserViewer extends ActionBarActivity {
                 .load(avatarUrl)
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
                 .into(ImgUserAvatar);
+    }
+
+    public void BuildSelfProfile () {
+        String fbID = config.get("fbID", "0");
+        String _user = config.get("user", "null");
+
+        final TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
+        final TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
+
+        try {
+            JSONObject user = new JSONObject(_user);
+            DrawerUserName.setText(user.getString("name"));
+            DrawerCountPuntos.setText(user.getString("points") + " puntos");
+        } catch (JSONException e) { }
+
+        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
+        String _avatarUrl = getString(R.string.fb_avatar_link);
+        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
+        Picasso.with(ctx)
+                .load(miniAvatarUrl)
+                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                .into(ImgDrawerAvatar);
     }
 
     public void GetSelfies () {

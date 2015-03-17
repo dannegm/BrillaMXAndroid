@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -19,6 +20,8 @@ import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -56,8 +59,12 @@ public class EditUserInfo extends ActionBarActivity {
         nName = (EditText) findViewById(R.id.editName);
         nBio = (EditText) findViewById(R.id.editBio);
 
-        nName.setHint(config.get("name", ""));
-        nBio.setHint(config.get("bio", ""));
+        String _user = config.get("user", "null");
+        try {
+            JSONObject user = new JSONObject(_user);
+            nName.setText(user.getString("name"));
+            nBio.setText(user.getString("bio"));
+        } catch (JSONException e) { }
 
         Button saveData = (Button) findViewById(R.id.saveData);
         saveData.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +78,7 @@ public class EditUserInfo extends ActionBarActivity {
 
     public void UpdateData () {
         fbID = config.get("fbID", "0");
+        config.get("isReload", "true");
         final Boolean isCompleteProfile = Boolean.valueOf(config.get("isCompleteProfile", "false"));
 
         RequestParams nuevoUsuario = new RequestParams();
@@ -83,30 +91,21 @@ public class EditUserInfo extends ActionBarActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 if (!isCompleteProfile) {
-                    RequestParams points = new RequestParams();
-                    points.put("points", "50");
-                    client.post(hostname + "/user/points/" + fbID, points, new JsonHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                            Toast.makeText(ctx, "Has ganado 50 puntos", Toast.LENGTH_LONG).show();
-                            config.get("isCompleteProfile", "true");
-                        }
-
-                        @Override
-                        public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                        }
-                    });
+                    config.set("isCompleteProfile", "true");
+                    Intent intent = new Intent(EditUserInfo.this, Logro.class);
+                    intent.putExtra("Reference", "EditUser");
+                    intent.putExtra("LogroID", "2");
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(EditUserInfo.this, UserProfile.class);
+                    startActivity(intent);
                 }
-                config.set("Nombre", "unknown");
-                config.set("Bio", nBio.getText().toString());
-
-                Intent intent = new Intent(EditUserInfo.this, UserProfile.class);
-                startActivity(intent);
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                Toast.makeText(ctx, "¡Ups! Something was wrong :(", Toast.LENGTH_SHORT).show();
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Toast.makeText(ctx, "Fali to connect", Toast.LENGTH_SHORT).show();
             }
         });
     }

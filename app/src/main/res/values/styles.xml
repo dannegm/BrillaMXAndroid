@@ -34,6 +34,12 @@
         <item name="colorAccent">@color/bmx_magenta</item>
         <item name="background">@color/g_bg</item>
     </style>
+    <style name="StatusBarPink" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/bmx_purple</item>
+        <item name="colorPrimaryDark">#b7245b</item>
+        <item name="colorAccent">@color/bmx_magenta</item>
+        <item name="background">@color/g_bg</item>
+    </style>
 
 
 

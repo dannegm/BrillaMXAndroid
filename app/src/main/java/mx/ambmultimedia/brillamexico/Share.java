@@ -99,10 +99,28 @@ public class Share extends ActionBarActivity {
                                 public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
                             });
 
-                            Intent intent = new Intent(Share.this, Selfie.class);
-                            intent.putExtra("selfieID", selfieID);
-                            config.set("Refer", "ShareActivity");
-                            startActivity(intent);
+
+                            Integer nselfies = Integer.valueOf(config.get("NSelfies", "0")) + 1;
+                            config.set("NSelfies", nselfies.toString());
+
+                            if (nselfies == 5) {
+                                Intent intent = new Intent(Share.this, Logro.class);
+                                intent.putExtra("Reference", "Selfie");
+                                intent.putExtra("LogroID", "3");
+                                config.set("Refer", "ShareActivity");
+                                startActivity(intent);
+                            } else if (nselfies == 10) {
+                                Intent intent = new Intent(Share.this, Logro.class);
+                                intent.putExtra("Reference", "Selfie");
+                                intent.putExtra("LogroID", "4");
+                                config.set("Refer", "ShareActivity");
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(Share.this, Selfie.class);
+                                intent.putExtra("selfieID", selfieID);
+                                config.set("Refer", "ShareActivity");
+                                startActivity(intent);
+                            }
                         } catch (JSONException e) {}
                     }
 
@@ -115,10 +133,8 @@ public class Share extends ActionBarActivity {
 
                     @Override
                     public void onProgress(int bytesWritten, int totalSize) {
-                        int progress = (bytesWritten / totalSize) / 10;
+                        int progress = ((bytesWritten / totalSize) / 10) / 10;
                         sendFoto.setProgress(progress);
-                        Log.i("[Progrees]", "Bytes Written: " + bytesWritten);
-                        Log.i("[Progrees]", "Progress %: " + bytesWritten);
                     }
 
                 });
@@ -155,8 +171,8 @@ public class Share extends ActionBarActivity {
 
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
-        Bitmap rotatedBitmap = Bitmap.createBitmap(croppedBitmap , 0, 0, nwidth, nheight, matrix, true);
-        return rotatedBitmap;
+        //Bitmap rotatedBitmap = Bitmap.createBitmap(croppedBitmap , 0, 0, nwidth, nheight, matrix, true);
+        return croppedBitmap;
     }
 
     @Override

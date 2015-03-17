@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:gravity="top|center_horizontal">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/logroIcon"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/icono_jovenesadultos" />
+
+    <!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bmx_purple"
+            android:id="@+id/logroName"
+            android:gravity="center"
+            android:text="Super Comprometido"
+            android:textSize="13sp" />
+            -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/c_text_oxford"
+            android:id="@+id/logroPoints"
+            android:gravity="center"
+            android:text="100 puntos"
+            android:textSize="12sp" />
+
+</LinearLayout>

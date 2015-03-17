@@ -172,53 +172,68 @@
                         style="@style/Divider"
                         android:layout_below="@+id/user_resume"
                         android:layout_marginTop="16dp"
+                        android:id="@+id/divier_1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                    <mx.ambmultimedia.brillamexico.ExtendableGridView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/divier_1"
+                        android:numColumns="4"
+                        android:layout_margin="4dp"
+                        android:id="@+id/list_logros" />
+
+                    <View
+                        style="@style/Divider"
+                        android:layout_below="@+id/list_logros"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true" />
 
                 </RelativeLayout>
 
-                    <mx.ambmultimedia.brillamexico.ExtendableGridView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:numColumns="3"
-                        android:layout_margin="4dp"
-                        android:id="@+id/selfiesGrid" />
+                <mx.ambmultimedia.brillamexico.ExtendableGridView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="3"
+                    android:layout_margin="4dp"
+                    android:id="@+id/selfiesGrid" />
 
             </LinearLayout>
 
         </ScrollView>
 
-        </com.cuneytayyildiz.widget.PullRefreshLayout>
+      </com.cuneytayyildiz.widget.PullRefreshLayout>
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/toSelfie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+      <com.getbase.floatingactionbutton.FloatingActionButton
+          android:id="@+id/toSelfie"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="bottom|right"
 
-            fab:fab_icon="@drawable/ic_camera"
-            fab:fab_colorNormal="@color/c_text_link_2"
-            fab:fab_colorPressed="@color/bmx_magenta"
+          fab:fab_icon="@drawable/ic_camera"
+          fab:fab_colorNormal="@color/c_text_link_2"
+          fab:fab_colorPressed="@color/bmx_magenta"
 
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="24dp" />
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentRight="true"
+          android:layout_alignParentEnd="true"
+          android:layout_marginRight="16dp"
+          android:layout_marginBottom="24dp" />
 
 
-    </RelativeLayout>
+  </RelativeLayout>
 
-    <fragment
-        android:id="@+id/navDrawer"
-        android:layout_width="@dimen/drawer_width"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
+  <fragment
+      android:id="@+id/navDrawer"
+      android:layout_width="@dimen/drawer_width"
+      android:layout_height="match_parent"
+      android:layout_gravity="start"
 
-        app:layout="@layout/fragment_nav_drawer"
-        android:name="mx.ambmultimedia.brillamexico.NavDrawerFrag"
-        tools:layout="@layout/fragment_nav_drawer">
+      app:layout="@layout/fragment_nav_drawer"
+      android:name="mx.ambmultimedia.brillamexico.NavDrawerFrag"
+      tools:layout="@layout/fragment_nav_drawer">
 
-    </fragment>
+  </fragment>
 
 </android.support.v4.widget.DrawerLayout>

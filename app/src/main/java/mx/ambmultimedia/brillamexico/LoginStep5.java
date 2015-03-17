@@ -123,15 +123,11 @@ public class LoginStep5 extends FragmentActivity {
 
     public void onSessionChange (Session session, SessionState sessionState, Exception e) {
         if (session != null && session.isOpened()) {
-            Log.i("Script", "Dentro");
             Request.newMeRequest(session, new Request.GraphUserCallback() {
                 @Override
                 public void onCompleted(GraphUser user, Response response) {
                     if (user != null) {
-                        Toast.makeText(ctx, "Bienvenido " + user.getName(), Toast.LENGTH_SHORT).show();
-
                         final String fbID = user.getId();
-
                         if (!isReturn) {
                             String email = user.getProperty("email").toString();
 
@@ -140,13 +136,13 @@ public class LoginStep5 extends FragmentActivity {
                             }
 
                             RequestParams nuevoUsuario = new RequestParams();
-                            nuevoUsuario.put("fbid", fbID);
-                            nuevoUsuario.put("twid", "");
-                            nuevoUsuario.put("name", Nombre);
-                            nuevoUsuario.put("email", email);
-                            nuevoUsuario.put("fieldaction_id", CampoDeAccion);
-                            nuevoUsuario.put("gender", user.getProperty("gender").toString());
-                            nuevoUsuario.put("age", "");
+                                nuevoUsuario.put("fbid", fbID);
+                                nuevoUsuario.put("twid", "");
+                                nuevoUsuario.put("name", Nombre);
+                                nuevoUsuario.put("email", email);
+                                nuevoUsuario.put("fieldaction_id", CampoDeAccion);
+                                nuevoUsuario.put("gender", user.getProperty("gender").toString());
+                                nuevoUsuario.put("age", "");
 
                             final String hostname = getString(R.string.hostname);
                             final AsyncHttpClient client = new AsyncHttpClient();
@@ -155,26 +151,11 @@ public class LoginStep5 extends FragmentActivity {
                                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                                     config.set("isLogin", "true");
                                     config.set("fbID", fbID);
-                                    config.set("Nombre", Nombre);
-                                    config.set("CampoDeAccion", String.valueOf(CampoDeAccion));
-                                    config.set("Puntos", "0");
+                                    config.set("isReload", "true");
 
-                                    config.set("isFirstSelfie", "true");
-
-                                    RequestParams points = new RequestParams();
-                                    points.put("points", "50");
-                                    client.post(hostname + "/user/points/" + fbID, points, new JsonHttpResponseHandler() {
-                                        @Override
-                                        public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                                            Toast.makeText(ctx, "Has ganado 50 puntos", Toast.LENGTH_LONG).show();
-                                        }
-
-                                        @Override
-                                        public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
-                                    });
-
-                                    //Intent intent = new Intent(LoginStep5.this, UserProfile.class);
-                                    Intent intent = new Intent(LoginStep5.this, Preselfie.class);
+                                    Intent intent = new Intent(LoginStep5.this, Logro.class);
+                                    intent.putExtra("Reference", "Register");
+                                    intent.putExtra("LogroID", "1");
                                     startActivity(intent);
                                 }
 
@@ -186,9 +167,7 @@ public class LoginStep5 extends FragmentActivity {
                         } else {
                             config.set("isLogin", "true");
                             config.set("fbID", fbID);
-                            config.set("Nombre", "unknown");
-                            config.set("CampoDeAccion", "");
-                            config.set("Puntos", "0");
+                            config.set("isReload", "true");
 
                             Intent intent = new Intent(LoginStep5.this, UserProfile.class);
                             startActivity(intent);
@@ -197,7 +176,6 @@ public class LoginStep5 extends FragmentActivity {
                 }
             }).executeAsync();
         } else {
-            Log.i("Script", "Fuera");
             config.set("isLogin", "false");
             config.set("fbID", "");
         }

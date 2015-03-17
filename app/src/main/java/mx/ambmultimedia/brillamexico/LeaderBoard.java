@@ -63,20 +63,22 @@ public class LeaderBoard extends ActionBarActivity {
 
     public void BuildProfile () {
         String fbID = config.get("fbID", "0");
-        String name = config.get("Nombre", "unknown");
-        String points = config.get("Puntos", "0");
+        String _user = config.get("user", "null");
 
-        TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
-        DrawerUserName.setText(name);
-        TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
-        DrawerCountPuntos.setText( points + " puntos" );
+        final TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
+        final TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
+
+        try {
+            JSONObject user = new JSONObject(_user);
+            DrawerUserName.setText(user.getString("name"));
+            DrawerCountPuntos.setText(user.getString("points") + " puntos");
+        } catch (JSONException e) { }
 
         CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
-        String avatarUrl = getString(R.string.fb_avatar_link);
-        avatarUrl = avatarUrl.replaceAll("__fbid__", fbID);
-
+        String _avatarUrl = getString(R.string.fb_avatar_link);
+        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
         Picasso.with(ctx)
-                .load(avatarUrl)
+                .load(miniAvatarUrl)
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
                 .into(ImgDrawerAvatar);
     }

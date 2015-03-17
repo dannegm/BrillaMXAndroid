@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,50 +78,34 @@ public class UserProfile extends ActionBarActivity {
 
     public void BuildProfile (Boolean refresh) {
         String fbID = config.get("fbID", "0");
-        String name = config.get("Nombre", "unknown");
-        String points = config.get("Puntos", "0");
-        String bio = config.get("Bio", "");
+        String _user = config.get("user", "null");
+        Boolean isReload = Boolean.valueOf(config.get("isReload", "false"));
 
-        final TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
-        LabelUserName.setText(name);
-        final TextView LabelUserBio = (TextView) findViewById(R.id.LabelUserBio);
-        LabelUserBio.setText(bio);
-
-        final TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
-            LabelCountPuntos.setText(points);
-        final TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
-            LabelCountLogros.setText("0");
-
-        final TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
-            DrawerUserName.setText(name);
-        final TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
-            DrawerCountPuntos.setText( points + " puntos" );
-
-        if (name == "unknown" || refresh) {
+        if (isReload || refresh) {
             AsyncHttpClient client = new AsyncHttpClient();
             String hostname = getString(R.string.hostname);
             client.get(hostname + "/user/" + fbID, null, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    try {
-                        JSONObject user = response;
+                    JSONObject user = response;
+                    MakeProfile(user);
+                    config.set("user", user.toString());
+                    config.get("isReload", "false");
+                }
 
-                        LabelUserName.setText(user.getString("name"));
-                        LabelUserBio.setText(user.getString("bio"));
-                        DrawerUserName.setText(user.getString("name"));
-
-                        LabelCountPuntos.setText(user.getString("points"));
-                        DrawerCountPuntos.setText(user.getString("points") + " puntos");
-
-                        config.set("Nombre", user.getString("name"));
-                        config.get("Bio", user.getString("bio"));
-                        config.set("Puntos", user.getString("points"));
-                        config.set("CampoDeAccion", user.getString("fieldaction_id"));
-
-                    } catch (JSONException e) {
-                    }
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                    refreshLayout.setRefreshing(false);
+                    Toast.makeText(ctx, "Fali to connect", Toast.LENGTH_SHORT).show();
                 }
             });
+        } else {
+            try {
+                JSONObject cacheUser = new JSONObject(_user);
+                MakeProfile(cacheUser);
+            }
+            catch (JSONException e) { }
         }
 
         CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
@@ -136,6 +122,35 @@ public class UserProfile extends ActionBarActivity {
                 .load(avatarUrl)
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
                 .into(ImgDrawerAvatar);
+    }
+
+    public void MakeProfile (JSONObject user) {
+        final TextView LabelUserName = (TextView) findViewById(R.id.LabelUserName);
+        final TextView LabelUserBio = (TextView) findViewById(R.id.LabelUserBio);
+
+        final TextView LabelCountPuntos = (TextView) findViewById(R.id.LabelCountPuntos);
+        final TextView LabelCountLogros = (TextView) findViewById(R.id.LabelCountLogros);
+
+        final TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
+        final TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
+
+        try {
+            LabelUserName.setText(user.getString("name"));
+            LabelUserBio.setText(user.getString("bio"));
+            DrawerUserName.setText(user.getString("name"));
+
+            LabelCountPuntos.setText(user.getString("points"));
+            DrawerCountPuntos.setText(user.getString("points") + " puntos");
+
+            String nLogros = user.getJSONArray("achievement").length() + "";
+            LabelCountLogros.setText(nLogros);
+
+
+            ListLogros adapter = new ListLogros(ctx, user.getJSONArray("achievement"));
+            ExtendableGridView listAchievements = (ExtendableGridView) findViewById(R.id.list_logros);
+            listAchievements.setAdapter(adapter);
+
+        } catch (JSONException e) { }
     }
 
     public void GetSelfies () {
@@ -174,6 +189,13 @@ public class UserProfile extends ActionBarActivity {
                     refreshLayout.setRefreshing(false);
 
                 } catch (Exception e) {}
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                refreshLayout.setRefreshing(false);
+                Toast.makeText(ctx, "Fali to connect", Toast.LENGTH_SHORT).show();
             }
         });
     }

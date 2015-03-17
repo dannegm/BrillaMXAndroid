@@ -18,6 +18,7 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LikeView;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
@@ -95,6 +96,22 @@ public class Selfie extends ActionBarActivity {
                             Intent intent = new Intent(Selfie.this, UserViewer.class);
                             intent.putExtra("userID", authorID);
                             startActivity(intent);
+                        }
+                    });
+
+                    // Share Action
+                    final String link = hostname + "/selfie/" + selfieID;
+                    FloatingActionButton share = (FloatingActionButton) findViewById(R.id.shareContent);
+                    share.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                            sharingIntent.setType("text/plain");
+
+                            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+                            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, link);
+
+                            startActivity(Intent.createChooser(sharingIntent, "Compartir"));
                         }
                     });
 

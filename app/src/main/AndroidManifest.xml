@@ -4,17 +4,16 @@
     package="mx.ambmultimedia.brillamexico" >
 
     <uses-sdk
-        android:maxSdkVersion="21"
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
 
     <supports-screens
         android:anyDensity="true"
-        android:largeScreens="false"
+        android:largeScreens="true"
         android:normalScreens="true"
-        android:resizeable="false"
+        android:resizeable="true"
         android:smallScreens="true"
-        android:xlargeScreens="false" />
+        android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -210,6 +209,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mx.ambmultimedia.brillamexico.UserProfile" />
+        </activity>
+        <activity
+            android:name=".Logro"
+            android:label="@string/title_activity_logro"
+            android:theme="@style/StatusBarPink" >
         </activity>
     </application>
 

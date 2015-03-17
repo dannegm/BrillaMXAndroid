@@ -18,6 +18,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -78,19 +79,22 @@ public class EraseAcount extends ActionBarActivity {
 
     public void BuildProfile () {
         String fbID = config.get("fbID", "0");
-        String name = config.get("Nombre", "");
+        String _user = config.get("user", "null");
 
-        TextView tName = (TextView) findViewById(R.id.l_userName);
-        tName.setText(name);
+        final TextView DrawerUserName = (TextView) findViewById(R.id.l_userName);
 
-        CircleImageView uAvatar = (CircleImageView) findViewById(R.id.l_usersAvatar);
-        String avatarUrl = getString(R.string.fb_avatar_link);
-        avatarUrl = avatarUrl.replaceAll("__fbid__", fbID);
+        try {
+            JSONObject user = new JSONObject(_user);
+            DrawerUserName.setText(user.getString("name"));
+        } catch (JSONException e) { }
 
+        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.l_usersAvatar);
+        String _avatarUrl = getString(R.string.fb_avatar_link);
+        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
         Picasso.with(ctx)
-                .load(avatarUrl)
+                .load(miniAvatarUrl)
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
-                .into(uAvatar);
+                .into(ImgDrawerAvatar);
     }
 
     @Override
