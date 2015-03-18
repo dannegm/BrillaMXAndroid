@@ -10,8 +10,9 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 
 public class LoginStep1 extends ActionBarActivity {
@@ -25,6 +26,7 @@ public class LoginStep1 extends ActionBarActivity {
         ctx = this;
         config = new Config(ctx);
 
+        /*
         WebView youtube = (WebView) findViewById(R.id.videoYoutube);
         youtube.setWebChromeClient(new WebChromeClient());
 
@@ -32,6 +34,16 @@ public class LoginStep1 extends ActionBarActivity {
         ws.setBuiltInZoomControls(true);
         ws.setJavaScriptEnabled(true);
         youtube.loadUrl("https://www.youtube.com/embed/t1UPLPS419E");
+        */
+
+        ImageView videoYoutube = (ImageView) findViewById(R.id.videoYoutube);
+        videoYoutube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginStep1.this, VideoBMX.class);
+                startActivity(intent);
+            }
+        });
 
         Boolean isLogin = Boolean.valueOf(config.get("isLogin", "false"));
         if (isLogin) {

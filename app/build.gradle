@@ -65,9 +65,6 @@ dependencies {
     // Loading Button
     compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.0'
 
-    // Text Justify
-    compile 'com.github.bluejamesbond:textjustify-android:2.1.0'
-
     // Ripple Effect
     compile 'com.github.traex.rippleeffect:library:1.2.3'
 
@@ -77,9 +74,7 @@ dependencies {
     // Parallax ImageView
     compile 'com.fmsirvent:parallaxeverywhere:1.0.3'
 
-    // Bootstrapp Forms
-    compile 'com.beardedhen:androidbootstrap:+'
+    // Dots Pagination
+    compile 'me.relex:circleindicator:1.1.2@aar'
 
-    // Easy camera
-    compile 'net.bozho.easycamera:easycamera:0.0.1:aar@aar'
 }

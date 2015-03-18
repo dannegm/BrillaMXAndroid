@@ -9,16 +9,16 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/avatar_placeholder"
-        android:id="@+id/aUserAvatar" />
+        android:id="@+id/faUserAvatar" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/imageView8"
         android:src="@drawable/hexagono"
-        android:layout_alignBottom="@+id/aUserAvatar"
-        android:layout_alignRight="@+id/aUserAvatar"
-        android:layout_alignEnd="@+id/aUserAvatar" />
+        android:layout_alignBottom="@+id/faUserAvatar"
+        android:layout_alignRight="@+id/faUserAvatar"
+        android:layout_alignEnd="@+id/faUserAvatar" />
 
     <TextView
         android:layout_width="30dp"
@@ -38,10 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don Cheto"
-        android:id="@+id/aUserName"
+        android:id="@+id/faUserName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/aUserAvatar"
+        android:layout_below="@+id/faUserAvatar"
         android:layout_alignRight="@+id/imageView8"
         android:layout_alignEnd="@+id/imageView8"
         android:gravity="center"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="99 puntos"
         android:id="@+id/aUserPoints"
-        android:layout_below="@+id/aUserName"
+        android:layout_below="@+id/faUserName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/imageView8"

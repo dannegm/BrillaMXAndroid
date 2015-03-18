@@ -2,10 +2,8 @@ package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -30,20 +28,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Share extends ActionBarActivity {
     private Context ctx;
     private Config config;
-    private Uri fileUri;
 
     int CampoDeAccion;
     int compromisoID;
+    String compID = "0";
 
     private ImageView preview;
     private Bitmap previewFoto;
@@ -68,7 +64,6 @@ public class Share extends ActionBarActivity {
         compromisoID = bundle.getInt("compromisoID");
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        fileUri = getOutputMediaFileUri();
         intent.putExtra(MediaStore.EXTRA_OUTPUT, setImageUri());
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
@@ -87,10 +82,10 @@ public class Share extends ActionBarActivity {
                 RequestParams params = new RequestParams();
                 params.put("x", "0");
                 params.put("x", "0");
-                params.put("width", previewFoto.getWidth());
-                params.put("height", previewFoto.getHeight());
+                params.put("width", "512");
+                params.put("height", "512");
 
-                params.put("engagement_id", "1");
+                params.put("engagement_id", compID);
                 params.put("description", pieDeFoto.getText().toString());
                 try {
                     params.put("picture", photo);
@@ -110,6 +105,9 @@ public class Share extends ActionBarActivity {
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                                     Toast.makeText(ctx, "Has ganado 10 puntos", Toast.LENGTH_LONG).show();
+
+                                    String compID = "comp_" + CampoDeAccion + "_" + compromisoID;
+                                    config.set(compID, "true");
                                 }
 
                                 @Override
@@ -162,41 +160,41 @@ public class Share extends ActionBarActivity {
 
         if (CampoDeAccion == 1) {
             switch (compromisoID) {
-                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_1); break;
-                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_2); break;
-                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_3); break;
-                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_4); break;
-                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_5); break;
-                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_6); break;
-                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_7); break;
-                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_8); break;
-                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_9); break;
-                case 9: frameDraw = getResources().getDrawable(R.drawable.marco_10); break;
-                case 10: frameDraw = getResources().getDrawable(R.drawable.marco_11); break;
-                case 11: frameDraw = getResources().getDrawable(R.drawable.marco_12); break;
-                case 12: frameDraw = getResources().getDrawable(R.drawable.marco_13); break;
-                case 13: frameDraw = getResources().getDrawable(R.drawable.marco_14); break;
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_1); compID = "1"; break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_2); compID = "2"; break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_3); compID = "3"; break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_4); compID = "4"; break;
+                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_5); compID = "5"; break;
+                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_6); compID = "6"; break;
+                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_7); compID = "7"; break;
+                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_8); compID = "8"; break;
+                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_9); compID = "9"; break;
+                case 9: frameDraw = getResources().getDrawable(R.drawable.marco_10); compID = "10"; break;
+                case 10: frameDraw = getResources().getDrawable(R.drawable.marco_11); compID = "11"; break;
+                case 11: frameDraw = getResources().getDrawable(R.drawable.marco_12); compID = "12"; break;
+                case 12: frameDraw = getResources().getDrawable(R.drawable.marco_13); compID = "13"; break;
+                case 13: frameDraw = getResources().getDrawable(R.drawable.marco_14); compID = "14"; break;
             }
         }
         else if (CampoDeAccion == 2) {
             switch (compromisoID) {
-                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_15); break;
-                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_16); break;
-                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_17); break;
-                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_18); break;
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_15); compID = "15"; break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_16); compID = "16"; break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_17); compID = "17"; break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_18); compID = "18"; break;
             }
         }
         else if (CampoDeAccion == 3) {
             switch (compromisoID) {
-                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_19); break;
-                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_20); break;
-                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_21); break;
-                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_22); break;
-                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_23); break;
-                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_24); break;
-                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_25); break;
-                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_26); break;
-                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_27); break;
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_19); compID = "19"; break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_20); compID = "20"; break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_21); compID = "21"; break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_22); compID = "22"; break;
+                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_23); compID = "23"; break;
+                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_24); compID = "24"; break;
+                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_25); compID = "25"; break;
+                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_26); compID = "26"; break;
+                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_27); compID = "27"; break;
             }
         }
 
@@ -235,28 +233,6 @@ public class Share extends ActionBarActivity {
     }
 
     //
-
-    private static Uri getOutputMediaFileUri() {
-        return Uri.fromFile(getOutputMediaFile());
-    }
-
-    private static File getOutputMediaFile() {
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), "BrillaMX");
-
-        if (!mediaStorageDir.exists()) {
-            if (!mediaStorageDir.mkdirs()) {
-                Log.d("[Camera]", "failed to create directory");
-                return null;
-            }
-        }
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        File mediaFile;
-        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                "BrillaMX_" + timeStamp + ".jpg");
-        return mediaFile;
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

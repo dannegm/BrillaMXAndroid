@@ -14,6 +14,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="16dp"
         android:id="@+id/scrollView">
 
 
@@ -22,6 +23,92 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:id="@+id/relativeLayout3">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/avatar_placeholder"
+                        android:id="@+id/faUserAvatar" />
+
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView8"
+                        android:src="@drawable/hexagono"
+                        android:layout_alignBottom="@+id/faUserAvatar"
+                        android:layout_alignRight="@+id/faUserAvatar"
+                        android:layout_alignEnd="@+id/faUserAvatar" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="2"
+                        android:id="@+id/faUserPosition"
+                        android:textColor="@color/c_text_white"
+                        android:textStyle="bold"
+                        android:textSize="14dp"
+                        android:layout_alignBottom="@+id/imageView8"
+                        android:layout_alignRight="@+id/imageView8"
+                        android:layout_alignEnd="@+id/imageView8"
+                        android:gravity="center"
+                        android:layout_alignTop="@+id/imageView8" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Don Cheto"
+                        android:id="@+id/faUserName"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/faUserAvatar"
+                        android:layout_alignRight="@+id/imageView8"
+                        android:layout_alignEnd="@+id/imageView8"
+                        android:gravity="center"
+                        android:textColor="@color/c_text_dark"
+                        android:paddingTop="4dp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="99 puntos"
+                        android:id="@+id/faUserPoints"
+                        android:layout_below="@+id/faUserName"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignRight="@+id/imageView8"
+                        android:layout_alignEnd="@+id/imageView8"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:textColor="@color/bmx_purple" />
+
+                </RelativeLayout>
+
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="-6dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/laurel"
+                    />
+
+            </RelativeLayout>
 
             <mx.ambmultimedia.brillamexico.ExtendableGridView
                 android:layout_width="match_parent"
@@ -35,5 +122,6 @@
     </ScrollView>
 
     </com.cuneytayyildiz.widget.PullRefreshLayout>
+
 
 </RelativeLayout>

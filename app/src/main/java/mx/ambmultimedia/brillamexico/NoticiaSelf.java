@@ -3,44 +3,27 @@ package mx.ambmultimedia.brillamexico;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.Spanned;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bluejamesbond.text.DocumentView;
-import com.bluejamesbond.text.style.TextAlignment;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LikeView;
 import com.fmsirvent.ParallaxEverywhere.PEWImageView;
-import com.fmsirvent.ParallaxEverywhere.PEWTextView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.TextHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -65,11 +48,6 @@ public class NoticiaSelf extends ActionBarActivity {
 
         Bundle bundle = getIntent().getExtras();
         String noticiaID = bundle.getString("noticiaID");
-
-        /*
-        WebView noticiasViewer = (WebView) findViewById(R.id.noticiasViewer);
-        noticiasViewer.loadUrl("http://brillamexico.org/api.php?id=" + noticiaID);
-        */
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get("http://brillamexico.org/api.php?post=" + noticiaID, null, new JsonHttpResponseHandler() {

@@ -53,15 +53,6 @@ public class Noticias extends ActionBarActivity {
 
         listNoticias = (ExtendableListView) findViewById(R.id.listNoticias);
 
-        /*
-        listNoticias.setOnScrollListener(new EndlessScrollListener() {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount) {
-                GetNoticias(page);
-            }
-        });
-        */
-
         refreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         refreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override

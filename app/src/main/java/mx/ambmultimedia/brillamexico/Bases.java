@@ -2,6 +2,8 @@ package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +29,7 @@ public class Bases extends ActionBarActivity {
     Context ctx;
     Config config;
 
+    VideoView video;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +49,49 @@ public class Bases extends ActionBarActivity {
         DrawableEvents();
         BuildProfile();
 
-        WebView youtube = (WebView) findViewById(R.id.videoYoutube);
-        youtube.setWebChromeClient(new WebChromeClient());
+        String uriPath = "android.resource://mx.ambmultimedia.brillamexico/raw/bmx_video";
+        Uri uri = Uri.parse(uriPath);
 
-        WebSettings ws = youtube.getSettings();
-        ws.setBuiltInZoomControls(true);
-        ws.setJavaScriptEnabled(true);
+        video = (VideoView) findViewById(R.id.videoView);
+        video.setVideoURI(uri);
+        video.start();
+    }
 
-        youtube.loadUrl("https://www.youtube.com/embed/t1UPLPS419E");
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        video.stopPlayback();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        video.pause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        video.stopPlayback();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        video.start();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        video.stopPlayback();
+        video.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 
     public void BuildProfile () {

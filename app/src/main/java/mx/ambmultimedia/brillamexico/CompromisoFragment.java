@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
@@ -26,11 +28,15 @@ public class CompromisoFragment extends Fragment {
         ctx = _ctx;
         action = fieldToAction;
         index = position;
+        config = new Config(ctx);
     }
 
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View layout;
         layout = inflater.inflate(R.layout.fragment_compromiso, container, false);
+
+        String compID = "comp_" + action + "_" + index;
+        final Boolean isChecked = Boolean.valueOf( config.get(compID, "false") );
 
         String fieldName;
         String[] textos;
@@ -105,16 +111,29 @@ public class CompromisoFragment extends Fragment {
         TextView campoAccion = (TextView) layout.findViewById(R.id.campoAccion);
         campoAccion.setText(fieldName);
 
+
         FloatingActionButton toCamera = (FloatingActionButton) layout.findViewById(R.id.toCamera);
         toCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ctx, Share.class);
-                intent.putExtra("CampoDeAccion", action);
-                intent.putExtra("compromisoID", index);
-                startActivity(intent);
+                if (!isChecked) {
+                    Intent intent = new Intent(ctx, Share.class);
+                    intent.putExtra("CampoDeAccion", action);
+                    intent.putExtra("compromisoID", index);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(ctx, "Ya has hecho este compromiso", Toast.LENGTH_LONG).show();
+                }
             }
         });
+
+        if (isChecked) {
+            LinearLayout back = (LinearLayout) layout.findViewById(R.id.backCompromiso);
+            back.setBackgroundColor(ctx.getResources().getColor(R.color.c_back_disable));
+            toCamera.setIcon(R.drawable.ic_checked);
+            TextView compromisoStatus = (TextView) layout.findViewById(R.id.compromisoStatus);
+            compromisoStatus.setText("¡Ya te has comprometido!");
+        }
 
         return layout;
     }

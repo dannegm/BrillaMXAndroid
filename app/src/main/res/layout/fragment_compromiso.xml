@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/bmx_green"
-        android:gravity="center">
+        android:background="@color/c_back_enable"
+        android:gravity="center"
+        android:id="@+id/backCompromiso">
 
         <TextView
             android:layout_width="wrap_content"

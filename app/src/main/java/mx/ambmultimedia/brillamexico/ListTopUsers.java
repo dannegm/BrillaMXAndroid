@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -54,21 +53,21 @@ public class ListTopUsers extends BaseAdapter {
 
                 String avatarUrl = mContext.getString(R.string.fb_avatar_link);
                 avatarUrl = avatarUrl.replaceAll("__fbid__", user.getString("fbid"));
-                CircleImageView userAvatar = (CircleImageView) list.findViewById(R.id.aUserAvatar);
+                CircleImageView userAvatar = (CircleImageView) list.findViewById(R.id.faUserAvatar);
                 Picasso.with(mContext)
                         .load(avatarUrl)
                         .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
                         .error(R.drawable.com_facebook_profile_picture_blank_square)
                         .into(userAvatar);
 
-                TextView userName = (TextView) list.findViewById(R.id.aUserName);
+                TextView userName = (TextView) list.findViewById(R.id.faUserName);
                 userName.setText(user.getString("name"));
 
                 TextView userPoints = (TextView) list.findViewById(R.id.aUserPoints);
                 userPoints.setText(user.getString("points") + " puntos");
 
                 TextView userPosition = (TextView) list.findViewById(R.id.aUserPosition);
-                userPosition.setText(String.valueOf(position + 1));
+                userPosition.setText(String.valueOf(position + 2));
 
             } catch (JSONException e) {}
 

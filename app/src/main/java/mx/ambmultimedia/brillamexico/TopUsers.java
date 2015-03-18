@@ -5,23 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 @SuppressLint("ValidFragment")
@@ -60,7 +61,31 @@ public class TopUsers extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
-                    final JSONArray users = response;
+                    final JSONArray _users = response;
+                    JSONObject firstUser = _users.getJSONObject(0);
+                    final JSONArray users = RemoveJSONArray(_users, 0);
+
+                    // ============
+
+                    String avatarUrl = ctx.getString(R.string.fb_avatar_link);
+                    avatarUrl = avatarUrl.replaceAll("__fbid__", firstUser.getString("fbid"));
+                    CircleImageView userAvatar = (CircleImageView) _view.findViewById(R.id.faUserAvatar);
+                    Picasso.with(ctx)
+                            .load(avatarUrl)
+                            .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                            .error(R.drawable.com_facebook_profile_picture_blank_square)
+                            .into(userAvatar);
+
+                    TextView userName = (TextView) _view.findViewById(R.id.faUserName);
+                    userName.setText(firstUser.getString("name"));
+
+                    TextView userPoints = (TextView) _view.findViewById(R.id.faUserPoints);
+                    userPoints.setText(firstUser.getString("points") + " puntos");
+
+                    TextView userPosition = (TextView) _view.findViewById(R.id.faUserPosition);
+                    userPosition.setText("1");
+
+                    // ===========
 
                     ListTopUsers adapter = new ListTopUsers(ctx, users);
                     ExtendableGridView listUsers = (ExtendableGridView) _view.findViewById(R.id.usersGrid);
@@ -69,15 +94,15 @@ public class TopUsers extends Fragment {
                     listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            try {
-                                JSONObject user = users.getJSONObject(position);
-                                String userID = user.getString("fbid");
+                        try {
+                            JSONObject user = users.getJSONObject(position);
+                            String userID = user.getString("fbid");
 
-                                Intent intent = new Intent(ctx, UserViewer.class);
-                                intent.putExtra("userID", userID);
-                                startActivity(intent);
-                            } catch (JSONException e) {
-                            }
+                            Intent intent = new Intent(ctx, UserViewer.class);
+                            intent.putExtra("userID", userID);
+                            startActivity(intent);
+                        } catch (JSONException e) {
+                        }
                         }
                     });
 
@@ -91,6 +116,18 @@ public class TopUsers extends Fragment {
             public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
             }
         });
+    }
+
+    public static JSONArray RemoveJSONArray (JSONArray jarray, int pos) {
+        JSONArray Njarray=new JSONArray();
+        try {
+            for (int i=0;i<jarray.length();i++){
+                if (i!=pos) {
+                    Njarray.put(jarray.get(i));
+                }
+            }
+        } catch (Exception e) {e.printStackTrace();}
+        return Njarray;
     }
 
 }

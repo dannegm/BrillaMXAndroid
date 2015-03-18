@@ -6,7 +6,6 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -26,6 +25,7 @@ public class Emp2 extends ActionBarActivity {
     private UiLifecycleHelper uiHelper;
     private LikeView like_view;
     private String like_url = "http://www.brillamexico.org/jahir-mojica-hernandez/";
+    WebView youtube;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +81,30 @@ public class Emp2 extends ActionBarActivity {
                 startActivity(Intent.createChooser(sharingIntent, "Compartir"));
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        youtube = null;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        youtube = null;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        youtube = null;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 
     @Override

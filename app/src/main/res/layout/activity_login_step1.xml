@@ -42,26 +42,38 @@
                 android:textSize="18sp"
                 android:layout_below="@+id/imageView"
                 android:layout_centerHorizontal="true" />
+                -->
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-                android:id="@+id/imageView2"
+                android:id="@+id/videoYoutube"
                 android:layout_marginTop="24dp"
-                android:src="@drawable/login_city"
-                android:layout_below="@+id/textView"
+                android:src="@drawable/login_city_play"
+                android:layout_below="@+id/imageView"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp" />
-                -->
 
+
+            <!--
             <WebView
                 android:layout_width="match_parent"
                 android:layout_below="@+id/imageView"
                 android:layout_height="140dp"
                 android:layout_margin="32dp"
                 android:id="@+id/videoYoutube" />
+                -->
+
+            <!--
+            <VideoView
+                android:layout_width="match_parent"
+                android:layout_below="@+id/imageView"
+                android:layout_height="140dp"
+                android:layout_margin="32dp"
+                android:id="@+id/videoYoutube" />
+                -->
 
             <Button
                 android:layout_width="wrap_content"

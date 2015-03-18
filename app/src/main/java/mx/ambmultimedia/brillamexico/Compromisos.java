@@ -1,9 +1,7 @@
 package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
@@ -11,17 +9,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewParent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
+import me.relex.circleindicator.CircleIndicator;
 
 
 public class Compromisos extends ActionBarActivity {
@@ -50,15 +43,17 @@ public class Compromisos extends ActionBarActivity {
 
         activityPager = (ViewPager) findViewById(R.id.activityPager);
         activityPager.setAdapter(new CompromisoPagerApadter(ctx, getSupportFragmentManager(), fieldToaction));
+
+        CircleIndicator circleIndicator = (CircleIndicator) findViewById(R.id.circleIndicator);
+        circleIndicator.setViewPager(activityPager);
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

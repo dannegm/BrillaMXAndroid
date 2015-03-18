@@ -48,4 +48,6 @@
 
     <color name="c_btn_disable">#38c298</color>
     <color name="c_btn_enable">#e00096</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

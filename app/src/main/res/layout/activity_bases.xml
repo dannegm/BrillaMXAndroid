@@ -33,10 +33,10 @@
                     android:layout_gravity="center_horizontal"
                     android:background="@color/bmx_purpleDark">
 
-                    <WebView
+                    <VideoView
+                        android:id="@+id/videoView"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:id="@+id/videoYoutube"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="16dp" />
