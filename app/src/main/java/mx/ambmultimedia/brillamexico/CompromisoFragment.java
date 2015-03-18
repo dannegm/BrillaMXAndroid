@@ -109,7 +109,7 @@ public class CompromisoFragment extends Fragment {
         toCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ctx, AlternativeCamera.class);
+                Intent intent = new Intent(ctx, Share.class);
                 intent.putExtra("CampoDeAccion", action);
                 intent.putExtra("compromisoID", index);
                 startActivity(intent);

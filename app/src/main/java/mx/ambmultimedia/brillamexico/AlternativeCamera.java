@@ -95,24 +95,21 @@ public class AlternativeCamera extends ActionBarActivity {
 
                 selectedImagePath = getImagePath();
                 Bitmap ofinalPicture = decodeFile(selectedImagePath);
-                resultCamera.setImageBitmap(ofinalPicture);
 
+                Intent intent = new Intent(AlternativeCamera.this, Share.class);
+                intent.putExtra("CampoDeAccion", CampoDeAccion);
+                intent.putExtra("compromisoID", compromisoID);
+                intent.putExtra("compromisoID", ofinalPicture);
+                startActivity(intent);
             } else if (resultCode == RESULT_CANCELED) {
                 Intent intent = new Intent(AlternativeCamera.this, Compromisos.class);
                 startActivity(intent);
             } else {
-                Toast.makeText(ctx, "Haldo ha salido mal", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, "algo ha salido mal", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(AlternativeCamera.this, Compromisos.class);
                 startActivity(intent);
             }
         }
-    }
-
-    public Uri getImageUri (Context inContext, Bitmap inImage) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
     }
 
 
