@@ -18,6 +18,9 @@
         <item name="android:background">@color/bmx_purple</item>
     </style>
 
+    <style name="BMX_NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
 
 
 

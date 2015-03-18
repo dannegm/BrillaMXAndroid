@@ -13,10 +13,13 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -54,7 +57,38 @@ public class Bases extends ActionBarActivity {
 
         video = (VideoView) findViewById(R.id.videoView);
         video.setVideoURI(uri);
-        video.start();
+
+        View mediaControllerView = findViewById(R.id.mediaController);
+
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(mediaControllerView);
+
+        final FloatingActionButton playVideo = (FloatingActionButton) findViewById(R.id.playVideo);
+        playVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playVideo.setVisibility(View.INVISIBLE);
+                video.start();
+            }
+        });
+
+        float videoWidth = (float) video.getWidth();
+        float videoHeight = videoWidth * 0.5625f;
+        video.layout(0, 0, (int) videoWidth, (int) videoHeight);
+
+        video.setMediaController(mediaController);
+        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            public void onPrepared(MediaPlayer arg) {
+                video.start();
+                video.pause();
+            }
+        });
+        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer vmp) {
+                playVideo.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
@@ -73,19 +107,6 @@ public class Bases extends ActionBarActivity {
     protected void onStop() {
         super.onStop();
         video.stopPlayback();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        video.start();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        video.stopPlayback();
-        video.start();
     }
 
     @Override
