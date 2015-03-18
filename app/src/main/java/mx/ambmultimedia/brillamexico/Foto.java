@@ -2,6 +2,7 @@ package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Environment;
@@ -33,6 +34,9 @@ public class Foto extends ActionBarActivity {
     private Camera mCamera;
     private CameraPreview mPreview;
 
+    int CampoDeAccion;
+    int compromisoID;
+
     private Camera.PictureCallback mPicture = new Camera.PictureCallback() {
         private String TAG = "[Camera]";
         @Override
@@ -50,6 +54,8 @@ public class Foto extends ActionBarActivity {
 
                 Uri ofinalPicture = Uri.fromFile(pictureFile);
                 Intent intent = new Intent(Foto.this, Share.class);
+                intent.putExtra("CampoDeAccion", CampoDeAccion);
+                intent.putExtra("compromisoID", compromisoID);
                 intent.setData(ofinalPicture);
                 startActivity(intent);
             } catch (FileNotFoundException e) {
@@ -75,6 +81,55 @@ public class Foto extends ActionBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Bundle bundle = getIntent().getExtras();
+        CampoDeAccion = bundle.getInt("CampoDeAccion");
+        compromisoID = bundle.getInt("compromisoID");
+
+        Drawable frameDraw = getResources().getDrawable(R.drawable.marco_1);
+
+        if (CampoDeAccion == 1) {
+            switch (compromisoID) {
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_1); break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_2); break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_3); break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_4); break;
+                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_5); break;
+                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_6); break;
+                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_7); break;
+                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_8); break;
+                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_9); break;
+                case 9: frameDraw = getResources().getDrawable(R.drawable.marco_10); break;
+                case 10: frameDraw = getResources().getDrawable(R.drawable.marco_11); break;
+                case 11: frameDraw = getResources().getDrawable(R.drawable.marco_12); break;
+                case 12: frameDraw = getResources().getDrawable(R.drawable.marco_13); break;
+                case 13: frameDraw = getResources().getDrawable(R.drawable.marco_14); break;
+            }
+        }
+        else if (CampoDeAccion == 2) {
+            switch (compromisoID) {
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_15); break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_16); break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_17); break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_18); break;
+            }
+        }
+        else if (CampoDeAccion == 3) {
+            switch (compromisoID) {
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_19); break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_20); break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_21); break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_22); break;
+                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_23); break;
+                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_24); break;
+                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_25); break;
+                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_26); break;
+                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_27); break;
+            }
+        }
+
+        ImageView imageFrame = (ImageView) findViewById(R.id.imageFrame);
+        imageFrame.setImageDrawable(frameDraw);
 
         mCamera = getCameraInstance();
         mPreview = new CameraPreview(this, this, mCamera);
@@ -141,6 +196,8 @@ public class Foto extends ActionBarActivity {
             //Uri ofinalPicture = data.getData();
             Uri ofinalPicture = getOutputMediaFileUri();
             Intent intent = new Intent(Foto.this, Share.class);
+            intent.putExtra("CampoDeAccion", CampoDeAccion);
+            intent.putExtra("compromisoID", compromisoID);
             intent.setData(ofinalPicture);
             startActivity(intent);
         }

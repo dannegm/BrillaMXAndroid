@@ -191,7 +191,7 @@ public class UserViewer extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, LeaderBoard.class);
+                Intent intent = new Intent(UserViewer.this, Actividad.class);
                 startActivity(intent);
             }
         });

@@ -93,7 +93,7 @@ public class Bases extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Bases.this, LeaderBoard.class);
+                Intent intent = new Intent(Bases.this, Actividad.class);
                 startActivity(intent);
             }
         });

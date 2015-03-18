@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
@@ -45,6 +46,55 @@ public class Share extends ActionBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Bundle bundle = getIntent().getExtras();
+        int CampoDeAccion = bundle.getInt("CampoDeAccion");
+        int compromisoID = bundle.getInt("compromisoID");
+
+        Drawable frameDraw = getResources().getDrawable(R.drawable.marco_1);
+
+        if (CampoDeAccion == 1) {
+            switch (compromisoID) {
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_1); break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_2); break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_3); break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_4); break;
+                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_5); break;
+                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_6); break;
+                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_7); break;
+                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_8); break;
+                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_9); break;
+                case 9: frameDraw = getResources().getDrawable(R.drawable.marco_10); break;
+                case 10: frameDraw = getResources().getDrawable(R.drawable.marco_11); break;
+                case 11: frameDraw = getResources().getDrawable(R.drawable.marco_12); break;
+                case 12: frameDraw = getResources().getDrawable(R.drawable.marco_13); break;
+                case 13: frameDraw = getResources().getDrawable(R.drawable.marco_14); break;
+            }
+        }
+        else if (CampoDeAccion == 2) {
+            switch (compromisoID) {
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_15); break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_16); break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_17); break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_18); break;
+            }
+        }
+        else if (CampoDeAccion == 3) {
+            switch (compromisoID) {
+                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_19); break;
+                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_20); break;
+                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_21); break;
+                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_22); break;
+                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_23); break;
+                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_24); break;
+                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_25); break;
+                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_26); break;
+                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_27); break;
+            }
+        }
+
+        ImageView imageFrame = (ImageView) findViewById(R.id.imageMarco);
+        imageFrame.setImageDrawable(frameDraw);
 
         final Uri pictureUri = getIntent().getData();
         final Bitmap pictureBitmap = cropImage(pictureUri);
@@ -152,9 +202,9 @@ public class Share extends ActionBarActivity {
         }
 
         Bitmap croppedBitmap = Bitmap.createBitmap(bMap, 0, 0, nwidth, nheight);
-        Matrix matrix = new Matrix();
-        matrix.postRotate(90);
-        Bitmap rotatedBitmap = Bitmap.createBitmap(croppedBitmap, 0, 0, nwidth, nheight, matrix, true);
+        //Matrix matrix = new Matrix();
+        //matrix.postRotate(90);
+        //Bitmap rotatedBitmap = Bitmap.createBitmap(croppedBitmap, 0, 0, nwidth, nheight, matrix, true);
         return croppedBitmap;
     }
 

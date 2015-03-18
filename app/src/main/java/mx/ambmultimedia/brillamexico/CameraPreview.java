@@ -38,8 +38,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void surfaceDestroyed (SurfaceHolder holder) {
-        mCamera.stopPreview();
-        mCamera = null;
+        PausePreview();
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
@@ -62,13 +61,21 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void PausePreview () {
-        mCamera.stopPreview();
         inPreview = false;
+        if (mCamera != null){
+            mCamera.stopPreview();
+            mCamera.setPreviewCallback(null);
+
+            mCamera.release();
+            mCamera = null;
+        }
     }
 
     public void ResumePreview () {
-        mCamera.startPreview();
         inPreview = true;
+        if (mCamera == null){
+            mCamera.startPreview();
+        }
     }
 
     public void flipCamera () {

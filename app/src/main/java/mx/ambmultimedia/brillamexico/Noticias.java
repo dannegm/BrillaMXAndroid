@@ -141,7 +141,7 @@ public class Noticias extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Noticias.this, LeaderBoard.class);
+                Intent intent = new Intent(Noticias.this, Actividad.class);
                 startActivity(intent);
             }
         });

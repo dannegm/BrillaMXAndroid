@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+
 
 public class Preselfie extends ActionBarActivity {
 
@@ -16,11 +18,11 @@ public class Preselfie extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preselfie);
 
-        Button firstSelfie = (Button) findViewById(R.id.firstSelfie);
+        FloatingActionButton firstSelfie = (FloatingActionButton) findViewById(R.id.firstSelfie);
         firstSelfie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Preselfie.this, Foto.class);
+                Intent intent = new Intent(Preselfie.this, Compromisos.class);
                 startActivity(intent);
             }
         });

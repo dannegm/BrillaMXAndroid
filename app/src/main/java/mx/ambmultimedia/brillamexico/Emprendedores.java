@@ -110,7 +110,7 @@ public class Emprendedores extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Emprendedores.this, LeaderBoard.class);
+                Intent intent = new Intent(Emprendedores.this, Actividad.class);
                 startActivity(intent);
             }
         });

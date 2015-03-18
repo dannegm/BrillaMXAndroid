@@ -205,7 +205,7 @@ public class UserProfile extends ActionBarActivity {
         toSelfie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, Foto.class);
+                Intent intent = new Intent(UserProfile.this, Compromisos.class);
                 startActivity(intent);
             }
         });
@@ -226,7 +226,7 @@ public class UserProfile extends ActionBarActivity {
         toActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, LeaderBoard.class);
+                Intent intent = new Intent(UserProfile.this, Actividad.class);
                 startActivity(intent);
             }
         });

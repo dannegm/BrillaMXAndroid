@@ -153,6 +153,11 @@ public class LoginStep5 extends FragmentActivity {
                                     config.set("fbID", fbID);
                                     config.set("isReload", "true");
 
+                                    try {
+                                        JSONObject user = response.getJSONObject(0);
+                                        config.set("user", user.toString());
+                                    } catch (JSONException e) {}
+
                                     Intent intent = new Intent(LoginStep5.this, Logro.class);
                                     intent.putExtra("Reference", "Register");
                                     intent.putExtra("LogroID", "1");

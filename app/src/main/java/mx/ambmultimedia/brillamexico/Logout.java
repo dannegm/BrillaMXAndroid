@@ -165,6 +165,7 @@ public class Logout extends ActionBarActivity {
             config.set("Nombre", "unknown");
             config.set("CampoDeAccion", "0");
             config.set("Puntos", "0");
+            config.set("isCompleteProfile", "false");
 
             Intent intent = new Intent(Logout.this, LoginStep1.class);
             startActivity(intent);

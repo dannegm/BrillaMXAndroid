@@ -135,7 +135,7 @@ public class Selfie extends ActionBarActivity {
         toCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Selfie.this, Foto.class);
+                Intent intent = new Intent(Selfie.this, Compromisos.class);
                 startActivity(intent);
             }
         });

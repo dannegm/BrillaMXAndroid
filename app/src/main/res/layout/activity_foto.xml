@@ -28,6 +28,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
+
+
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/test"
+                    android:src="@drawable/avatar_placeholder"
                     android:id="@+id/imageFrame" />
 
                 <LinearLayout

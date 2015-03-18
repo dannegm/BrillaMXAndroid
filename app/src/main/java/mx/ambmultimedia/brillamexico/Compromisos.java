@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,53 +16,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewParent;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
 
-public class Compromisos extends FragmentActivity {
+public class Compromisos extends ActionBarActivity {
     Context ctx;
     Config config;
 
-    CompromisosAdapter adapter;
-
-    int[][][] CamposAccion = {
-        {},
-        {
-            {1, R.drawable.ic_1_1, R.string.c_1_1},
-            {1, R.drawable.ic_1_2, R.string.c_1_2},
-            {1, R.drawable.ic_1_3, R.string.c_1_3},
-            {1, R.drawable.ic_1_4, R.string.c_1_4},
-            {1, R.drawable.ic_1_5, R.string.c_1_5},
-            {1, R.drawable.ic_1_6, R.string.c_1_6},
-            {1, R.drawable.ic_1_7, R.string.c_1_7},
-            {1, R.drawable.ic_1_8, R.string.c_1_8},
-            {1, R.drawable.ic_1_9, R.string.c_1_9},
-            {1, R.drawable.ic_1_10, R.string.c_1_10},
-            {1, R.drawable.ic_1_11, R.string.c_1_11},
-            {1, R.drawable.ic_1_12, R.string.c_1_12},
-            {1, R.drawable.ic_1_13, R.string.c_1_13},
-            {1, R.drawable.ic_1_14, R.string.c_1_14}
-        },
-        {
-            {2, R.drawable.ic_2_15, R.string.c_2_15},
-            {2, R.drawable.ic_2_16, R.string.c_2_16},
-            {2, R.drawable.ic_2_17, R.string.c_2_17},
-            {2, R.drawable.ic_2_18, R.string.c_2_18}
-        },
-        {
-            {3, R.drawable.ic_3_19, R.string.c_3_19},
-            {3, R.drawable.ic_3_20, R.string.c_3_20},
-            {3, R.drawable.ic_3_21, R.string.c_3_21},
-            {3, R.drawable.ic_3_22, R.string.c_3_22},
-            {3, R.drawable.ic_3_23, R.string.c_3_23},
-            {3, R.drawable.ic_3_24, R.string.c_3_24},
-            {3, R.drawable.ic_3_25, R.string.c_3_25},
-            {3, R.drawable.ic_3_26, R.string.c_3_26},
-            {3, R.drawable.ic_3_27, R.string.c_3_27}
-        }
-    };
+    ViewPager activityPager;
+    String CampoDeAccion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,26 +38,57 @@ public class Compromisos extends FragmentActivity {
         ctx = this;
         config = new Config(ctx);
 
-        /*
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        */
+        try {
+            JSONObject selfuser = new JSONObject(config.get("user", "null"));
+            CampoDeAccion = selfuser.getString("fieldaction_id");
+        } catch (JSONException e) {}
+        int fieldToaction = Integer.parseInt(CampoDeAccion);
 
-        BuildPaginator();
+        activityPager = (ViewPager) findViewById(R.id.activityPager);
+        activityPager.setAdapter(new CompromisoPagerApadter(ctx, getSupportFragmentManager(), fieldToaction));
     }
 
-    public void BuildPaginator () {
-        List<Fragment> pages = new Vector<>();
-        String CampoDeAccion = config.get("CampoDeAccion", "1");
 
-        pages.add(Fragment.instantiate(this, CompromisoPag.class.getName()));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-        adapter = new CompromisosAdapter(this.getSupportFragmentManager(), pages);
+    class CompromisoPagerApadter extends FragmentPagerAdapter {
+        Context superCtx;
+        String[] compromisos;
+        int action;
 
-        ViewPager pager = (ViewPager) findViewById(R.id.compromisosPaginator);
-        pager.setAdapter(adapter);
+        public CompromisoPagerApadter (Context _ctx, FragmentManager fm, int FieldToAction) {
+            super(fm);
+            superCtx = _ctx;
+            action = FieldToAction;
+
+            switch (FieldToAction) {
+                case 1: compromisos = getResources().getStringArray(R.array.campo1); break;
+                case 2: compromisos = getResources().getStringArray(R.array.campo2); break;
+                case 3: compromisos = getResources().getStringArray(R.array.campo3); break;
+                default: compromisos = getResources().getStringArray(R.array.campo1); break;
+            }
+        }
+        public Fragment getItem (int position) {
+            CompromisoFragment comp = new CompromisoFragment(superCtx, action, position);
+            return comp;
+        }
+
+        @Override
+        public int getCount() {
+            return compromisos.length;
+        }
     }
 }

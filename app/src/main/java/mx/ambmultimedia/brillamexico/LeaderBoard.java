@@ -1,101 +1,75 @@
 package mx.ambmultimedia.brillamexico;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
-
-public class LeaderBoard extends ActionBarActivity {
+@SuppressLint("ValidFragment")
+public class LeaderBoard extends Fragment {
     Context ctx;
     Config config;
 
     PullRefreshLayout refreshLayout;
+    String CampoDeAccion;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leader_board);
-        ctx = this;
+    public LeaderBoard (Context _ctx) {
+        ctx = _ctx;
+    }
+
+    public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View layout;
+        layout = inflater.inflate(R.layout.activity_leader_board, container, false);
         config = new Config(ctx);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        GeneralEvents(layout);
+        GetLeaderBoard(layout);
 
-        NavDrawerFrag navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
-        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
-        navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
-
-        DrawableEvents();
-        GeneralEvents();
-        BuildProfile();
-        GetLeaderBoard();
-
-        refreshLayout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        refreshLayout = (PullRefreshLayout) layout.findViewById(R.id.swipeRefreshLayout);
         refreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                GetLeaderBoard();
+                GetLeaderBoard(layout);
             }
         });
+        return layout;
     }
 
-    public void BuildProfile () {
-        String fbID = config.get("fbID", "0");
-        String _user = config.get("user", "null");
-
-        final TextView DrawerUserName = (TextView) findViewById(R.id.UserName);
-        final TextView DrawerCountPuntos = (TextView) findViewById(R.id.UserPoints);
-
+    public void GetLeaderBoard (View view) {
+        final View _view = view;
         try {
-            JSONObject user = new JSONObject(_user);
-            DrawerUserName.setText(user.getString("name"));
-            DrawerCountPuntos.setText(user.getString("points") + " puntos");
-        } catch (JSONException e) { }
+            JSONObject selfuser = new JSONObject(config.get("user", "null"));
+            CampoDeAccion = selfuser.getString("fieldaction_id");
+        } catch (JSONException e) {}
 
-        CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
-        String _avatarUrl = getString(R.string.fb_avatar_link);
-        String miniAvatarUrl = _avatarUrl.replaceAll("__fbid__", fbID);
-        Picasso.with(ctx)
-                .load(miniAvatarUrl)
-                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
-                .into(ImgDrawerAvatar);
-    }
-
-    public void GetLeaderBoard () {
-        String campoDeAccion = config.get("CampoDeAccion", "2");
         AsyncHttpClient client = new AsyncHttpClient();
-
-        String hostname = getString(R.string.hostname);
-        client.get(hostname + "/users/leaderboard/" + campoDeAccion, null, new JsonHttpResponseHandler() {
+        String hostname = ctx.getString(R.string.hostname);
+        client.get(hostname + "/users/leaderboard/" + CampoDeAccion, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
                     final JSONArray users = response;
 
                     ListLeaderBoard adapter = new ListLeaderBoard(ctx, users);
-                    ExtendableListView listUsers = (ExtendableListView) findViewById(R.id.lisLeaderBoard);
+                    ExtendableListView listUsers = (ExtendableListView) _view.findViewById(R.id.lisLeaderBoard);
 
                     listUsers.setAdapter(adapter);
                     listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -105,10 +79,11 @@ public class LeaderBoard extends ActionBarActivity {
                                 JSONObject user = users.getJSONObject(position);
                                 String userID = user.getString("fbid");
 
-                                Intent intent = new Intent(LeaderBoard.this, UserViewer.class);
+                                Intent intent = new Intent(ctx, UserViewer.class);
                                 intent.putExtra("userID", userID);
                                 startActivity(intent);
-                            } catch (JSONException e) {}
+                            } catch (JSONException e) {
+                            }
                         }
                     });
 
@@ -117,90 +92,19 @@ public class LeaderBoard extends ActionBarActivity {
                 } catch (Exception e) {
                 }
             }
+
             @Override
-            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {}
+            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+            }
         });
     }
 
-    public void GeneralEvents () {
-        FloatingActionButton toSelfie = (FloatingActionButton) findViewById(R.id.toSelfie);
+    public void GeneralEvents (View view) {
+        FloatingActionButton toSelfie = (FloatingActionButton) view.findViewById(R.id.toSelfie);
         toSelfie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Foto.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void DrawableEvents () {
-        // My Perfil
-        LinearLayout toMyProfile = (LinearLayout) findViewById(R.id.dw_myprofile);
-        toMyProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, UserProfile.class);
-                startActivity(intent);
-            }
-        });
-
-        // Actividad
-        LinearLayout toActivity = (LinearLayout) findViewById(R.id.dw_activity);
-        toActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Noticias
-        LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
-        toNoticias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Noticias.class);
-                startActivity(intent);
-            }
-        });
-
-        // Emprendedores
-        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
-        toEmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Emprendedores.class);
-                startActivity(intent);
-            }
-        });
-
-        // Otros
-
-        // Bases
-        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
-        toBases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Bases.class);
-                startActivity(intent);
-            }
-        });
-
-        // Privacidad
-        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
-        toPrivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Privacy.class);
-                startActivity(intent);
-            }
-        });
-
-        // Salir
-        LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
-        toSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LeaderBoard.this, Logout.class);
+                Intent intent = new Intent(ctx, Compromisos.class);
                 startActivity(intent);
             }
         });

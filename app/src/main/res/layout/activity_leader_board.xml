@@ -1,82 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="mx.ambmultimedia.brillamexico.LeaderBoard"
-
-    android:id="@+id/drawer_layout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <com.cuneytayyildiz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include android:id="@+id/app_bar" layout="@layout/app_bar" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
 
-        <com.cuneytayyildiz.widget.PullRefreshLayout
-            android:id="@+id/swipeRefreshLayout"
-            android:layout_below="@+id/app_bar"
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/scrollView">
-
-
-            <LinearLayout
-                android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:paddingBottom="16dp"
+            android:background="@color/g_white"
+            android:elevation="1dp">
+            <mx.ambmultimedia.brillamexico.ExtendableListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:paddingBottom="16dp"
-                android:background="@color/g_white"
-                android:elevation="1dp">
-                <mx.ambmultimedia.brillamexico.ExtendableListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:dividerHeight="0dp"
-                    android:layout_marginBottom="16dp"
-                    android:id="@+id/lisLeaderBoard" />
+                android:dividerHeight="0dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/lisLeaderBoard" />
 
-            </LinearLayout>
+        </LinearLayout>
 
-        </ScrollView>
+    </ScrollView>
 
-        </com.cuneytayyildiz.widget.PullRefreshLayout>
+    </com.cuneytayyildiz.widget.PullRefreshLayout>
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/toSelfie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/toSelfie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
 
-            fab:fab_icon="@drawable/ic_camera"
-            fab:fab_colorNormal="@color/c_text_link_2"
-            fab:fab_colorPressed="@color/bmx_magenta"
+        fab:fab_icon="@drawable/ic_camera"
+        fab:fab_colorNormal="@color/c_text_link_2"
+        fab:fab_colorPressed="@color/bmx_magenta"
 
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="24dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="24dp" />
 
-    </RelativeLayout>
-
-    <fragment
-        android:id="@+id/navDrawer"
-        android:layout_width="@dimen/drawer_width"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-
-        app:layout="@layout/fragment_nav_drawer"
-        android:name="mx.ambmultimedia.brillamexico.NavDrawerFrag"
-        tools:layout="@layout/fragment_nav_drawer">
-
-    </fragment>
-</android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

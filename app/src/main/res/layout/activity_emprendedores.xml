@@ -29,6 +29,28 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView10"
+                        android:src="@drawable/paisaje_ciudad"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comparte sus historias "
+                        android:id="@+id/textView20"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/c_text_white"
+                        android:textSize="22sp" />
+                </RelativeLayout>
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -215,6 +237,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
 

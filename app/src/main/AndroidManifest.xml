@@ -22,8 +22,6 @@
 
     <uses-feature android:name="android.hardware.camera2" />
 
-    <uses-configuration android:reqTouchScreen="finger" />
-
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -214,6 +212,14 @@
             android:name=".Logro"
             android:label="@string/title_activity_logro"
             android:theme="@style/StatusBarPink" >
+        </activity>
+        <activity
+            android:name=".Selfies"
+            android:label="@string/title_activity_selfies" >
+        </activity>
+        <activity
+            android:name=".AlternativeCamera"
+            android:label="@string/title_activity_alternative_camera" >
         </activity>
     </application>
 
