@@ -1,6 +1,7 @@
 package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,22 @@ public class ListNoticias extends BaseAdapter {
                         .placeholder(R.drawable.img_placeholder)
                         .error(R.drawable.paisaje_error)
                         .into(imageView);
+
+                final String _title = noticiaObj.getString("title");
+                final String _link = noticiaObj.getString("title");
+                TextView nCompartir = (TextView) list.findViewById(R.id.nCompartir);
+                nCompartir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, _title);
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, _link);
+
+                        mContext.startActivity(Intent.createChooser(sharingIntent, "Compartir"));
+                    }
+                });
             } catch (JSONException e) {}
 
         } else {

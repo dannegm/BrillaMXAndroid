@@ -86,18 +86,21 @@ public class Emp1 extends ActionBarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //youtube.reload();
         youtube = null;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        //youtube.reload();
         youtube = null;
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        //youtube.reload();
         youtube = null;
     }
 

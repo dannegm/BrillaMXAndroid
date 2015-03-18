@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -145,19 +147,18 @@ public class Logro extends ActionBarActivity {
         client.post(hostname + "/user/logro/" + fbID, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                /*
                 try {
                     String status = response.getString("status");
-                    if (status == "success") {
+                    if (status.toString() == "success") {
                         addPoints(pointsLogro);
                     } else {
                         Toast.makeText(ctx, "Ya tenías este logro", Toast.LENGTH_SHORT).show();
-                        continueActivity(Reference);
+                        //continueActivity(Reference);
                     }
-                } catch (JSONException e) {}
-                */
-
-                addPoints(pointsLogro);
+                } catch (JSONException e) {
+                    Toast.makeText(ctx, "Ya tenías este logro", Toast.LENGTH_SHORT).show();
+                    //continueActivity(Reference);
+                }
             }
 
             @Override

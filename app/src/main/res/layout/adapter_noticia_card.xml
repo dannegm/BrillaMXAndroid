@@ -85,7 +85,8 @@
                     android:textSize="14sp"
                     android:textColor="@color/c_text_dark"
                     android:layout_weight="1"
-                    android:gravity="left" />
+                    android:gravity="left"
+                    android:text="COMPARTIR" />
 
                 <TextView
                     android:layout_width="wrap_content"

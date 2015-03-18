@@ -1,39 +1,33 @@
 package mx.ambmultimedia.brillamexico;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.cuneytayyildiz.widget.PullRefreshLayout;
 
 
-public class Tweets extends ActionBarActivity {
+@SuppressLint("ValidFragment")
+public class Tweets extends Fragment {
+    Context ctx;
+    Config config;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tweets);
+
+    public Tweets (Context _ctx) {
+        ctx = _ctx;
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tweets, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View layout;
+        layout = inflater.inflate(R.layout.fragment_tweets, container, false);
+        config = new Config(ctx);
+        return layout;
     }
 }

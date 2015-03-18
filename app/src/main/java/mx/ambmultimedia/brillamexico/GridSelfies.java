@@ -44,7 +44,7 @@ public class GridSelfies extends BaseAdapter {
         if (convertView == null) {
             try {
                 grid = new View(mContext);
-                grid = inflater.inflate(R.layout.selfie_grid_single, null);
+                grid = inflater.inflate(R.layout.adapter_selfie_grid_single, null);
                 final View gridTmp = grid;
 
                 JSONObject selfieObj = selfiesObj.getJSONObject(position);

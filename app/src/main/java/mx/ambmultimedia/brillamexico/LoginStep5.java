@@ -2,9 +2,14 @@ package mx.ambmultimedia.brillamexico;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +29,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class LoginStep5 extends FragmentActivity {
@@ -33,6 +40,7 @@ public class LoginStep5 extends FragmentActivity {
     private String Nombre;
     private int CampoDeAccion;
     private Boolean isReturn;
+    Boolean isLogin;
 
     private UiLifecycleHelper uiHelper;
     private Session.StatusCallback callback = new Session.StatusCallback() {
@@ -48,6 +56,7 @@ public class LoginStep5 extends FragmentActivity {
         setContentView(R.layout.activity_login_step5);
         ctx = this;
         config = new Config(ctx);
+        isLogin = Boolean.valueOf(config.get("isLogin", "false"));
 
         /***
          * Obteniendo datos del activity anterior
@@ -80,6 +89,21 @@ public class LoginStep5 extends FragmentActivity {
 
         LoginButton loginBtn = (LoginButton) findViewById(R.id.authButton);
         loginBtn.setPublishPermissions(Arrays.asList("email", "public_profile", "publish_actions"));
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "mx.ambmultimedia.brillamexico",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
     }
 
     @Override
@@ -121,7 +145,7 @@ public class LoginStep5 extends FragmentActivity {
     // Facebook Methods
 
     public void onSessionChange (Session session, SessionState sessionState, Exception e) {
-        if (session != null && session.isOpened()) {
+        if (session != null && session.isOpened() && !isLogin) {
             Request.newMeRequest(session, new Request.GraphUserCallback() {
                 @Override
                 public void onCompleted(GraphUser user, Response response) {

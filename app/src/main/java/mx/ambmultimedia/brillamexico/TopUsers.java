@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cuneytayyildiz.widget.PullRefreshLayout;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
@@ -37,10 +39,11 @@ public class TopUsers extends Fragment {
     }
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View layout;
-        layout = inflater.inflate(R.layout.activity_top_users, container, false);
+        layout = inflater.inflate(R.layout.fragment_top_users, container, false);
         config = new Config(ctx);
 
         GetLeaderBoard(layout);
+        GeneralEvents(layout);
 
         refreshLayout = (PullRefreshLayout) layout.findViewById(R.id.swipeRefreshLayout);
         refreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
@@ -62,7 +65,7 @@ public class TopUsers extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
                     final JSONArray _users = response;
-                    JSONObject firstUser = _users.getJSONObject(0);
+                    final JSONObject firstUser = _users.getJSONObject(0);
                     final JSONArray users = RemoveJSONArray(_users, 0);
 
                     // ============
@@ -85,7 +88,18 @@ public class TopUsers extends Fragment {
                     TextView userPosition = (TextView) _view.findViewById(R.id.faUserPosition);
                     userPosition.setText("1");
 
-                    // ===========
+                    final String userID = firstUser.getString("fbid");
+                    RelativeLayout toFirstUser = (RelativeLayout) _view.findViewById(R.id.toFirstUser);
+                    toFirstUser.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(ctx, UserViewer.class);
+                            intent.putExtra("userID", userID);
+                            startActivity(intent);
+                        }
+                    });
+
+                    // ============
 
                     ListTopUsers adapter = new ListTopUsers(ctx, users);
                     ExtendableGridView listUsers = (ExtendableGridView) _view.findViewById(R.id.usersGrid);
@@ -94,15 +108,15 @@ public class TopUsers extends Fragment {
                     listUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        try {
-                            JSONObject user = users.getJSONObject(position);
-                            String userID = user.getString("fbid");
+                            try {
+                                JSONObject user = users.getJSONObject(position);
+                                String userID = user.getString("fbid");
 
-                            Intent intent = new Intent(ctx, UserViewer.class);
-                            intent.putExtra("userID", userID);
-                            startActivity(intent);
-                        } catch (JSONException e) {
-                        }
+                                Intent intent = new Intent(ctx, UserViewer.class);
+                                intent.putExtra("userID", userID);
+                                startActivity(intent);
+                            } catch (JSONException e) {
+                            }
                         }
                     });
 
@@ -114,6 +128,17 @@ public class TopUsers extends Fragment {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+            }
+        });
+    }
+
+    public void GeneralEvents (View view) {
+        FloatingActionButton toSelfie = (FloatingActionButton) view.findViewById(R.id.toSelfie);
+        toSelfie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctx, Compromisos.class);
+                startActivity(intent);
             }
         });
     }

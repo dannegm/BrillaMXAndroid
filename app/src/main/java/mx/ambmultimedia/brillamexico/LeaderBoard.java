@@ -36,7 +36,7 @@ public class LeaderBoard extends Fragment {
 
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View layout;
-        layout = inflater.inflate(R.layout.activity_leader_board, container, false);
+        layout = inflater.inflate(R.layout.fragment_leader_board, container, false);
         config = new Config(ctx);
 
         GeneralEvents(layout);
