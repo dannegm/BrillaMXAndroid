@@ -6,7 +6,7 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.ambmultimedia.brillamexico.Emp2">
+    tools:context="mx.ambmultimedia.brillamexico.activities.Emp2">
 
 
     <include android:id="@+id/app_bar" layout="@layout/app_bar" />

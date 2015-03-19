@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.ambmultimedia.brillamexico.Logout">
+    tools:context="mx.ambmultimedia.brillamexico.activities.Logout">
 
     <include android:id="@+id/app_bar" layout="@layout/app_bar" />
 

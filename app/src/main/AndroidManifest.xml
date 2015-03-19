@@ -34,7 +34,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon" >
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,144 +43,144 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserProfile"
+            android:name=".activities.UserProfile"
             android:label="@string/title_activity_user_profile" >
         </activity>
         <activity
-            android:name=".LoginStep1"
+            android:name=".activities.LoginStep1"
             android:label="@string/title_activity_login_step1"
             android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
-            android:name=".LoginStep2"
+            android:name=".activities.LoginStep2"
             android:label="@string/title_activity_login_step2"
             android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
-            android:name=".LoginStep4"
+            android:name=".activities.LoginStep4"
             android:label="@string/title_activity_login_step4"
             android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
-            android:name=".LoginStep5"
+            android:name=".activities.LoginStep5"
             android:label="@string/title_activity_login_step5"
             android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
-            android:name=".Share"
+            android:name=".activities.Share"
             android:label="@string/title_activity_share"
-            android:parentActivityName=".Compromisos" >
+            android:parentActivityName=".activities.Compromisos" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.Compromisos" />
+                android:value=".activities.Compromisos" />
         </activity>
         <activity
-            android:name=".Selfie"
+            android:name=".activities.Selfie"
             android:label="@string/title_activity_selfie"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".activities.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
         <activity
-            android:name=".Compromisos"
+            android:name=".activities.Compromisos"
             android:label="@string/title_activity_compromisos" >
         </activity>
         <activity
-            android:name=".Noticias"
+            android:name=".activities.Noticias"
             android:label="@string/title_activity_noticias"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".activities.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
         <activity
-            android:name=".NoticiaSelf"
+            android:name=".activities.NoticiaSelf"
             android:label="@string/title_activity_noticia_self"
-            android:parentActivityName=".Noticias" >
+            android:parentActivityName=".activities.Noticias" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.Noticias" />
+                android:value=".activities.Noticias" />
         </activity>
         <activity
-            android:name=".Logout"
+            android:name=".activities.Logout"
             android:label="@string/title_activity_logout"
-            android:parentActivityName=".UserProfile" >
+            android:parentActivityName=".activities.UserProfile" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.UserProfile" />
+                android:value=".activities.UserProfile" />
         </activity>
         <activity
-            android:name=".UserViewer"
+            android:name=".activities.UserViewer"
             android:label="@string/title_activity_user_viewer" >
         </activity>
         <activity
-            android:name=".Emprendedores"
+            android:name=".activities.Emprendedores"
             android:label="@string/title_activity_emprendedores" >
         </activity>
         <activity
-            android:name=".Emp1"
+            android:name=".activities.Emp1"
             android:label="@string/title_activity_emp1"
-            android:parentActivityName=".Emprendedores" >
+            android:parentActivityName=".activities.Emprendedores" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.Emprendedores" />
+                android:value=".activities.Emprendedores" />
         </activity>
         <activity
-            android:name=".Emp2"
+            android:name=".activities.Emp2"
             android:label="@string/title_activity_emp2"
-            android:parentActivityName=".Emprendedores" >
+            android:parentActivityName=".activities.Emprendedores" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.Emprendedores" />
+                android:value=".activities.Emprendedores" />
         </activity>
         <activity
-            android:name=".Emp3"
+            android:name=".activities.Emp3"
             android:label="@string/title_activity_emp3"
-            android:parentActivityName=".Emprendedores" >
+            android:parentActivityName=".activities.Emprendedores" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.Emprendedores" />
+                android:value=".activities.Emprendedores" />
         </activity>
         <activity
-            android:name=".Actividad"
+            android:name=".activities.Actividad"
             android:label="@string/title_activity_actividad" >
         </activity>
         <activity
-            android:name=".EraseAcount"
+            android:name=".activities.EraseAcount"
             android:label="@string/title_activity_erase_acount"
-            android:parentActivityName=".Logout" >
+            android:parentActivityName=".activities.Logout" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.Logout" />
+                android:value=".activities.Logout" />
         </activity>
         <activity
-            android:name=".Bases"
+            android:name=".activities.Bases"
             android:label="@string/title_activity_bases" >
         </activity>
         <activity
-            android:name=".Privacy"
+            android:name=".activities.Privacy"
             android:label="@string/title_activity_privacy" >
         </activity>
         <activity
-            android:name=".Preselfie"
+            android:name=".activities.Preselfie"
             android:label="@string/title_activity_preselfie" >
         </activity>
         <activity
-            android:name=".EditUserInfo"
+            android:name=".activities.EditUserInfo"
             android:label="@string/title_activity_edit_user_info"
-            android:parentActivityName=".UserProfile" >
+            android:parentActivityName=".activities.UserProfile" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="mx.ambmultimedia.brillamexico.UserProfile" />
+                android:value=".activities.UserProfile" />
         </activity>
         <activity
-            android:name=".Logro"
+            android:name=".activities.Logro"
             android:label="@string/title_activity_logro"
             android:theme="@style/StatusBarPink" >
         </activity>
         <activity
-            android:name=".VideoBMX"
+            android:name=".activities.VideoBMX"
             android:label="@string/title_activity_video_bmx"
             android:screenOrientation="landscape"
             android:theme="@style/BMX_NoActionBar">

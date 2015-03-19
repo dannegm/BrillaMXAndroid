@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="mx.ambmultimedia.brillamexico.Noticias"
+    tools:context="mx.ambmultimedia.brillamexico.activities.Noticias"
 
     android:id="@+id/drawer_layout2"
     android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <mx.ambmultimedia.brillamexico.ExtendableListView
+                <mx.ambmultimedia.brillamexico.customViews.ExtendableListView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:divider="@color/g_trans"
@@ -53,7 +53,7 @@
         android:layout_gravity="start"
 
         app:layout="@layout/fragment_nav_drawer"
-        android:name="mx.ambmultimedia.brillamexico.NavDrawerFrag"
+        android:name="mx.ambmultimedia.brillamexico.fragments.NavDrawerFrag"
         tools:layout="@layout/fragment_nav_drawer">
 
     </fragment>

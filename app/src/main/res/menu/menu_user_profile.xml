@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:yourapp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="mx.ambmultimedia.brillamexico.UserProfile">
+    tools:context="mx.ambmultimedia.brillamexico.activities.UserProfile">
     <item
         android:id="@+id/edit_profile"
         yourapp:showAsAction="ifRoom"

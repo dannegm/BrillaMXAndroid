@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:pew="http://schemas.android.com/apk/res-auto"
-    tools:context="mx.ambmultimedia.brillamexico.UserProfile"
+    tools:context="mx.ambmultimedia.brillamexico.activities.UserProfile"
 
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"

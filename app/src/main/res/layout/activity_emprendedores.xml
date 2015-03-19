@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="mx.ambmultimedia.brillamexico.Emprendedores"
+    tools:context="mx.ambmultimedia.brillamexico.activities.Emprendedores"
 
     android:id="@+id/drawer_layout2"
     android:layout_width="match_parent"
@@ -250,7 +250,7 @@
         android:layout_gravity="start"
 
         app:layout="@layout/fragment_nav_drawer"
-        android:name="mx.ambmultimedia.brillamexico.NavDrawerFrag"
+        android:name="mx.ambmultimedia.brillamexico.fragments.NavDrawerFrag"
         tools:layout="@layout/fragment_nav_drawer">
 
     </fragment>
