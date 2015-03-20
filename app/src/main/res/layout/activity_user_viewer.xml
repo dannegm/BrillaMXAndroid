@@ -6,7 +6,7 @@
     xmlns:pew="http://schemas.android.com/apk/res-auto"
     tools:context="mx.ambmultimedia.brillamexico.activities.UserViewer"
 
-    android:id="@+id/drawer_layout"
+    android:id="@+id/drawer_layout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -180,7 +180,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/divier_1"
-                        android:numColumns="4"
+                        android:numColumns="3"
                         android:layout_margin="4dp"
                         android:id="@+id/list_logros" />
 

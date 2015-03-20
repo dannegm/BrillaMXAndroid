@@ -23,4 +23,10 @@ public class Config {
         editor.putString(key, value);
         editor.commit();
     }
+
+    public void clear () {
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.clear();
+        editor.commit();
+    }
 }

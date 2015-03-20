@@ -16,16 +16,27 @@
         android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" android:required="false" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" android:required="false" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="false" />
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        android:required="false" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:required="false" />
 
-    <uses-feature android:name="android.hardware.camera2" android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
 
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" android:required="false" />
+    <android:uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        android:required="false" />
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" android:required="false" />
+        android:maxSdkVersion="18"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -183,7 +194,7 @@
             android:name=".activities.VideoBMX"
             android:label="@string/title_activity_video_bmx"
             android:screenOrientation="landscape"
-            android:theme="@style/BMX_NoActionBar">
+            android:theme="@style/BMX_NoActionBar" >
         </activity>
 
         <!-- Facebook Login -->
@@ -199,6 +210,10 @@
             android:name="io.fabric.ApiKey"
             android:value="518ebe8aa32790e6be7e289acb0f55cfa43cdc3a" />
 
+        <activity
+            android:name=".activities.LoginTest"
+            android:label="@string/title_activity_login_test" >
+        </activity>
     </application>
 
 </manifest>

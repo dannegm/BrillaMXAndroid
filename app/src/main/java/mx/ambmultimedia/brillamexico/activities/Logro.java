@@ -112,6 +112,9 @@ public class Logro extends ActionBarActivity {
                 intent = new Intent(Logro.this, Selfie.class);
                 intent.putExtra("selfieID", selfieID);
                 break;
+            case "TwitterLinked":
+                intent = new Intent(Logro.this, EditUserInfo.class);
+                break;
             default:
                 intent = new Intent(Logro.this, UserProfile.class);
                 break;

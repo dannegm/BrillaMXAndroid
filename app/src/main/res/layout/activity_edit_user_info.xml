@@ -22,93 +22,130 @@
         android:layout_below="@+id/app_bar">
 
         <LinearLayout
-                        android:layout_below="@+id/app_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:id="@+id/linearLayout3">
+            android:layout_below="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout3">
 
-                        <RelativeLayout
-                            android:id="@+id/containerProfile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/containerProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                            <com.fmsirvent.ParallaxEverywhere.PEWImageView
-                                pew:reverse="reverseY"
-                                android:layout_width="match_parent"
-                                android:layout_height="120dp"
-                                android:id="@+id/imageView4"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/profile_bg_ciudad"
-                                android:scaleType="centerCrop" />
+                <com.fmsirvent.ParallaxEverywhere.PEWImageView
+                    pew:reverse="reverseY"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:id="@+id/imageView4"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/profile_bg_ciudad"
+                    android:scaleType="centerCrop" />
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:id="@+id/ImgUserAvatar"
-                                android:src="@drawable/com_facebook_profile_picture_blank_square"
-                                android:layout_alignParentTop="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="70dp" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/ImgUserAvatar"
+                    android:src="@drawable/com_facebook_profile_picture_blank_square"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="70dp" />
 
-                        </RelativeLayout>
+            </RelativeLayout>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Nombre"
-                            android:id="@+id/textView18"
-                            android:padding="16dp"
-                            android:textColor="@color/c_text_dark"
-                            android:textSize="16sp"
-                            android:layout_marginTop="16dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:id="@+id/textView18"
+                android:padding="16dp"
+                android:textColor="@color/c_text_dark"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/editName"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:textColorHint="@color/c_text_gray"
-                            android:textColor="@color/c_text_oxford" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editName"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textColorHint="@color/c_text_gray"
+                android:textColor="@color/c_text_oxford" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Biografía"
-                            android:id="@+id/textView19"
-                            android:padding="16dp"
-                            android:textColor="@color/c_text_dark"
-                            android:textSize="16sp"
-                            android:layout_marginTop="16dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Biografía"
+                android:id="@+id/textView19"
+                android:padding="16dp"
+                android:textColor="@color/c_text_dark"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:id="@+id/editBio"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:textColorHint="@color/c_text_gray"
-                            android:textColor="@color/c_text_oxford" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:id="@+id/editBio"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textColorHint="@color/c_text_gray"
+                android:textColor="@color/c_text_oxford" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionDone"
-                            android:text="Guardar cambios"
-                            android:id="@+id/saveData"
-                            android:layout_below="@+id/linearLayout3"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_gravity="right"
-                            android:layout_margin="16dp"
-                            android:textColor="@color/bmx_pink"
-                            android:background="@color/bmx_lemon"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:text="Guardar cambios"
+                android:id="@+id/saveData"
+                android:layout_below="@+id/linearLayout3"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right"
+                android:layout_margin="16dp"
+                android:textColor="@color/bmx_pink"
+                android:background="@color/bmx_lemon"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
 
-                    </LinearLayout>
+            <View
+                android:layout_margin="16dp"
+                style="@style/Divider"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textSize="14sp"
+                android:text="Contecta tu cuenta con Twitter"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/c_text_gray"
+                    android:padding="16dp"
+                    android:textColor="@color/c_text_oxford"
+                    android:textSize="16sp"
+                    android:id="@+id/loginTwComplete"
+                    android:layout_margin="16dp"
+                    android:text="Ya te has conectado"
+                    android:gravity="center" />
+
+                <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
     </ScrollView>
 
 

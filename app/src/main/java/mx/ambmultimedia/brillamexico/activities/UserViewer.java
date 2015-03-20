@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -28,11 +29,15 @@ import mx.ambmultimedia.brillamexico.adapters.ListLogros;
 import mx.ambmultimedia.brillamexico.customViews.ExtendableGridView;
 import mx.ambmultimedia.brillamexico.fragments.NavDrawerFrag;
 import mx.ambmultimedia.brillamexico.utils.Config;
+import mx.ambmultimedia.brillamexico.utils.DrawerUtils;
 
 
 public class UserViewer extends ActionBarActivity {
     Context ctx;
     Config config;
+
+    DrawerLayout drawer_layout;
+    NavDrawerFrag navDrawerFragment;
 
     String userID;
     Toolbar toolbar;
@@ -52,11 +57,13 @@ public class UserViewer extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        NavDrawerFrag navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
-        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
+        drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
         navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
-        DrawableEvents();
+        DrawerUtils drawerutils = new DrawerUtils(this, this);
+        drawerutils.Navigation(drawer_layout);
+
         GeneralEvents();
         BuildSelfProfile();
 
@@ -176,77 +183,12 @@ public class UserViewer extends ActionBarActivity {
     public void GeneralEvents () {
     }
 
-    public void DrawableEvents () {
-        // My Perfil
-        LinearLayout toMyProfile = (LinearLayout) findViewById(R.id.dw_myprofile);
-        toMyProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, UserProfile.class);
-                startActivity(intent);
-            }
-        });
-
-        // Actividad
-        LinearLayout toActivity = (LinearLayout) findViewById(R.id.dw_activity);
-        toActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, Actividad.class);
-                startActivity(intent);
-            }
-        });
-
-        // Noticias
-        LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
-        toNoticias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, Noticias.class);
-                startActivity(intent);
-            }
-        });
-
-        // Emprendedores
-        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
-        toEmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, Emprendedores.class);
-                startActivity(intent);
-            }
-        });
-
-        // Otros
-
-        // Bases
-        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
-        toBases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, Bases.class);
-                startActivity(intent);
-            }
-        });
-
-        // Privacidad
-        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
-        toPrivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, Privacy.class);
-                startActivity(intent);
-            }
-        });
-
-        // Salir
-        LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
-        toSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserViewer.this, Logout.class);
-                startActivity(intent);
-            }
-        });
+    @Override
+    public void onBackPressed () {
+        if (drawer_layout.isDrawerOpen(Gravity.LEFT)){
+            drawer_layout.closeDrawer(Gravity.LEFT);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

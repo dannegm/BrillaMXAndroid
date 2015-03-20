@@ -71,7 +71,7 @@ public class ListNoticias extends BaseAdapter {
                         .into(imageView);
 
                 final String _title = noticiaObj.getString("title");
-                final String _link = noticiaObj.getString("title");
+                final String _link = noticiaObj.getString("link");
                 TextView nCompartir = (TextView) list.findViewById(R.id.nCompartir);
                 nCompartir.setOnClickListener(new View.OnClickListener() {
                     @Override

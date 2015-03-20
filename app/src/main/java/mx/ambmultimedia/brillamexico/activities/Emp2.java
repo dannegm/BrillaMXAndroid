@@ -2,15 +2,16 @@ package mx.ambmultimedia.brillamexico.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
@@ -27,7 +28,8 @@ public class Emp2 extends ActionBarActivity {
     private UiLifecycleHelper uiHelper;
     private LikeView like_view;
     private String like_url = "http://www.brillamexico.org/jahir-mojica-hernandez/";
-    WebView youtube;
+
+    VideoView video;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +54,44 @@ public class Emp2 extends ActionBarActivity {
         like_view.setHorizontalAlignment(LikeView.HorizontalAlignment.LEFT);
 
         /**
-         * Video Youtube
+         * Video
          */
 
-        WebView youtube = (WebView) findViewById(R.id.videoYoutube);
-        youtube.setWebChromeClient(new WebChromeClient());
+        String uriPath = "android.resource://mx.ambmultimedia.brillamexico/raw/bmx_emp2";
+        Uri uri = Uri.parse(uriPath);
 
-        WebSettings ws = youtube.getSettings();
-        ws.setBuiltInZoomControls(true);
-        ws.setJavaScriptEnabled(true);
+        video = (VideoView) findViewById(R.id.videoView);
+        video.setVideoURI(uri);
 
-        youtube.loadUrl("https://www.youtube.com/embed/WlEBo2YOq8U");
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(video);
+
+        final FloatingActionButton playVideo = (FloatingActionButton) findViewById(R.id.playVideo);
+        playVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playVideo.setVisibility(View.INVISIBLE);
+                video.start();
+            }
+        });
+
+        float videoWidth = (float) video.getWidth();
+        float videoHeight = videoWidth * 0.5625f;
+        video.layout(0, 0, (int) videoWidth, (int) videoHeight);
+
+        video.setMediaController(mediaController);
+        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            public void onPrepared(MediaPlayer arg) {
+                video.start();
+                video.pause();
+            }
+        });
+        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer vmp) {
+                playVideo.setVisibility(View.VISIBLE);
+            }
+        });
 
         /**
          * Compartir emprendedor
@@ -88,22 +117,19 @@ public class Emp2 extends ActionBarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //youtube.reload();
-        youtube = null;
+        video.stopPlayback();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //youtube.reload();
-        youtube = null;
+        video.pause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        //youtube.reload();
-        youtube = null;
+        video.stopPlayback();
     }
 
     @Override

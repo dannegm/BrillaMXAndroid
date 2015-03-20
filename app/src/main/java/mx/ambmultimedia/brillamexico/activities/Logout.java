@@ -146,16 +146,9 @@ public class Logout extends ActionBarActivity {
 
     public void onSessionChange (Session session, SessionState sessionState, Exception e) {
         if (session != null && session.isOpened()) {
-            Log.i("Script", "Dentro");
+            // Está logueado
         } else {
-            Log.i("Script", "Fuera");
-            config.set("isLogin", "false");
-            config.set("fbID", "");
-            config.set("Nombre", "unknown");
-            config.set("CampoDeAccion", "0");
-            config.set("Puntos", "0");
-            config.set("isCompleteProfile", "false");
-
+            config.clear();
             Intent intent = new Intent(Logout.this, LoginStep1.class);
             startActivity(intent);
         }

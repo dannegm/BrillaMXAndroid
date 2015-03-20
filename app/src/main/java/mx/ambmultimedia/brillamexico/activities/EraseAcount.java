@@ -60,12 +60,7 @@ public class EraseAcount extends ActionBarActivity {
                 client.post(hostname + "/user/delete/" + fbID, null, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        config.set("isLogin", "false");
-                        config.set("fbID", "");
-                        config.set("Nombre", "unknown");
-                        config.set("CampoDeAccion", "0");
-                        config.set("Puntos", "0");
-
+                        config.clear();
                         Intent intent = new Intent(EraseAcount.this, LoginStep1.class);
                         startActivity(intent);
                     }

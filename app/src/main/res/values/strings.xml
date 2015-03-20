@@ -200,5 +200,6 @@
     <string name="title_activity_selfies">#Selfies</string>
     <string name="title_activity_alternative_camera">AlternativeCamera</string>
     <string name="title_activity_video_bmx">VideoBMX</string>
+    <string name="title_activity_login_test">LoginTest</string>
 
 </resources>

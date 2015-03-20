@@ -6,11 +6,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +32,7 @@ import mx.ambmultimedia.brillamexico.adapters.ListLogros;
 import mx.ambmultimedia.brillamexico.customViews.ExtendableGridView;
 import mx.ambmultimedia.brillamexico.fragments.NavDrawerFrag;
 import mx.ambmultimedia.brillamexico.utils.Config;
+import mx.ambmultimedia.brillamexico.utils.DrawerUtils;
 
 
 public class UserProfile extends ActionBarActivity {
@@ -39,6 +40,8 @@ public class UserProfile extends ActionBarActivity {
     Config config;
 
     PullRefreshLayout refreshLayout;
+    DrawerLayout drawer_layout;
+    NavDrawerFrag navDrawerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +60,13 @@ public class UserProfile extends ActionBarActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-            NavDrawerFrag navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
-            DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
+            drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
             navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
-            DrawableEvents();
+            DrawerUtils drawerutils = new DrawerUtils(this, this);
+            drawerutils.Navigation(drawer_layout);
+
             GeneralEvents();
             BuildProfile(false);
             GetSelfies();
@@ -212,85 +217,11 @@ public class UserProfile extends ActionBarActivity {
         });
     }
 
-    public void DrawableEvents () {
-        // My Perfil
-        LinearLayout toMyProfile = (LinearLayout) findViewById(R.id.dw_myprofile);
-        toMyProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Actividad
-        LinearLayout toActivity = (LinearLayout) findViewById(R.id.dw_activity);
-        toActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, Actividad.class);
-                startActivity(intent);
-            }
-        });
-
-        // Noticias
-        LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
-        toNoticias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, Noticias.class);
-                startActivity(intent);
-            }
-        });
-
-        // Emprendedores
-        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
-        toEmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, Emprendedores.class);
-                startActivity(intent);
-            }
-        });
-
-        // Otros
-
-        // Bases
-        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
-        toBases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, Bases.class);
-                startActivity(intent);
-            }
-        });
-
-        // Privacidad
-        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
-        toPrivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, Privacy.class);
-                startActivity(intent);
-            }
-        });
-
-        // Salir
-        LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
-        toSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserProfile.this, Logout.class);
-                startActivity(intent);
-            }
-        });
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_user_profile, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -308,9 +239,13 @@ public class UserProfile extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        if (drawer_layout.isDrawerOpen(Gravity.LEFT)) {
+            drawer_layout.closeDrawer(Gravity.LEFT);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 }

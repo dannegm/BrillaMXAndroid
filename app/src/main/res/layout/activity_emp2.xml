@@ -90,14 +90,31 @@
                     android:textSize="16sp"
                     android:textColor="@color/c_text_dark" />
 
-                <WebView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/videoYoutube"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/bmx_purpleDark">
+
+                    <VideoView
+                        android:id="@+id/videoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+                    <com.getbase.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/playVideo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+
+                        fab:fab_icon="@drawable/ic_play"
+                        fab:fab_colorNormal="@color/c_btn_enable"
+                        fab:fab_colorPressed="@color/c_btn_enable" />
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"

@@ -1,18 +1,16 @@
 package mx.ambmultimedia.brillamexico.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -25,11 +23,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import mx.ambmultimedia.brillamexico.utils.Config;
 import mx.ambmultimedia.brillamexico.fragments.NavDrawerFrag;
 import mx.ambmultimedia.brillamexico.R;
+import mx.ambmultimedia.brillamexico.utils.DrawerUtils;
 
 
 public class Bases extends ActionBarActivity {
     Context ctx;
     Config config;
+
+    NavDrawerFrag navDrawerFragment;
+    DrawerLayout drawer_layout;
 
     VideoView video;
 
@@ -44,11 +46,13 @@ public class Bases extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        NavDrawerFrag navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
-        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
+        navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
+        drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
         navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
-        DrawableEvents();
+        DrawerUtils drawerutils = new DrawerUtils(this, this);
+        drawerutils.Navigation(drawer_layout);
+
         BuildProfile();
 
         String uriPath = "android.resource://mx.ambmultimedia.brillamexico/raw/bmx_video";
@@ -57,10 +61,8 @@ public class Bases extends ActionBarActivity {
         video = (VideoView) findViewById(R.id.videoView);
         video.setVideoURI(uri);
 
-        View mediaControllerView = findViewById(R.id.mediaController);
-
         MediaController mediaController = new MediaController(this);
-        mediaController.setAnchorView(mediaControllerView);
+        mediaController.setAnchorView(video);
 
         final FloatingActionButton playVideo = (FloatingActionButton) findViewById(R.id.playVideo);
         playVideo.setOnClickListener(new View.OnClickListener() {
@@ -109,9 +111,13 @@ public class Bases extends ActionBarActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
+    public void onBackPressed () {
+        if (drawer_layout.isDrawerOpen(Gravity.LEFT)){
+            drawer_layout.closeDrawer(Gravity.LEFT);
+        } else {
+            super.onBackPressed();
+            this.finish();
+        }
     }
 
     public void BuildProfile () {
@@ -134,78 +140,5 @@ public class Bases extends ActionBarActivity {
                 .load(miniAvatarUrl)
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
                 .into(ImgDrawerAvatar);
-    }
-
-    public void DrawableEvents () {
-        // My Perfil
-        LinearLayout toMyProfile = (LinearLayout) findViewById(R.id.dw_myprofile);
-        toMyProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Bases.this, UserProfile.class);
-                startActivity(intent);
-            }
-        });
-
-        // Actividad
-        LinearLayout toActivity = (LinearLayout) findViewById(R.id.dw_activity);
-        toActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Bases.this, Actividad.class);
-                startActivity(intent);
-            }
-        });
-
-        // Noticias
-        LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
-        toNoticias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Bases.this, Noticias.class);
-                startActivity(intent);
-            }
-        });
-
-        // Emprendedores
-        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
-        toEmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Bases.this, Emprendedores.class);
-                startActivity(intent);
-            }
-        });
-
-        // Otros
-
-        // Bases
-        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
-        toBases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Privacidad
-        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
-        toPrivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Bases.this, Privacy.class);
-                startActivity(intent);
-            }
-        });
-
-        // Salir
-        LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
-        toSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Bases.this, Logout.class);
-                startActivity(intent);
-            }
-        });
     }
 }

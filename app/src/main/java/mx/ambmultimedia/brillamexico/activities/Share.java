@@ -1,5 +1,6 @@
 package mx.ambmultimedia.brillamexico.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -37,6 +38,7 @@ import mx.ambmultimedia.brillamexico.utils.Config;
 
 public class Share extends ActionBarActivity {
     private Context ctx;
+    private Activity atx;
     private Config config;
 
     int CampoDeAccion;
@@ -55,6 +57,7 @@ public class Share extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
         ctx = this;
+        atx = this;
         config = new Config(ctx);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -125,17 +128,20 @@ public class Share extends ActionBarActivity {
                                 intent.putExtra("LogroID", "3");
                                 config.set("Refer", "ShareActivity");
                                 startActivity(intent);
+                                atx.finish();
                             } else if (nselfies == 10) {
                                 Intent intent = new Intent(Share.this, Logro.class);
                                 intent.putExtra("Reference", "Selfie");
                                 intent.putExtra("LogroID", "4");
                                 config.set("Refer", "ShareActivity");
                                 startActivity(intent);
+                                atx.finish();
                             } else {
                                 Intent intent = new Intent(Share.this, Selfie.class);
                                 intent.putExtra("selfieID", selfieID);
                                 config.set("Refer", "ShareActivity");
                                 startActivity(intent);
+                                atx.finish();
                             }
                         } catch (JSONException e) {}
                     }

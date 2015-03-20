@@ -1,6 +1,5 @@
 package mx.ambmultimedia.brillamexico.activities;
 
-import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -10,10 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.view.Gravity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -28,11 +25,15 @@ import mx.ambmultimedia.brillamexico.R;
 import mx.ambmultimedia.brillamexico.fragments.Selfies;
 import mx.ambmultimedia.brillamexico.customViews.SlidingTabLayout;
 import mx.ambmultimedia.brillamexico.fragments.TopUsers;
+import mx.ambmultimedia.brillamexico.utils.DrawerUtils;
 
 
 public class Actividad extends ActionBarActivity {
     Context ctx;
     Config config;
+
+    NavDrawerFrag navDrawerFragment;
+    DrawerLayout drawer_layout;
 
     ViewPager activityPager;
     SlidingTabLayout activityTabs;
@@ -48,12 +49,14 @@ public class Actividad extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        NavDrawerFrag navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
-        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
+        navDrawerFragment = (NavDrawerFrag) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
+        drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout2);
         navDrawerFragment.setUp(R.id.navDrawer, drawer_layout, toolbar);
 
+        DrawerUtils drawerutils = new DrawerUtils(this, this);
+        drawerutils.Navigation(drawer_layout);
+
         BuildProfile();
-        DrawableEvents();
 
         activityPager = (ViewPager) findViewById(R.id.activityPager);
         activityPager.setAdapter(new ActividadPagerApadter(ctx, getSupportFragmentManager()));
@@ -62,6 +65,15 @@ public class Actividad extends ActionBarActivity {
         activityTabs.setViewPager(activityPager);
         activityTabs.setSelectedIndicatorColors(R.color.bmx_purple);
 
+    }
+
+    @Override
+    public void onBackPressed () {
+        if (drawer_layout.isDrawerOpen(Gravity.LEFT)){
+            drawer_layout.closeDrawer(Gravity.LEFT);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     public void BuildProfile () {
@@ -84,79 +96,6 @@ public class Actividad extends ActionBarActivity {
                 .load(miniAvatarUrl)
                 .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
                 .into(ImgDrawerAvatar);
-    }
-
-    public void DrawableEvents () {
-        // My Perfil
-        LinearLayout toMyProfile = (LinearLayout) findViewById(R.id.dw_myprofile);
-        toMyProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Actividad.this, UserProfile.class);
-                startActivity(intent);
-            }
-        });
-
-        // Actividad
-        LinearLayout toActivity = (LinearLayout) findViewById(R.id.dw_activity);
-        toActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ctx, "Ya estás aquí", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Noticias
-        LinearLayout toNoticias = (LinearLayout) findViewById(R.id.dw_news);
-        toNoticias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Actividad.this, Noticias.class);
-                startActivity(intent);
-            }
-        });
-
-        // Emprendedores
-        LinearLayout toEmp = (LinearLayout) findViewById(R.id.dw_emp);
-        toEmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Actividad.this, Emprendedores.class);
-                startActivity(intent);
-            }
-        });
-
-        // Otros
-
-        // Bases
-        LinearLayout toBases = (LinearLayout) findViewById(R.id.dw_bases);
-        toBases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Actividad.this, Bases.class);
-                startActivity(intent);
-            }
-        });
-
-        // Privacidad
-        LinearLayout toPrivacy = (LinearLayout) findViewById(R.id.dw_privacy);
-        toPrivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Actividad.this, Privacy.class);
-                startActivity(intent);
-            }
-        });
-
-        // Salir
-        LinearLayout toSalir = (LinearLayout) findViewById(R.id.dw_salir);
-        toSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Actividad.this, Logout.class);
-                startActivity(intent);
-            }
-        });
     }
 
     class ActividadPagerApadter extends FragmentPagerAdapter {

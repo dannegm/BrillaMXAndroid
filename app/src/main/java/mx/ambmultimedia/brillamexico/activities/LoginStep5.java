@@ -207,8 +207,7 @@ public class LoginStep5 extends FragmentActivity {
                 }
             }).executeAsync();
         } else {
-            config.set("isLogin", "false");
-            config.set("fbID", "");
+            config.clear();
         }
     }
 }
