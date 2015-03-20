@@ -23,8 +23,8 @@ android {
         applicationId "mx.ambmultimedia.brillamexico"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 12
-        versionName "1.1.12"
+        versionCode 13
+        versionName "1.2.13"
     }
     buildTypes {
         release {
@@ -76,5 +76,8 @@ dependencies {
 
     // Dots Pagination
     compile 'me.relex:circleindicator:1.1.2@aar'
+
+    // Text Justify
+    compile 'com.github.bluejamesbond:textjustify-android:2.1.0'
 
 }

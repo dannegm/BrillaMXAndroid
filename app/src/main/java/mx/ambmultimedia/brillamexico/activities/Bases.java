@@ -7,12 +7,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.bluejamesbond.text.DocumentView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
@@ -90,6 +93,42 @@ public class Bases extends ActionBarActivity {
                 playVideo.setVisibility(View.VISIBLE);
             }
         });
+
+        /**
+         * Formateado de texto
+         */
+
+        DocumentView documentView = (DocumentView) findViewById(R.id.largeText);
+        String htmlText = String.valueOf(
+                documentView.getText());
+
+        htmlText = htmlText
+                .replaceAll("¬", "<br><br>")
+                .replaceAll("\\^", "<br>")
+
+                .replaceAll("\\[nota\\]", "<font color=\"#797979\"><i>")
+                .replaceAll("\\[\\/nota\\]", "</i></font>")
+
+                .replaceAll("\\[\\{", "<font color=\"#490256\">")
+                .replaceAll("\\}\\]", "</font>")
+
+                .replaceAll("\\[", "<font color=\"#5b026b\"><b>")
+                .replaceAll("\\]", ")</b></font>")
+
+                .replaceAll("#####", "<h4><font color=\"#595959\">")
+                .replaceAll("#/###", "</font></h4>")
+
+                .replaceAll("####", "<h4>")
+                .replaceAll("#/##", "</h4>")
+
+                .replaceAll("###", "<h3><font color=\"#d32393\">")
+                .replaceAll("#/#", "</font></h3>")
+
+                .replaceAll("<li>", "<font color=\"#5b026b\">● </font>")
+                .replaceAll("</li>", "<br><br>");
+
+        Spanned htmlSpan = Html.fromHtml(htmlText);
+        documentView.setText(htmlSpan);
     }
 
     @Override

@@ -112,7 +112,7 @@
                         android:layout_centerVertical="true"
 
                         fab:fab_icon="@drawable/ic_play"
-                        fab:fab_colorNormal="@color/c_btn_enable"
+                        fab:fab_colorNormal="#cc181e"
                         fab:fab_colorPressed="@color/c_btn_enable" />
                 </RelativeLayout>
 

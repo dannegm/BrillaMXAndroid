@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:ext="http://schemas.android.com/apk/res-auto"
     tools:context="mx.ambmultimedia.brillamexico.activities.Bases"
 
     android:id="@+id/drawer_layout2"
@@ -32,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/bmx_purpleDark">
+                    android:background="@color/g_black">
 
                     <VideoView
                         android:id="@+id/videoView"
@@ -57,14 +58,14 @@
                         android:layout_centerVertical="true"
 
                         fab:fab_icon="@drawable/ic_play"
-                        fab:fab_colorNormal="@color/c_btn_enable"
+                        fab:fab_colorNormal="#cc181e"
                         fab:fab_colorPressed="@color/c_btn_enable" />
                 </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Concurso #MiSelfieBrilla"
+                    android:text="MI SELFIE BRILLA"
                     android:id="@+id/textView14"
                     android:layout_gravity="center_horizontal"
                     android:padding="16dp"
@@ -74,15 +75,19 @@
 
                 <View style="@style/Divider"/>
 
-                <TextView
+                <com.bluejamesbond.text.DocumentView
+                    android:id="@+id/largeText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="This is Photoshop&apos;s version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim."
-                    android:id="@+id/textView17"
-                    android:layout_gravity="center_horizontal"
                     android:layout_margin="16dp"
-                    android:textColor="@color/c_text_dark"
-                    android:textSize="14sp" />
+                    ext:documentView_antialias="true"
+                    ext:documentView_lineHeightMultiplier="2.0"
+                    ext:documentView_text="@string/large_text_bases"
+                    ext:documentView_textAlignment="justified"
+                    ext:documentView_textColor="@color/c_text_dark"
+                    ext:documentView_textFormat="formatted"
+                    ext:documentView_textSize="14sp"
+                    ext:documentView_textSubPixel="true" />
 
 
             </LinearLayout>

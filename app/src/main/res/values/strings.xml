@@ -202,4 +202,353 @@
     <string name="title_activity_video_bmx">VideoBMX</string>
     <string name="title_activity_login_test">LoginTest</string>
 
+    <!-- Privacidad -->
+    <string name="large_text_privacy">
+    <![CDATA[
+        El Consejo Nacional de Industriales Ecologistas, A.C. (CONIECO), con domicilio en
+        Gabriel Mancera No. 1141, Colonia Del Valle, Delegación Benito Juárez, C.P. 03100 México,
+        D.F., es responsable de recabar sus datos personales, del uso que se le dé a los mismos y de
+        la protección de los mismos. Su información personal será utilizada para darle a conocer
+        información referente a bienestar social en diversas áreas, como educación, salud, defensa
+        de derechos, ya sean humanos, ambientales u otros, capacitación y desarrollo comunitarios,
+        sólo por mencionar algunos temas resueltos de manera exitosa por la sociedad civil
+        organizada.
+        <br><br>
+        Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted
+        puede acceder al aviso de privacidad completo a través de:
+    ]]>
+    </string>
+
+    <!-- Bases -->
+    <string name="large_text_bases">
+    <![CDATA[
+        ###TÉRMINOS Y CONDICIONES#/#
+
+        La presente dinámica denominada <i>“MI SELFIE BRILLA”</i>, se regirá por las siguientes bases,
+        términos y condiciones, lo cual implica la lectura total y por ende el conocimiento y
+        entendimiento con la consecuente aceptación de las presentes bases de participación (en
+        adelante, las “Bases”) y de los requisitos y condiciones establecidos por el organizador para
+        formar parte de la misma.
+        ¬
+        ###ORGANIZADOR#/#
+
+        Brilla México es un movimiento ciudadano impulsado por distintas asociaciones, emprendedores,
+        expertos y actores del sector público comprometidos con impulsar el uso responsable de la
+        energía. La dinámica es organizada por <b>BRILLA MÉXICO</b> y presentada por
+        <b>AMB Multimedia</b>.
+
+        A través de este movimiento se pretende proporcionar información a la población sobre los
+        beneficios que presenta la eficiencia energética para el desarrollo nacional, la generación
+        de empleos, la conservación y mejora del medio ambiente y oportunidades profesionales.
+        ¬
+        <b>BRILLA MÉXICO</b> invita a la sociedad mexicana a adquirir compromisos firmes encaminados
+        a hacer un uso eficiente de la energía y recursos naturales a favor de las futuras generaciones.
+        ¬
+        ###DINÁMICA#/#
+
+        Los interesados en participar en la dinámica “Mi Selfie Brilla”, deberán sujetarse y tomar en
+        cuenta la siguiente información para formar parte de la dinámica:
+        ¬
+        ####PERIODO DE REGISTRO#/##
+        #####INSTRUCCIONES#/###
+
+        <li>Descarga la Aplicación BRILLA MÉXICO desde GooglePlay o Apple Store, regístrate con tu
+            cuenta de Facebook, captura tu imagen “Selfie” con un compromiso, súbela a la aplicación
+            y compártela en tus redes sociales usando el hashtag #MiSelfieBrilla y mencionando a
+            @BrillaMexico.”</li>
+
+        <li>PERIODO DE REGISTRO empieza el 25 de marzo del 2015 para los dispositivos Android y el
+            10 de abril del 2015 para dispositivos iOS, cierra el día 26 de mayo  del 2015.</li>
+
+        <li>Los interesados deberán registrarse en la Aplicación Móvil disponible para sistemas
+            Android y iOS mediante su cuenta (perfil) de Facebook.</li>
+
+        <li>Los usuarios que quieren participar en el concurso deberá pulsar el botón de “Registrarse”,
+            que les llevará al formulario de registro, en donde se le pedirá que introduzcan sus
+            datos personales. Posteriormente se seleccionará su categoría (Joven/Adulto, Emprendedor
+            o Empresa) y Nombre para el perfil dentro de la App.</li>
+
+        <li>Una vez seleccionada su categoría, ésta no podrá ser cambiada.</li>
+
+        <li>Además, en esta pantalla el usuario tiene la opción de ingresar a la aplicación con una
+            cuenta creada en el sistema anteriormente. </li>
+
+        <li>Todos los campos del formulario son obligatorios. Cuando el usuario los completa, accederá
+            a la pantalla de “Regístrate con Facebook”.</li>
+
+        <li>Una vez llenado el formulario de registro en Facebook, el usuario deberá hacer clic en el
+            botón “Continuar” para finalizar así su registro al concurso y abrir la cámara para tomar
+            la primera “selfie”, la cual funcionará como un primer contenido generado dentro de la
+            aplicación y podrá comenzar a participar en el concurso.</li>
+        ¬
+        ####PERIODO DE  ACUMULACION DE PUNTOS#/##
+        <li>El periodo de acumulación de puntos vía interacción social y viralización (shares, likes,
+            retweets, favs)  empieza el 25 de marzo del 2015 para los dispositivos Android y el 10
+            de abril del 2015 para dispositivos iOS, cierra el día 26 de mayo del 2015 a las 12:00 pm
+            (CDT). La aplicación no recibirá acumulación de puntos vía interacción social y
+            viralización (shares, likes, retweets, favs) después del cierre de este periodo.</li>
+
+        <li>El usuario registrado podrá participar subiendo fotografías “selfies” a la aplicación,
+            de acuerdo a la categoría seleccionada en el REGISTRO, cada categoría tiene un número
+            determinado de compromisos con los cuales se podrá tomar, subir  y publicar una selfie.
+            Los participantes del concurso competirán solo y únicamente con los participantes de la
+            misma categoría.</li>
+
+        <li>La categoría  “Jovenes y Adultos” tiene un total de 14 compromisos disponibles, la
+            categoría “Emprendedores” tiene un total de 4 compromisos disponibles, la categoría
+            “Empresas” tiene un total de 9 compromisos disponibles.</li>
+
+        <li>Los usuarios registrados podrán subir solamente una fotografía por cada compromiso.</li>
+
+        <li>Cada fotografía será enmarcada automáticamente por la aplicación con un gráfico
+            relacionado con el compromiso elegido y se colocará el hashtag #MiSelfieBrilla.</li>
+
+        <li>Las fotos deberán incluir: nombre del participante, el compromiso elegido, el hashtag
+            oficial de la   dinámica. En la composición gráfica deberá verse claramente una manera
+            creativa de tomarse una selfie relacionada con su compromiso. </li>
+
+        <li>Cada fotografía nueva tendrá un valor de 10 puntos.</li>
+
+        <li>Para poder acumular puntos dentro del concurso  el usuario deberá compartir su fotografía
+            en las redes sociales Facebook y Twitter. El número de likes y shares dentro de Facebook,
+            así como la cantidad de Retweets y Favoritos serán contabilizados para la generación de
+            puntos.</li>
+
+        <li>El valor definido es el siguiente:</li>
+            [a] Like (FB): 10 puntos^
+            [b] Share (FB): 20 puntos^
+            [c] Fav (TW): 10 puntos^
+            [d] Retweet (TW): 20 puntos
+        ¬
+        <li>Además de la acumulación de puntos vía interacción social y viralización (shares, likes,
+            retweets, favs) la aplicación cuenta con un sistema de “logros” los cuales tienen diferentes
+            valores y pueden ser obtenidos a través de acciones dentro del uso de la aplicación. Estos
+            son los siguientes:</li>
+            [a] Registro en la App: 50 puntos (Logro: “Nuevo usuario”)^
+            [b] Completar perfil (agregar descripción o biografía): 50 puntos (Logro “Perfil al 100%”)^
+            [c] 4 compromisos/fotos: 50 puntos (Logro “Don compromisos”)^
+            [d] 10 compromisos: 100 puntos (Logro “Super comprometido”)^
+            [e] Enlazar twitter: 50 puntos (Logro “Amor por twitter”)^
+            [f] Compartir 10 noticias: 100 puntos (Logro “Viralizador”)
+        ¬
+        <li>Todas las imágenes capturadas de los interesados que han participado en el concurso se
+            publican en el feed de la aplicación y pueden ser visualizadas por otros usuarios.</li>
+
+        <li>Cada usuario que ingrese a la publicación de la foto y emita su  (like, share, fav o
+            retweet) podrá hacerlo por más de una imagen, no obstante solo podrá emitir like, share,
+            fav o retweet en una ocasión por cada una de las imágenes seleccionadas.</li>
+
+        <li>Es MUY IMPORTANTE tomar en cuenta que los comentarios, likes, generados en Facebook, pero
+            que no estén directamente relacionados a la publicación original de la foto (landing page
+            de la “selfie”) NO cuentan como votos ni tampoco se considerarán válidos para el resultado
+            del concurso.</li>
+
+        <li>Los resultados se publicarán el 02 de junio de 2015 a las 11:00 hrs (CDT) en la cuenta y
+            página oficial de [{https://www.facebook.com/BrillaMexico}] y [{http://www.BrillaMexico.org}]</li>
+
+        ####PERIODO DE CIERRE#/###
+        <li>Al finalizar la etapa del periodo de  aculación de puntos (26 de mayo del 2015), se
+            determinará un ganador por cada categoría (Joven/Adulto, Emprendedor o Empresa) con el
+            mayor número de puntos.</li>
+
+        <li>Si existe un empate en número de puntos se pondrán a competir esos dos perfiles únicamente
+            en la plataforma por un periodo adicional de 24 horas para elegir al ganador. Para el
+            desempate no podrán dar share, like, retweet y fav los usuarios quienes de manera previa
+            lo hayan hecho.</li>
+
+        ####PERIODO DE PUBLICACIÓN DE GANADOR#/###
+
+        Los perfiles ganadores junto con el nombre completo con que participaron en el concurso
+        se publicaran en la cuenta y página oficial de https://www.facebook.com/BrillaMexico y
+        [{http://www.BrillaMexico.org}] el día martes 02 de junio del 2015 a las 11:00 hrs (CDT).
+        ¬
+        <li>El ganador tiene 72 horas para comunicarse a partir del anuncio del ganador y mandar un
+            mensaje con sus datos, copia de identificación oficial vigente (pasaporte y/o IFE), a
+            través de un inbox en Facebook. Al término de las 72 horas indicadas para recibir la
+            comunicación del ganador, y si éste no contactó de manera fehaciente a la
+            [{https://www.facebook.com/BrillaMexico}] para reclamar el premio, se dará al segundo
+            lugar, comenzando la misma dinámica de notificación.</li>
+
+        <li>Al concluir el plazo de 72 horas sin que ni el primero ni el segundo lugar reclamen el
+            premio, se dará por cerrada la dinámica y Brilla México  dispondrá del mismo para uso
+            interno.</li>
+
+        ###AVISO DE PRIVACIDAD#/#
+
+        El aviso de privacidad podrá ser consultado en la página:^
+        [{http://www.brillamexico.org/aviso-de-privacidad/}]
+        ¬
+        [nota]Los participantes están de acuerdo en que dicho aviso podrá cambiar de tiempo en tiempo
+        por lo que deberán revisarlo de manera constante. Cualquier variación a dicho Aviso de
+        Privacidad queda aceptada desde este momento por los participantes.[/nota]
+        ¬
+        ###TEMPORALIDAD DE DINÁMICA#/#
+
+        El periodo de la dinámica será de 63 días para Android^
+        El periodo de la dinámica será de 47 días para iOS^
+        PERIODO DE REGISTRO Y DINÁMICA,  empieza el <b>25 de marzo del 2015</b>, para los dispositivos
+        Android y el <b>10 de abril del 2015</b> para dispositivos iOS, cierra el día <b>26 de mayo del 2015</b>.
+        ¬
+        ###COBERTURA GEOGRÁFICA DE PARTICIPACIÓ#/#
+
+        Solo podrán participar habitantes y residentes de la República Mexicana, ser mayores de 18 años,
+        contar con identificación oficial vigente (pasaporte y/o IFE). Brilla México será responsable
+        de los gastos de envío del premio que haya obtenido a través de los términos y condiciones
+        del concurso. Para poder realizar este.
+        ¬
+        ###PREMIO#/#
+        <li>El premio consiste en las siguientes caterorias:</li>
+
+        <li>Joven/Adulto : iPad Mini 3 de 16 Gb  (Color plateado ) Marca apple</li>
+
+        <li>Emprendedor: iPad Mini 3 de 16 Gb  (Color Dorado ) Marca apple</li>
+
+        <li>Empresa: iPad Mini 3 de 16 Gb  ( Color Gris espacial ) Marca apple</li>
+
+        <li>Para poder obtener el PREMIO, el participante deberá de ser mayor de edad, contar con
+            identificación oficial vigente (IFE y/o pasaporte mexicano, cédula, o cualquier otra
+            identificación OFICIAL). De no contar con la documentación que acredite su personalidad,
+            se elegirá al segundo lugar como ganador que cumpla con este punto. Si no lo cumpliera el
+            primero ni el segundo lugar en su caso, se cerraría la dinámica y BRILLA MÉXICO podrá
+            hacer uso del premio para usos internos.</li>
+
+        <li>Después de ser notificados, la única vía de comunicación con los ganadores será a través
+            de la fan page oficial de Facebook. No habrá representantes o intermediarios ajenos a la
+            cuenta oficial [{https://www.facebook.com/BrillaMexico}]</li>
+
+        <li>En caso de no recibir respuesta durante un periodo de 72 horas, el premio se asignará al
+            concursante que haya quedado en segundo lugar en la dinámica, y en caso de no tener
+            respuesta de este último, BRILLA MÉXICO y los organizadores de ésta dinámica podrán
+            determinar de manera unilateral la forma en la que dispondrán del PREMIO de la presente
+            dinámica.</li>
+
+        <li>El premio no es transferible ni negociable.</li>
+
+        <li>El ganador, previamente contactado por el organizador, se le proporcionará el número de
+            guía del premio, el cual será enviado a través de un servicio de paquetería, para estar
+            al pendiente del status de su entrega. Para recibir el premio deberá presentar una
+            identificación OFICIAL VIGENTE y firmar el recibo de conformidad para tener derecho al
+            premio.</li>
+
+        <li>Los premios no son canjeables por dinero en efectivo.</li>
+
+        <li>Todos los gastos de transportación y flete del premio indicado en estas bases, serán
+            cubiertos por BRILLA MÉXICO.</li>
+
+        <li>El ganador, a partir de la notificación, tendrá un plazo de 72 horas para contactar al
+            organizador y proporcionar los datos necesarios para que el organizador pueda enviar el
+            premio antes mencionado en las Bases, en caso contrario se considerará como abandonado y
+            BRILLA MÉXICO, o los organizadores de la presente dinámica, podrán disponer del premio
+            sin responsabilidad alguna.</li>
+
+        ###CONDICIONES DE PARTICIPACIÓN#/#
+        <li>Podrán participar únicamente habitantes y residentes en la República Mexicana mayores de
+            18 años. El material (imágenes) es original y de autoría propia, y los participantes
+            concedena BRILLA MÉXICO una autorización y su consentimiento que en este acto manifiestan
+            expresamente es irrevocable y gratuito, para el uso de su retrato e imagen (y el de
+            cualquier otra persona que aparezca en las fotografías, cuyo consentimiento y autorización
+            será responsabilidad del participante), así como del contenido que se suba a través de la
+            aplicación, para fines comerciales o no comerciales, en cualquier medio conocido o por
+            conocerse, y en cualquier territorio.</li>
+
+        <li>Es necesario que, en caso de que algún participante sea contactado, proporcione sus datos
+            completos, compruebe ser el titular de la imagen y cumpla con las especificaciones de la
+            dinámica, de lo contrario, será descalificado automáticamente.</li>
+
+        ###CONDICIONES DE LA DINÁMICA#/#
+
+        Al participar en esta dinámica, automáticamente el participante acepta los términos y
+        condiciones que apliquen, dentro de los que se requiere que el participante otorgue una
+        licencia mundial, exclusiva, ilimitada, irrevocable, permanente y sin ninguna otra retribución
+        que los premios de la presente dinámica, para usar, reproducir, almacenar, adaptar, cambiar
+        el formato, distribuir, mostrar, publicar, exhibir, transmitir, sublicenciar, y realizar obras
+        derivadas del contenido transferido por los usuarios en cualquier forma.
+        ¬
+        Salvo que el participante exprese lo contrario de manera fehaciente, otorga con la sola
+        participación su autorización a efecto de que se utilice su nombre para que acompañe su
+        material. El participante acepta que firmará cualquier documento que formalice la licencia
+        otorgada. Por lo anterior, desde este momento el participante acepta y permite al organizador
+        el uso de sus datos personales para los fines que se establecen en esta dinámica.
+        ¬
+        Las imágenes de los participantes serán propiedad de BRILLA MÉXICO y estos manifiestan su
+        conformidad al participar en esta dinámica, por lo que las fotografías que participen en la
+        dinámica podrán ser utilizadas para cualquier tipo de contenido generado por BRILLA MÉXICO
+        con el respectivo reconocimiento moral al autor, conforme a la licencia y los términos y
+        condiciones y si ninguna retribución adicional a los participantes.
+        ¬
+        BRILLA México se reserva el derecho de hacer modificaciones, sin previo aviso, las cuales
+        estarán disponibles en la página [{http://www.brillamexico.org}].
+        ¬
+        BRILLA MÉXICO promueve la competencia sana y rechaza los ataques relacionados o no a la
+        dinámica, por lo que se reserva el derecho de descalificar a los participantes cuya actitud
+        sea considerada contraria a la moral y buenas costumbres, discriminatoria u ofensiva, así como
+        de eliminar las publicaciones o comentarios que resulten negativos, agresivos o agraviantes
+        para cualquier persona física o moral.
+        ¬
+        BRILLA MÉXICO se reserva el derecho a su sola discreción de descalificar a cualquier persona
+        que se encuentre manipulando el proceso de entrada o la operación de la dinámica que esté
+        actuando en violación a estas bases, a las leyes, reglamentos y/o Normas Oficiales Mexicanas
+        aplicables. Ninguna entrada incompleta, falsificada, material que infrinja derechos de autor,
+        software generado u otras entradas múltiples serán aceptados.
+        ¬
+        Ni BRILLA MÉXICO ni AMB Multimedia son responsables, y los participantes, por medio de estos
+        términos y condiciones, liberan y se comprometen a sacar en paz y a salvo al equipo organizador
+        de la presente dinámica y a BRILLA MÉXICO en contra de cualquier demanda, acción, reclamación,
+        denuncia o daños que surjan de:
+        ¬
+        <li>Fallas técnicas de cualquier clase (computadoras, celulares, cables, red, hardware o
+            software).</li>
+        <li>La indisponibilidad o inaccesibilidad de cualquier servicio de Internet.</li>
+        <li>La intervención humana no autorizada en cualquier parte del proceso del concurso.</li>
+        <li>La violación de derechos de marcas, diseños, derechos de autor, derechos sobre la imagen
+            personal, o cualquier otro derecho de Propiedad Intelectual o Industrial.</li>
+        <li>La violación de leyes que restringen el uso de fachadas o interior de inmuebles públicos
+            o privados.</li>
+        <li>Cualquier otra no prevista en los presentes términos y condiciones y que no sean
+            responsabilidad del organizador BRILLA MÉXICO</li>
+
+        ###CONDICIONES DE FACEBOOK Y TWITTER#/#
+
+        <li>Se utilizarán distintos canales de redes sociales para promocionar la dinámica, así que
+            el registro de las imágenes en la aplicación de la dinámica BRILLA MÉXICO en Facebook
+            implica una autorización expresa, gratuita e irrevocable para reproducirla, publicarla y
+            editarla en cualquier medio y formato conocido y por conocerse (recibiendo su
+            correspondiente reconocimiento moral), durante la vigencia máxima que la ley en materia
+            otorga y en el territorio que determine BRILLA MÉXICO</li>
+
+        <li>BRILLA MÉXICO es libre de cambiar, cancelar o modificar las reglas  de la presente dinámica
+            si así lo desea en cualquiera de sus términos, lo cual podrá ser verificado en la página
+            por lo que es responsabilidad de los participantes el revisar y acceder de manera constante
+            a la página indicada.</li>
+
+        <li>El participante acepta y reconoce que, en caso de existir alguna controversia en materia
+            de propiedad intelectual ante un tercero, será el único responsable respecto a los daños
+            y perjuicios que pudiera generar dicha controversia, sacando en paz y a salvo a BRILLA
+            MÉXICO de cualquier responsabilidad que pudiera ocasionarle.</li>
+
+        <li>El participante es completamente responsable de corroborar que su material esté disponible
+            en la aplicación para recibir el share, like, retweet y fav del público. BRILLA MÉXICO no
+            se hace responsable por fallas técnicas de cualquier origen.</li>
+
+        <li>Es responsabilidad de cada participante asegurarse de que la publicación de su imagen no
+            genere reclamo legal de ningún tipo; de lo contrario, el participante responderá por
+            cualquier gasto y costo de abogados que se genere por algún tercero que reclame un mejor
+            derecho sobre la imagen.</li>
+
+        <li>El participante acepta que la difusión de su imagen no generará contraprestación ni
+            regalía alguna Al ser publicada su imagen en la plataforma de BRILLA MÉXICO el
+            participante acepta cada uno de los términos y condiciones aquí expuestas.</li>
+
+        <li>No podrán participar en la dinámica proveedores  de BRILLA MÉXICO.</li>
+
+        <li>Cualquier punto no considerado en la presente dinámica será resuelto por los
+            organizadores, no habiendo lugar para controversia alguna.</li>
+        ¬
+        <b>AUN CUANDO ESTA PROMOCIÓN SE LLEVA A CABO A TRAVÉS DE FACEBOOK, FACEBOOK NO PATROCINA, AVALA
+        NI ADMINISTRA DE MODO ALGUNO ESTA DINÁMICA NI ESTÁ ASOCIADO A ELLA. LA INFORMACIÓN PROPORCIONADA
+        SERÁ ADMINISTRADA ÚNICAMENTE POR BRILLA MÉXICO Y NO POR FACEBOOK NI TWITTER.</b>
+
+    ]]>
+    </string>
+
 </resources>

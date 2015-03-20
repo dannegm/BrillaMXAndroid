@@ -1,13 +1,19 @@
 package mx.ambmultimedia.brillamexico.activities;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
+import com.bluejamesbond.text.DocumentView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -18,6 +24,7 @@ import mx.ambmultimedia.brillamexico.R;
 import mx.ambmultimedia.brillamexico.fragments.NavDrawerFrag;
 import mx.ambmultimedia.brillamexico.utils.Config;
 import mx.ambmultimedia.brillamexico.utils.DrawerUtils;
+import mx.ambmultimedia.brillamexico.utils.URLImageParser;
 
 
 public class Privacy extends ActionBarActivity {
@@ -47,6 +54,24 @@ public class Privacy extends ActionBarActivity {
         drawerutils.Navigation(drawer_layout);
 
         BuildProfile();
+
+        // Contenido
+        DocumentView documentView = (DocumentView) findViewById(R.id.largeText);
+        String htmlText = String.valueOf(
+                documentView.getText());
+
+        Spanned htmlSpan = Html.fromHtml(htmlText);
+        documentView.setText(htmlSpan);
+
+        // Link
+        TextView toPage = (TextView) findViewById(R.id.toPage);
+        toPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.brillamexico.org"));
+                startActivity(browserIntent);
+            }
+        });
     }
 
     public void BuildProfile () {
