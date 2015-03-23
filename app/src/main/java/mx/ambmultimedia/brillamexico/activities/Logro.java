@@ -131,6 +131,7 @@ public class Logro extends ActionBarActivity {
         client.post(hostname + "/user/points/" + fbID, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                Toast.makeText(ctx, "Puntos añadidos", Toast.LENGTH_SHORT).show();
             }
 
             @Override

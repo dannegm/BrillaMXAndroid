@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -37,132 +38,196 @@ import mx.ambmultimedia.brillamexico.R;
 import mx.ambmultimedia.brillamexico.utils.Config;
 
 public class Share extends ActionBarActivity {
+    // Referencias de la actvididad actual
     private Context ctx;
     private Activity atx;
     private Config config;
 
+    // Referencias del compromiso previamente seleccionado
     int CampoDeAccion;
     int compromisoID;
     String compID = "0";
 
+    // Cache de la imagen tomada por el Intent de la cámara
     private ImageView preview;
     private Bitmap previewFoto;
 
+    // Datos auxiliares para el Intent de la cámara
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private String selectedImagePath = "";
     private String imgPath;
 
+    // Datos para el REST Api
+    private String fbID;
+    private String hostname;
+
+    // Creamos el Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
+        // Almacenamos la instancia actual
         ctx = this;
         atx = this;
+        // Generamos la configuraciones
         config = new Config(ctx);
+        // Obtenemos datos para el REST
+        fbID = config.get("fbID", "0");
+        hostname = getString(R.string.hostname);
 
+        // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // Obtenemos datos del Activity anterior
         Bundle bundle = getIntent().getExtras();
         CampoDeAccion = bundle.getInt("CampoDeAccion");
         compromisoID = bundle.getInt("compromisoID");
 
+        // Generamos el Intent de la cámara
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, setImageUri());
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-        CreateFrame();
+        // Obtenemos elementos de la interfaz
+
+        // Imagen donde se mostrará la captura
         preview = (ImageView) findViewById(R.id.imageSelfie);
 
+        // Botón que compartirá la foto
         final ActionProcessButton sendFoto = (ActionProcessButton) findViewById(R.id.sendPhoto);
+
+        // Al hacer click ...
         sendFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String fbID = config.get("fbID", "0");
-
+                // Creamos un archivo en memoria
                 File photo = new File(selectedImagePath);
+                // Obtenemos el cuadro de texto
                 EditText pieDeFoto = (EditText) findViewById(R.id.pieDeFoto);
 
+                // Mode Infinity
+                sendFoto.setMode(ActionProcessButton.Mode.ENDLESS);
+                sendFoto.setProgress(99);
+                sendFoto.setEnabled(false);
+
+                // Creamos los parámetros a enviar por POST
                 RequestParams params = new RequestParams();
-                params.put("x", "0");
-                params.put("x", "0");
-                params.put("width", "512");
-                params.put("height", "512");
-
-                params.put("engagement_id", compID);
-                params.put("description", pieDeFoto.getText().toString());
+                params.put("engagement_id", compID); // Copromiso
+                params.put("description", pieDeFoto.getText().toString() + " #MiSelfieBrilla"); // Descripción -> se agregó #MiSelfieBrila
                 try {
+                    // Agregamos binario de la foto a los parámetros
                     params.put("picture", photo);
-                } catch(FileNotFoundException e) {}
-
-                final String hostname = getString(R.string.hostname);
+                } catch(FileNotFoundException e) {
+                    // Si algo sale mal, lo mostramos en un Toast
+                    Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT);
+                }
+                // Creamos instancia del cliente HTTP
                 final AsyncHttpClient client = new AsyncHttpClient();
+                // Hacemos la petición
                 client.post(hostname + "/user/selfie/" + fbID, params, new JsonHttpResponseHandler() {
+                    // Si todo sale bien
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try {
+                            // Obtenemos el ID de la selfie nueva y ...
                             String selfieID = response.getString("id");
-
-                            RequestParams points = new RequestParams();
-                            points.put("points", "10");
-                            client.post(hostname + "/user/points/" + fbID, points, new JsonHttpResponseHandler() {
-                                @Override
-                                public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                                    Toast.makeText(ctx, "Has ganado 10 puntos", Toast.LENGTH_LONG).show();
-
-                                    String compID = "comp_" + CampoDeAccion + "_" + compromisoID;
-                                    config.set(compID, "true");
-                                }
-
-                                @Override
-                                public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
-                            });
-
-                            Integer nselfies = Integer.valueOf(config.get("NSelfies", "0")) + 1;
-                            config.set("NSelfies", nselfies.toString());
-
-                            if (nselfies == 5) {
-                                Intent intent = new Intent(Share.this, Logro.class);
-                                intent.putExtra("Reference", "Selfie");
-                                intent.putExtra("LogroID", "3");
-                                config.set("Refer", "ShareActivity");
-                                startActivity(intent);
-                                atx.finish();
-                            } else if (nselfies == 10) {
-                                Intent intent = new Intent(Share.this, Logro.class);
-                                intent.putExtra("Reference", "Selfie");
-                                intent.putExtra("LogroID", "4");
-                                config.set("Refer", "ShareActivity");
-                                startActivity(intent);
-                                atx.finish();
-                            } else {
-                                Intent intent = new Intent(Share.this, Selfie.class);
-                                intent.putExtra("selfieID", selfieID);
-                                config.set("Refer", "ShareActivity");
-                                startActivity(intent);
-                                atx.finish();
-                            }
+                            // Le damos 10 puntos al usuario
+                            addPuntos(client, 10);
+                            // Seguimos con la acplicación
+                            NextStep(selfieID);
                         } catch (JSONException e) {}
                     }
 
+                    // Si algo falla
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                        String msg = "[" + statusCode + "]" + e.getMessage();
+                        // Mostramos un mensaje de error
+                        String msg = "[" + statusCode + "] " + e.getMessage();
                         Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
                         Log.i("[Client]", msg);
-                    }
 
-                    @Override
-                    public void onProgress(int bytesWritten, int totalSize) {
-                        int progress = ((bytesWritten / totalSize) / 10) / 10;
-                        sendFoto.setProgress(progress);
+                        sendFoto.setEnabled(true);
+                        sendFoto.setProgress(0);
+                        sendFoto.setMode(ActionProcessButton.Mode.PROGRESS);
+                        sendFoto.setText("Vuelve a intentarlo");
                     }
-
                 });
             }
         });
     }
+
+    /**
+     * Método para dar puntos al usuario
+     *
+     * @param client Insntancia HTTP
+     * @param pp Puntos que se le dan
+     */
+    private void addPuntos (AsyncHttpClient client, int pp) {
+        // Generamos los parámetros POST y hacemos la petición
+        RequestParams points = new RequestParams();
+        points.put("points", pp);
+        client.post(hostname + "/user/points/" + fbID, points, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                // Mostramos notificación que se le han dado 10 puntos
+                Toast.makeText(ctx, "Has ganado 10 puntos", Toast.LENGTH_LONG).show();
+
+                // Actualizamos la caché para evitar que se vuelva a subir una selfie con el mismo compromiso
+                String compID = "comp_" + CampoDeAccion + "_" + compromisoID;
+                config.set(compID, "true");
+            }
+
+            // SI algo falla, no me interesa saberlo...
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
+        });
+    }
+
+    /**
+     * Método para continuar la navegación
+     * @param selfieID ID de la nueva selfie
+     */
+    private void NextStep (String selfieID) {
+        // Obtenemos cuantas selfies ha subido el usuario hasta ahora, le sumamos una
+        Integer nselfies = Integer.valueOf(config.get("NSelfies", "0")) + 1;
+        config.set("NSelfies", nselfies.toString());
+
+        // Si el usuario ha subido 5 selfies
+        if (nselfies == 5) {
+            // El usuario ha ganado un logro, lo mandamos a la pantalla de logros
+            Intent intent = new Intent(Share.this, Logro.class);
+            intent.putExtra("selfieID", selfieID); // Se agregó esta línea, no estaba definida y por lo tanto no regresaba la selfie al final de la pantalla de logro
+            intent.putExtra("Reference", "Selfie");
+            intent.putExtra("LogroID", "3");
+            config.set("Refer", "ShareActivity");
+            startActivity(intent);
+            atx.finish();
+        // Si el usuario ha subido 10 selfies
+        } else if (nselfies == 10) {
+            // El usuario ha ganado un logro, lo mandamos a la pantalla de logros
+            Intent intent = new Intent(Share.this, Logro.class);
+            intent.putExtra("selfieID", selfieID); // Se agregó esta línea, no estaba definida y por lo tanto no regresaba la selfie al final de la pantalla de logro
+            intent.putExtra("Reference", "Selfie");
+            intent.putExtra("LogroID", "4");
+            config.set("Refer", "ShareActivity");
+            startActivity(intent);
+            atx.finish();
+        // Si toodo continua normal
+        } else {
+            // Lo mandamos a la pantalla de la selfie que tomó
+            Intent intent = new Intent(Share.this, Selfie.class);
+            intent.putExtra("selfieID", selfieID);
+            config.set("Refer", "ShareActivity");
+            startActivity(intent);
+            atx.finish();
+        }
+    }
+
+    /**
+     * Método para crear el marco del compromiso
+     */
     private void CreateFrame () {
         Drawable frameDraw = getResources().getDrawable(R.drawable.marco_1);
 
@@ -210,6 +275,11 @@ public class Share extends ActionBarActivity {
         imageFrame.setImageDrawable(frameDraw);
     }
 
+    /**
+     * Método para cortar la imagen de la cámara
+     * @param _bMap Bitmap regresado por la cámara
+     * @return Bitmap ya recortado
+     */
     public Bitmap cropImage (Bitmap _bMap) {
         Bitmap bMap = _bMap;
         int nwidth, nheight;
@@ -240,40 +310,56 @@ public class Share extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //
+    /**
+     * Evento ejecutado después de tomar la selfie
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            // Si sale bien
             if (resultCode == RESULT_OK) {
+
+                // Creamos el marco de la selfie
+                CreateFrame();
+
+                // Obtenemos el path de la foto tomada y la convertimos en Bitmap
                 selectedImagePath = getImagePath();
                 previewFoto = decodeFile(selectedImagePath);
 
+                // Cortamos el btimap y lo mostramos en el cuadro de imagen
                 previewFoto = cropImage(previewFoto);
                 preview.setImageBitmap(previewFoto);
             } else if (resultCode == RESULT_CANCELED) {
+                // Si se canceló la captura, regresamos al activity anterior
                 Intent intent = new Intent(Share.this, Compromisos.class);
                 startActivity(intent);
+                atx.finish();
             } else {
-                Toast.makeText(ctx, "algo ha salido mal", Toast.LENGTH_SHORT).show();
+                // Si algo sale mal, mostramos un mensaje y regresamos al activity anterior
+                Toast.makeText(ctx, "Algo ha salido mal", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Share.this, Compromisos.class);
                 startActivity(intent);
+                atx.finish();
             }
         }
     }
 
+    // Guarda imagen en la memoria del teléfono
     public Uri setImageUri() {
-        File file = new File(Environment.getExternalStorageDirectory(), "image" + new Date().getTime() + ".png");
+        File file = new File(Environment.getExternalStorageDirectory(), "bmx_" + new Date().getTime() + ".png");
         Uri imgUri = Uri.fromFile(file);
         this.imgPath = file.getAbsolutePath();
         return imgUri;
     }
 
+    // Obtiene la rita de imgPath
     public String getImagePath() {
         return imgPath;
     }
 
+    // Convierte la imagen tomada de la memoria del teléfono a un bitmap
     public Bitmap decodeFile(String path) {
         try {
             BitmapFactory.Options o = new BitmapFactory.Options();
