@@ -100,10 +100,11 @@ public class UserProfile extends ActionBarActivity {
                 }
 
                 @Override
-                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                    super.onFailure(statusCode, headers, responseString, throwable);
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                    super.onFailure(statusCode, headers, responseString, e);
                     refreshLayout.setRefreshing(false);
-                    Toast.makeText(ctx, "Fali to connect", Toast.LENGTH_SHORT).show();
+                    String msg = "[" + statusCode + "|u/get] " + e.getMessage();
+                    Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
                 }
             });
         } else {
@@ -198,10 +199,11 @@ public class UserProfile extends ActionBarActivity {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                super.onFailure(statusCode, headers, responseString, e);
                 refreshLayout.setRefreshing(false);
-                Toast.makeText(ctx, "Fali to connect", Toast.LENGTH_SHORT).show();
+                String msg = "[" + statusCode + "|u/selfies] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }

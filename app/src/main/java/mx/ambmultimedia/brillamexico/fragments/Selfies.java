@@ -81,9 +81,10 @@ public class Selfies extends Fragment {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(ctx, "Fail to connect", Toast.LENGTH_SHORT).show();
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                super.onFailure(statusCode, headers, responseString, e);
+                String msg = "[" + statusCode + "|us/selfie] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }

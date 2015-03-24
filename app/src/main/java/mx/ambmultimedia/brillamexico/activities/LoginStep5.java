@@ -192,7 +192,8 @@ public class LoginStep5 extends FragmentActivity {
 
                                 @Override
                                 public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                                    Toast.makeText(ctx, "¡Ups! Something was wrong :(", Toast.LENGTH_SHORT).show();
+                                    String msg = "[" + statusCode + "|u/register] " + e.getMessage();
+                                    Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
                                 }
                             });
                         } else {

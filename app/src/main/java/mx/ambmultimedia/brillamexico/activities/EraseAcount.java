@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -67,6 +68,8 @@ public class EraseAcount extends ActionBarActivity {
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                        String msg = "[" + statusCode + "|u/delete] " + e.getMessage();
+                        Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
                     }
                 });
             }

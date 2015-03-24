@@ -12,6 +12,7 @@ import android.text.Spanned;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
@@ -118,6 +119,8 @@ public class NoticiaSelf extends ActionBarActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                String msg = "[" + statusCode + "|b/nota] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }

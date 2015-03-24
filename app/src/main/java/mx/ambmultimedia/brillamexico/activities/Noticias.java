@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.loopj.android.http.AsyncHttpClient;
@@ -122,7 +123,10 @@ public class Noticias extends ActionBarActivity {
                 } catch (Exception e) { }
             }
             @Override
-            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) { }
+            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                String msg = "[" + statusCode + "|b/noticias] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+            }
         });
     }
 

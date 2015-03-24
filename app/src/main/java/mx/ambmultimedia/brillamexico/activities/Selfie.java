@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
@@ -130,6 +131,12 @@ public class Selfie extends ActionBarActivity {
                     like_view.setHorizontalAlignment(LikeView.HorizontalAlignment.LEFT);
 
                 } catch (JSONException e) {}
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                String msg = "[" + statusCode + "|u/selfie] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
 

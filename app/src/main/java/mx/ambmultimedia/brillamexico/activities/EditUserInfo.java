@@ -163,9 +163,11 @@ public class EditUserInfo extends ActionBarActivity {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(ctx, "Fail to connect", Toast.LENGTH_SHORT).show();
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                super.onFailure(statusCode, headers, responseString, e);
+                // Si algo sale mal, informamos
+                String msg = "[" + statusCode + "|u/twitter] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -194,9 +196,10 @@ public class EditUserInfo extends ActionBarActivity {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Toast.makeText(ctx, "Fail to connect", Toast.LENGTH_SHORT).show();
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                super.onFailure(statusCode, headers, responseString, e);
+                String msg = "[" + statusCode + "|u/edit] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -143,7 +143,7 @@ public class Share extends ActionBarActivity {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
                         // Mostramos un mensaje de error
-                        String msg = "[" + statusCode + "] " + e.getMessage();
+                        String msg = "[" + statusCode + "|u/selfie/upload] " + e.getMessage();
                         Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
                         Log.i("[Client]", msg);
 

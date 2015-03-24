@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.loopj.android.http.AsyncHttpClient;
@@ -109,6 +110,13 @@ public class UserViewer extends ActionBarActivity {
                 } catch (JSONException e) {
                 }
             }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                super.onFailure(statusCode, headers, responseString, e);
+                String msg = "[" + statusCode + "|u/get] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+            }
         });
 
         CircleImageView ImgUserAvatar = (CircleImageView) findViewById(R.id.ImgUserAvatar);
@@ -176,6 +184,13 @@ public class UserViewer extends ActionBarActivity {
                     refreshLayout.setRefreshing(false);
 
                 } catch (Exception e) {}
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable e) {
+                super.onFailure(statusCode, headers, responseString, e);
+                String msg = "[" + statusCode + "|u/selfies] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }

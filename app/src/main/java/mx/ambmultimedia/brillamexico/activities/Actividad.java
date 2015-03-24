@@ -38,6 +38,8 @@ public class Actividad extends ActionBarActivity {
     ViewPager activityPager;
     SlidingTabLayout activityTabs;
 
+    String CampoDeAccion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,7 @@ public class Actividad extends ActionBarActivity {
         BuildProfile();
 
         activityPager = (ViewPager) findViewById(R.id.activityPager);
-        activityPager.setAdapter(new ActividadPagerApadter(ctx, getSupportFragmentManager()));
+        activityPager.setAdapter(new ActividadPagerApadter(ctx, getSupportFragmentManager(), CampoDeAccion));
 
         activityTabs = (SlidingTabLayout) findViewById(R.id.activityTabs);
         activityTabs.setViewPager(activityPager);
@@ -87,6 +89,8 @@ public class Actividad extends ActionBarActivity {
             JSONObject user = new JSONObject(_user);
             DrawerUserName.setText(user.getString("name"));
             DrawerCountPuntos.setText(user.getString("points") + " puntos");
+
+            CampoDeAccion = user.getString("fieldaction_id");
         } catch (JSONException e) { }
 
         CircleImageView ImgDrawerAvatar = (CircleImageView) findViewById(R.id.UserAvatar);
@@ -101,11 +105,17 @@ public class Actividad extends ActionBarActivity {
     class ActividadPagerApadter extends FragmentPagerAdapter {
         Context superCtx;
         String[] tabText = getResources().getStringArray(R.array.tabs_actividad);
+        int cdAction = 0;
 
-        public ActividadPagerApadter (Context _ctx, FragmentManager fm) {
+        String[] leaderBoardTitle = {
+          "Leaderboard", "Jovenes y adultos", "Emprendedores", "Empresarios"
+        };
+
+        public ActividadPagerApadter (Context _ctx, FragmentManager fm, String _cdAction) {
             super(fm);
             superCtx = _ctx;
             tabText = getResources().getStringArray(R.array.tabs_actividad);
+            cdAction = Integer.valueOf(_cdAction);
         }
         public Fragment getItem (int position) {
             if (position == 0) {
@@ -131,7 +141,11 @@ public class Actividad extends ActionBarActivity {
         }
 
         public CharSequence getPageTitle (int position) {
-            return tabText[position];
+            if (position == 0) {
+                return leaderBoardTitle[cdAction];
+            } else {
+                return tabText[position];
+            }
         }
     }
 }

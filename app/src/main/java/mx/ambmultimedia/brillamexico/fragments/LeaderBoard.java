@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -101,6 +102,8 @@ public class LeaderBoard extends Fragment {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                String msg = "[" + statusCode + "|us/leaderboard] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }

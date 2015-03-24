@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cuneytayyildiz.widget.PullRefreshLayout;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -134,6 +135,8 @@ public class TopUsers extends Fragment {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
+                String msg = "[" + statusCode + "|us/leaders] " + e.getMessage();
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
             }
         });
     }
