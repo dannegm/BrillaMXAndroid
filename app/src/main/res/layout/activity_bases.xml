@@ -42,13 +42,14 @@
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true" />
 
-                    <MediaController
+                    <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/mediaController"
-                        android:background="@color/bmx_purpleDark"
-                        android:foreground="@color/g_white"
-                        android:foregroundGravity="center" />
+                        android:layout_height="200dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/videoPreview"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/previewtuto" />
 
                     <com.getbase.floatingactionbutton.FloatingActionButton
                         android:id="@+id/playVideo"

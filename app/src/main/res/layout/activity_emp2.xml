@@ -104,6 +104,15 @@
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true" />
 
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/videoPreview"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/previewabraham" />
+
                     <com.getbase.floatingactionbutton.FloatingActionButton
                         android:id="@+id/playVideo"
                         android:layout_width="wrap_content"

@@ -46,6 +46,7 @@
         tools:replace="android:icon" >
         <activity
             android:name=".activities.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,32 +56,38 @@
         </activity>
         <activity
             android:name=".activities.UserProfile"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_user_profile" >
         </activity>
         <activity
             android:name=".activities.LoginStep1"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step1"
             android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
             android:name=".activities.LoginStep2"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step2"
             android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
             android:name=".activities.LoginStep4"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step4"
             android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
             android:name=".activities.LoginStep5"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step5"
             android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
             android:name=".activities.Share"
             android:label="@string/title_activity_share"
-            android:parentActivityName=".activities.Compromisos" >
+            android:parentActivityName=".activities.Compromisos"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Compromisos" />
@@ -88,27 +95,27 @@
         <activity
             android:name=".activities.Selfie"
             android:label="@string/title_activity_selfie"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
         <activity
             android:name=".activities.Compromisos"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_compromisos" >
         </activity>
         <activity
             android:name=".activities.Noticias"
-            android:label="@string/title_activity_noticias"
-            android:parentActivityName=".activities.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_noticias">
         </activity>
         <activity
             android:name=".activities.NoticiaSelf"
             android:label="@string/title_activity_noticia_self"
-            android:parentActivityName=".activities.Noticias" >
+            android:parentActivityName=".activities.Noticias"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Noticias" />
@@ -116,23 +123,27 @@
         <activity
             android:name=".activities.Logout"
             android:label="@string/title_activity_logout"
-            android:parentActivityName=".activities.UserProfile" >
+            android:parentActivityName=".activities.UserProfile"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.UserProfile" />
         </activity>
         <activity
             android:name=".activities.UserViewer"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_user_viewer" >
         </activity>
         <activity
             android:name=".activities.Emprendedores"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_emprendedores" >
         </activity>
         <activity
             android:name=".activities.Emp1"
             android:label="@string/title_activity_emp1"
-            android:parentActivityName=".activities.Emprendedores" >
+            android:parentActivityName=".activities.Emprendedores"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Emprendedores" />
@@ -140,7 +151,8 @@
         <activity
             android:name=".activities.Emp2"
             android:label="@string/title_activity_emp2"
-            android:parentActivityName=".activities.Emprendedores" >
+            android:parentActivityName=".activities.Emprendedores"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Emprendedores" />
@@ -148,45 +160,53 @@
         <activity
             android:name=".activities.Emp3"
             android:label="@string/title_activity_emp3"
-            android:parentActivityName=".activities.Emprendedores" >
+            android:parentActivityName=".activities.Emprendedores"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Emprendedores" />
         </activity>
         <activity
             android:name=".activities.Actividad"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_actividad" >
         </activity>
         <activity
             android:name=".activities.EraseAcount"
             android:label="@string/title_activity_erase_acount"
-            android:parentActivityName=".activities.Logout" >
+            android:parentActivityName=".activities.Logout"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Logout" />
         </activity>
         <activity
             android:name=".activities.Bases"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_bases" >
         </activity>
         <activity
             android:name=".activities.Privacy"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_privacy" >
         </activity>
         <activity
             android:name=".activities.Preselfie"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_preselfie" >
         </activity>
         <activity
             android:name=".activities.EditUserInfo"
             android:label="@string/title_activity_edit_user_info"
-            android:parentActivityName=".activities.UserProfile" >
+            android:parentActivityName=".activities.UserProfile"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.UserProfile" />
         </activity>
         <activity
             android:name=".activities.Logro"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_logro"
             android:theme="@style/StatusBarPink" >
         </activity>
@@ -210,10 +230,6 @@
             android:name="io.fabric.ApiKey"
             android:value="518ebe8aa32790e6be7e289acb0f55cfa43cdc3a" />
 
-        <activity
-            android:name=".activities.LoginTest"
-            android:label="@string/title_activity_login_test" >
-        </activity>
     </application>
 
 </manifest>

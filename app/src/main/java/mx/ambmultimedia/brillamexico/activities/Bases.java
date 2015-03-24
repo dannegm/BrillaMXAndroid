@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
+import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -61,17 +63,39 @@ public class Bases extends ActionBarActivity {
         String uriPath = "android.resource://mx.ambmultimedia.brillamexico/raw/bmx_video";
         Uri uri = Uri.parse(uriPath);
 
+        final ImageView videoPreview = (ImageView) findViewById(R.id.videoPreview);
         video = (VideoView) findViewById(R.id.videoView);
         video.setVideoURI(uri);
 
-        MediaController mediaController = new MediaController(this);
+        final MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(video);
+        video.setMediaController(mediaController);
+        drawer_layout.setDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                mediaController.hide();
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                mediaController.hide();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) { }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                mediaController.hide();
+            }
+        });
 
         final FloatingActionButton playVideo = (FloatingActionButton) findViewById(R.id.playVideo);
         playVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playVideo.setVisibility(View.INVISIBLE);
+                videoPreview.setVisibility(View.INVISIBLE);
                 video.start();
             }
         });
@@ -79,8 +103,6 @@ public class Bases extends ActionBarActivity {
         float videoWidth = (float) video.getWidth();
         float videoHeight = videoWidth * 0.5625f;
         video.layout(0, 0, (int) videoWidth, (int) videoHeight);
-
-        video.setMediaController(mediaController);
         video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             public void onPrepared(MediaPlayer arg) {
                 video.start();
@@ -91,6 +113,13 @@ public class Bases extends ActionBarActivity {
             @Override
             public void onCompletion(MediaPlayer vmp) {
                 playVideo.setVisibility(View.VISIBLE);
+                videoPreview.setVisibility(View.VISIBLE);
+            }
+        });
+        video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                video.pause();
             }
         });
 
