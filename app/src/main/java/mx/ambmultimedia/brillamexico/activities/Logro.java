@@ -146,31 +146,6 @@ public class Logro extends ActionBarActivity {
     }
 
     /**
-     * Método para añadir puntos a los usuarios
-     * @param points puntos que se le asignan
-     */
-    private void addPoints (int points) {
-        // Construímos parámetros
-        RequestParams params = new RequestParams();
-        params.put("points", points);
-        // Generamos petición
-        client.post(hostname + "/user/points/" + fbID, params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                // Si sale bien, mostramos mensaje
-                Toast.makeText(ctx, "Puntos añadidos", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String response, Throwable e) {
-                // Si algo sale mal, informamos
-                String msg = "[" + statusCode + "|u/points] " + e.getMessage();
-                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    /**
      * Método para añadir logro
      * @param logroID ID del logro a añadir
      */
@@ -188,7 +163,7 @@ public class Logro extends ActionBarActivity {
                     String status = response.getString("status");
                     // Si es "succes", añadimos los puntos
                     if (status == "success") {
-                        addPoints(pointsLogro);
+                        // Vacio, sólo útil para el try ... catch
                     }
                 // Si no se encuentra "status", significa que el logro ya existía. Avisamos
                 } catch (JSONException e) {

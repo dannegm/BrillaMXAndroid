@@ -12,7 +12,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        actx = UnitTestActivity.class;
+        actx = UserProfile.class;
 
         Intent intent = new Intent(this, actx);
         startActivity(intent);
