@@ -550,5 +550,6 @@
 
     ]]>
     </string>
+    <string name="title_activity_unit_test">Pruebas</string>
 
 </resources>

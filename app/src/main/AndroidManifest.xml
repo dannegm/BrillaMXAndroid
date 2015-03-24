@@ -46,8 +46,8 @@
         tools:replace="android:icon" >
         <activity
             android:name=".activities.MainActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,38 +56,38 @@
         </activity>
         <activity
             android:name=".activities.UserProfile"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_user_profile" >
+            android:label="@string/title_activity_user_profile"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.LoginStep1"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step1"
+            android:screenOrientation="portrait"
             android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
             android:name=".activities.LoginStep2"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step2"
+            android:screenOrientation="portrait"
             android:theme="@style/StatusBarGrey" >
         </activity>
         <activity
             android:name=".activities.LoginStep4"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step4"
+            android:screenOrientation="portrait"
             android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
             android:name=".activities.LoginStep5"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_login_step5"
+            android:screenOrientation="portrait"
             android:theme="@style/StatusBarGreen" >
         </activity>
         <activity
             android:name=".activities.Share"
             android:label="@string/title_activity_share"
             android:parentActivityName=".activities.Compromisos"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Compromisos" />
@@ -96,20 +96,20 @@
             android:name=".activities.Selfie"
             android:label="@string/title_activity_selfie"
             android:parentActivityName=".activities.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
         <activity
             android:name=".activities.Compromisos"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_compromisos" >
+            android:label="@string/title_activity_compromisos"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.Noticias"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_noticias">
+            android:label="@string/title_activity_noticias"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.NoticiaSelf"
@@ -131,13 +131,13 @@
         </activity>
         <activity
             android:name=".activities.UserViewer"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_user_viewer" >
+            android:label="@string/title_activity_user_viewer"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.Emprendedores"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_emprendedores" >
+            android:label="@string/title_activity_emprendedores"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.Emp1"
@@ -168,8 +168,8 @@
         </activity>
         <activity
             android:name=".activities.Actividad"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_actividad" >
+            android:label="@string/title_activity_actividad"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.EraseAcount"
@@ -182,18 +182,18 @@
         </activity>
         <activity
             android:name=".activities.Bases"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_bases" >
+            android:label="@string/title_activity_bases"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.Privacy"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_privacy" >
+            android:label="@string/title_activity_privacy"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.Preselfie"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_preselfie" >
+            android:label="@string/title_activity_preselfie"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.EditUserInfo"
@@ -206,8 +206,8 @@
         </activity>
         <activity
             android:name=".activities.Logro"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_logro"
+            android:screenOrientation="portrait"
             android:theme="@style/StatusBarPink" >
         </activity>
         <activity
@@ -230,6 +230,10 @@
             android:name="io.fabric.ApiKey"
             android:value="518ebe8aa32790e6be7e289acb0f55cfa43cdc3a" />
 
+        <activity
+            android:name=".activities.UnitTestActivity"
+            android:label="@string/title_activity_unit_test" >
+        </activity>
     </application>
 
 </manifest>
