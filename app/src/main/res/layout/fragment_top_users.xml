@@ -48,7 +48,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/avatar_placeholder"
+                        android:src="@drawable/com_facebook_profile_picture_blank_square"
                         android:id="@+id/faUserAvatar" />
 
 
@@ -64,7 +64,6 @@
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:text="2"
                         android:id="@+id/faUserPosition"
                         android:textColor="@color/c_text_white"
                         android:textStyle="bold"
@@ -78,7 +77,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Don Cheto"
                         android:id="@+id/faUserName"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
@@ -94,7 +92,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="99 puntos"
+                        android:text="0 puntos"
                         android:id="@+id/faUserPoints"
                         android:layout_below="@+id/faUserName"
                         android:layout_alignParentLeft="true"

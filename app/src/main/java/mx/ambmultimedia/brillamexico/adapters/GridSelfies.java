@@ -53,7 +53,7 @@ public class GridSelfies extends BaseAdapter {
                 String linkPicture = selfieObj.getString("picture");
 
                 String hostname = mContext.getString(R.string.hostname);
-                String urlPicture = hostname + "/pictures/" + linkPicture;
+                String urlPicture = hostname + "/pictures/thumb/" + linkPicture;
 
                 ImageView imageView = (ImageView) gridTmp.findViewById(R.id.thumbPicture);
                 Picasso.with(mContext)

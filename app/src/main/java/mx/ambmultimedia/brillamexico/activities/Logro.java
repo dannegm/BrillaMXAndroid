@@ -143,6 +143,7 @@ public class Logro extends ActionBarActivity {
                 break;
         }
         startActivity(intent);
+        this.finish();
     }
 
     /**

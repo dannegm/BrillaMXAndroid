@@ -30,7 +30,7 @@
             android:textColor="@color/c_text_oxford"
             android:id="@+id/logroPoints"
             android:gravity="center"
-            android:text="100 puntos"
+            android:text="0 puntos"
             android:textSize="12sp" />
 
 </LinearLayout>

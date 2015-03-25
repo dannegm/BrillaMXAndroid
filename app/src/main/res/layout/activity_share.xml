@@ -43,7 +43,7 @@
                     android:id="@+id/imageMarco"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/marco_8" />
+                    android:src="@drawable/marco_sample" />
             </RelativeLayout>
 
             <TextView
@@ -89,6 +89,13 @@
                 custom:pb_textProgress="Subiendo..."
                 custom:pb_textError="Error"
                 custom:pb_colorError="@color/red_error" />
+
+            <!--
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:id="@+id/errorLog" />
+                -->
 
         </LinearLayout>
 

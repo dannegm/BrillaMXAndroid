@@ -26,6 +26,7 @@
             android:layout_margin="16dp"
             android:background="@color/g_white"
             android:elevation="1dp">
+
             <mx.ambmultimedia.brillamexico.customViews.ExtendableListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

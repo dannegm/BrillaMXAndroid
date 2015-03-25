@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -83,6 +84,7 @@ public class Share extends ActionBarActivity {
         Bundle bundle = getIntent().getExtras();
         CampoDeAccion = bundle.getInt("CampoDeAccion");
         compromisoID = bundle.getInt("compromisoID");
+        setCompromisoID();
 
         // Generamos el Intent de la cámara
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -151,10 +153,54 @@ public class Share extends ActionBarActivity {
                         sendFoto.setProgress(0);
                         sendFoto.setMode(ActionProcessButton.Mode.PROGRESS);
                         sendFoto.setText("Vuelve a intentarlo");
+
+                        //((WebView) findViewById(R.id.errorLog)).loadData(response, "text/html", "UTF-8");
                     }
                 });
             }
         });
+    }
+
+    private void setCompromisoID () {
+        if (CampoDeAccion == 1) {
+            switch (compromisoID) {
+                case 0: compID = "1"; break;
+                case 1: compID = "2"; break;
+                case 2: compID = "3"; break;
+                case 3: compID = "4"; break;
+                case 4: compID = "5"; break;
+                case 5: compID = "6"; break;
+                case 6: compID = "7"; break;
+                case 7: compID = "8"; break;
+                case 8: compID = "9"; break;
+                case 9: compID = "10"; break;
+                case 10: compID = "11"; break;
+                case 11: compID = "12"; break;
+                case 12: compID = "13"; break;
+                case 13: compID = "14"; break;
+            }
+        }
+        else if (CampoDeAccion == 2) {
+            switch (compromisoID) {
+                case 0: compID = "15"; break;
+                case 1: compID = "16"; break;
+                case 2: compID = "17"; break;
+                case 3: compID = "18"; break;
+            }
+        }
+        else if (CampoDeAccion == 3) {
+            switch (compromisoID) {
+                case 0: compID = "19"; break;
+                case 1: compID = "20"; break;
+                case 2: compID = "21"; break;
+                case 3: compID = "22"; break;
+                case 4: compID = "23"; break;
+                case 5: compID = "24"; break;
+                case 6: compID = "25"; break;
+                case 7: compID = "26"; break;
+                case 8: compID = "27"; break;
+            }
+        }
     }
 
     /**
@@ -225,56 +271,6 @@ public class Share extends ActionBarActivity {
     }
 
     /**
-     * Método para crear el marco del compromiso
-     */
-    private void CreateFrame () {
-        Drawable frameDraw = getResources().getDrawable(R.drawable.marco_1);
-
-        if (CampoDeAccion == 1) {
-            switch (compromisoID) {
-                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_1); compID = "1"; break;
-                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_2); compID = "2"; break;
-                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_3); compID = "3"; break;
-                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_4); compID = "4"; break;
-                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_5); compID = "5"; break;
-                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_6); compID = "6"; break;
-                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_7); compID = "7"; break;
-                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_8); compID = "8"; break;
-                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_9); compID = "9"; break;
-                case 9: frameDraw = getResources().getDrawable(R.drawable.marco_10); compID = "10"; break;
-                case 10: frameDraw = getResources().getDrawable(R.drawable.marco_11); compID = "11"; break;
-                case 11: frameDraw = getResources().getDrawable(R.drawable.marco_12); compID = "12"; break;
-                case 12: frameDraw = getResources().getDrawable(R.drawable.marco_13); compID = "13"; break;
-                case 13: frameDraw = getResources().getDrawable(R.drawable.marco_14); compID = "14"; break;
-            }
-        }
-        else if (CampoDeAccion == 2) {
-            switch (compromisoID) {
-                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_15); compID = "15"; break;
-                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_16); compID = "16"; break;
-                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_17); compID = "17"; break;
-                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_18); compID = "18"; break;
-            }
-        }
-        else if (CampoDeAccion == 3) {
-            switch (compromisoID) {
-                case 0: frameDraw = getResources().getDrawable(R.drawable.marco_19); compID = "19"; break;
-                case 1: frameDraw = getResources().getDrawable(R.drawable.marco_20); compID = "20"; break;
-                case 2: frameDraw = getResources().getDrawable(R.drawable.marco_21); compID = "21"; break;
-                case 3: frameDraw = getResources().getDrawable(R.drawable.marco_22); compID = "22"; break;
-                case 4: frameDraw = getResources().getDrawable(R.drawable.marco_23); compID = "23"; break;
-                case 5: frameDraw = getResources().getDrawable(R.drawable.marco_24); compID = "24"; break;
-                case 6: frameDraw = getResources().getDrawable(R.drawable.marco_25); compID = "25"; break;
-                case 7: frameDraw = getResources().getDrawable(R.drawable.marco_26); compID = "26"; break;
-                case 8: frameDraw = getResources().getDrawable(R.drawable.marco_27); compID = "27"; break;
-            }
-        }
-
-        ImageView imageFrame = (ImageView) findViewById(R.id.imageMarco);
-        imageFrame.setImageDrawable(frameDraw);
-    }
-
-    /**
      * Método para cortar la imagen de la cámara
      * @param _bMap Bitmap regresado por la cámara
      * @return Bitmap ya recortado
@@ -319,9 +315,6 @@ public class Share extends ActionBarActivity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             // Si sale bien
             if (resultCode == RESULT_OK) {
-
-                // Creamos el marco de la selfie
-                CreateFrame();
 
                 // Obtenemos el path de la foto tomada y la convertimos en Bitmap
                 selectedImagePath = getImagePath();

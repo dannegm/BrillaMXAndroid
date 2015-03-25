@@ -28,7 +28,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/p_samplename"
                 android:id="@+id/userName"
                 android:textColor="@color/c_text_dark"
                 android:textSize="20dp"
@@ -37,7 +36,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="199 Puntos"
                 android:id="@+id/userPoints"
                 android:textSize="16dp"
                 android:textColor="@color/bmx_purple" />
@@ -48,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="#0"
             android:id="@+id/userPosition"
-            android:textSize="38dp" />
+            android:textSize="28dp" />
 
     </LinearLayout>
 
